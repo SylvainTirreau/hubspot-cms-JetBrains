@@ -40,7 +40,7 @@ When you have restarted your IDE, you will be able to type first letters of the 
 ## Troubleshootings
 
 ### Emmet
-When autocompletion is done, you can switch between variables of the inserted code by pressing `tab`. But if Emmet is activated, this press on `tab` will create a tag with the string you've just entered.
+When autocompletion is done, you can switch between variables of the inserted code by pressing `tab`. But if Emmet is activated, this press on `tab` will create in html files a tag with the string you've just entered.
 
 #### If you're not using Emmet
 Deactivate it: go to **settings** or **Preferences** section (**IDE name | Preferences** for macOS or **File | Settings** for Windows and Linux), and choose **Editor** > **Emmet** (or search `Emmet`), then unckeck `Enable Emmet` on each subsection (`HTML`, `CSS`, `JSX`).
