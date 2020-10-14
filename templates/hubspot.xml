@@ -30,8 +30,9 @@
     <template
             description="A filter that groups up items within a sequence&#10;Parameters:&#10;- linecount(number) Number of items to include in the batch&#10;- fill_with(String) Value used to fill up missing items"
             name="|batch" toReformat="false" toShortenFQNames="true"
-            value="|batch($1linecount$, &quot;${2:fill_with}&quot;)&#10;">
+            value="|batch($1linecount$, &quot;$2fill_with$&quot;)&#10;">
         <variable alwaysStopAt="true" defaultValue="" expression="" name="1linecount"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="2fill_with"/>
         <context>
             <option name="HTML" value="true"/>
             <option name="CSS" value="true"/>
@@ -41,8 +42,9 @@
     <template
             description="Calculates the time between two datetime objects&#10;Parameters:&#10;- end(String) Datetime object or timestamp at the end of the period&#10;- unit(String) Which temporal unit to use"
             name="|between_times" toReformat="false" toShortenFQNames="true"
-            value="|between_times(&quot;$1end$&quot;, &quot;${2:unit}&quot;)&#10;">
+            value="|between_times(&quot;$1end$&quot;, &quot;$2unit$&quot;)&#10;">
         <variable alwaysStopAt="true" defaultValue="" expression="" name="1end"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="2unit"/>
         <context>
             <option name="HTML" value="true"/>
             <option name="CSS" value="true"/>
@@ -117,8 +119,10 @@
     <template
             description="Formats a date object&#10;Parameters:&#10;- format(String) The format of the date determined by the directives added to this parameter&#10;- timezone(String) Time zone of output date&#10;- locale(string) The language code to use when formatting the datetime"
             name="|datetimeformat" toReformat="false" toShortenFQNames="true"
-            value="|datetimeformat(&quot;$1format$&quot;, &quot;${2:timezone}&quot;, ${3:locale})&#10;">
+            value="|datetimeformat(&quot;$1format$&quot;, &quot;$2timezone$&quot;, $3locale$)&#10;">
         <variable alwaysStopAt="true" defaultValue="" expression="" name="1format"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="2timezone"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="3locale"/>
         <context>
             <option name="HTML" value="true"/>
             <option name="CSS" value="true"/>
@@ -128,8 +132,9 @@
     <template
             description="If the value is undefined it will return the passed default value, otherwise the value of the variable&#10;Parameters:&#10;- default_value(String) Value to print when variable is not defined&#10;- boolean(boolean) Set to True to use with variables which evaluate to false"
             name="|default" toReformat="false" toShortenFQNames="true"
-            value="|default(&quot;$1default_value$&quot;, ${2:boolean})&#10;">
+            value="|default(&quot;$1default_value$&quot;, $2boolean$)&#10;">
         <variable alwaysStopAt="true" defaultValue="" expression="" name="1default_value"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="2boolean"/>
         <context>
             <option name="HTML" value="true"/>
             <option name="CSS" value="true"/>
@@ -139,8 +144,9 @@
     <template
             description="Sort a dict and yield (key, value) pairs.&#10;Parameters:&#10;- case_sensitive(boolean) Determines whether or not the sorting is case sensitive&#10;- by(enum key|value) Sort by dict key or value"
             name="|dictsort" toReformat="false" toShortenFQNames="true"
-            value="|dictsort($1case_sensitive$, ${2:by})&#10;">
+            value="|dictsort($1case_sensitive$, $2by$)&#10;">
         <variable alwaysStopAt="true" defaultValue="" expression="" name="1case_sensitive"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="2by"/>
         <context>
             <option name="HTML" value="true"/>
             <option name="CSS" value="true"/>
@@ -267,8 +273,9 @@
     <template
             description="Formats a given number as a currency based on the locale and currency code passed in as a parameter. &#10;Parameters:&#10;- locale(String) Locale in which to format the currency. Any Java locale language tag can be passed as a parameter. The default is the page's locale.Format : ISO639LanguageCodeInLowercase-ISO3166CountryCodeInUppercase&#10;- currency_code(String) The ISO 4217 code of the currency. The default is the portal's default currency"
             name="|format_currency" toReformat="false" toShortenFQNames="true"
-            value="|format_currency(&quot;$1locale$&quot;, &quot;${2:currency code}&quot;)&#10;">
+            value="|format_currency(&quot;$1locale$&quot;, &quot;$2currency__code$&quot;)&#10;">
         <variable alwaysStopAt="true" defaultValue="" expression="" name="1locale"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="2currency__code"/>
         <context>
             <option name="HTML" value="true"/>
             <option name="CSS" value="true"/>
@@ -286,8 +293,11 @@
     <template
             description="Calculates the ellipsoidal 2D distance between two points on Earth&#10;Parameters:&#10;- point1(location) location from a HubDB column&#10;- point2_lat(number) latitude of point2&#10;- point2_long(number) longitude of point2&#10;- units(string) Units for the return value. Options are FT for feet, MI for miles, M for meters or KM for kilometers"
             name="|geo_distance" toReformat="false" toShortenFQNames="true"
-            value="|geo_distance($1point1$, ${2:point2_lat}, ${3:point2_long}, ${4:units})&#10;">
+            value="|geo_distance($1point1$, $2point2_lat$, $3point2_long$, $4units$)&#10;">
         <variable alwaysStopAt="true" defaultValue="" expression="" name="1point1"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="2point2_lat"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="3point2_long"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="4units"/>
         <context>
             <option name="HTML" value="true"/>
             <option name="CSS" value="true"/>
@@ -306,8 +316,9 @@
     </template>
     <template
             description="Uses whitespace to indent a string.&#10;Parameters:&#10;- width(number) Amount of whitespace to indent&#10;- indentfirst(boolean) If True, first line will be indented"
-            name="|indent" toReformat="false" toShortenFQNames="true" value="|indent($1width$, ${2:indentfirst})&#10;">
+            name="|indent" toReformat="false" toShortenFQNames="true" value="|indent($1width$, $2indentfirst$)&#10;">
         <variable alwaysStopAt="true" defaultValue="" expression="" name="1width"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="2indentfirst"/>
         <context>
             <option name="HTML" value="true"/>
             <option name="CSS" value="true"/>
@@ -367,8 +378,9 @@
     <template
             description="Return a string which is the concatenation of the strings in the sequence.&#10;Parameters:&#10;- d(String) The separator string used to join the items&#10;- attr(String) Optional dict object attribute to use in joining"
             name="|join" toReformat="false" toShortenFQNames="true"
-            value="|join(&quot;$1d$&quot;, &quot;${2:attr}&quot;)&#10;">
+            value="|join(&quot;$1d$&quot;, &quot;$2attr$&quot;)&#10;">
         <variable alwaysStopAt="true" defaultValue="" expression="" name="1d"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="2attr"/>
         <context>
             <option name="HTML" value="true"/>
             <option name="CSS" value="true"/>
@@ -439,8 +451,9 @@
     <template
             description="Subtracts a specified amount of time to a datetime object&#10;Parameters:&#10;- diff(String) The amount to subtract from the datetime&#10;- unit(String) Which temporal unit to use"
             name="|minus_time" toReformat="false" toShortenFQNames="true"
-            value="|minus_time(&quot;$1diff$&quot;, &quot;${2:unit}&quot;)&#10;">
+            value="|minus_time(&quot;$1diff$&quot;, &quot;$2unit$&quot;)&#10;">
         <variable alwaysStopAt="true" defaultValue="" expression="" name="1diff"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="2unit"/>
         <context>
             <option name="HTML" value="true"/>
             <option name="CSS" value="true"/>
@@ -460,8 +473,9 @@
     <template
             description="Adds a specified amount of time to a datetime object&#10;Parameters:&#10;- diff(String) The amount to add to the datetime&#10;- unit(String) Which temporal unit to use"
             name="|plus_time" toReformat="false" toShortenFQNames="true"
-            value="|plus_time(&quot;$1diff$&quot;, &quot;${2:unit}&quot;)&#10;">
+            value="|plus_time(&quot;$1diff$&quot;, &quot;$2unit$&quot;)&#10;">
         <variable alwaysStopAt="true" defaultValue="" expression="" name="1diff"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="2unit"/>
         <context>
             <option name="HTML" value="true"/>
             <option name="CSS" value="true"/>
@@ -487,8 +501,9 @@
     <template
             description="Return a copy of the value with all occurrences of a matched regular expression (Java RE2 syntax) replaced with a new one. The first argument is the regular expression to be matched, the second is the replacement string&#10;Parameters:&#10;- regex(String) The regular expression that you want to match and replace&#10;- new(String) The new string that you replace the matched substring"
             name="|regex_replace" toReformat="false" toShortenFQNames="true"
-            value="|regex_replace(&quot;$1regex$&quot;, &quot;${2:new}&quot;)&#10;">
+            value="|regex_replace(&quot;$1regex$&quot;, &quot;$2new$&quot;)&#10;">
         <variable alwaysStopAt="true" defaultValue="" expression="" name="1regex"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="2new"/>
         <context>
             <option name="HTML" value="true"/>
             <option name="CSS" value="true"/>
@@ -508,8 +523,9 @@
     <template
             description="Filters a sequence of objects by applying a test to an attribute of an object or the attribute and rejecting the ones with the test succeeding.&#10;Parameters:&#10;- attribute(String) Attribute to test for and reject items that contain it&#10;- exp_test(name of expression test) Specify which expression test to run for making the rejection"
             name="|rejectattr" toReformat="false" toShortenFQNames="true"
-            value="|rejectattr(&quot;$1attribute$&quot;, ${2:exp_test})&#10;">
+            value="|rejectattr(&quot;$1attribute$&quot;, $2exp_test$)&#10;">
         <variable alwaysStopAt="true" defaultValue="" expression="" name="1attribute"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="2exp_test"/>
         <context>
             <option name="HTML" value="true"/>
             <option name="CSS" value="true"/>
@@ -519,8 +535,10 @@
     <template
             description="Return a copy of the value with all occurrences of a substring replaced with a new one. The first argument is the substring that should be replaced, the second is the replacement string. If the optional third argument count is given, only the first count occurrences are replaced&#10;Parameters:&#10;- old(String) The old substring that you want to match and replace&#10;- new(String) The new string that you replace the matched substring&#10;- count(number) Replace only the first N occurrences"
             name="|replace" toReformat="false" toShortenFQNames="true"
-            value="|replace(&quot;$1old$&quot;, &quot;${2:new}&quot;, ${3:count})&#10;">
+            value="|replace(&quot;$1old$&quot;, &quot;$2new$&quot;, $3count$)&#10;">
         <variable alwaysStopAt="true" defaultValue="" expression="" name="1old"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="2new"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="3count"/>
         <context>
             <option name="HTML" value="true"/>
             <option name="CSS" value="true"/>
@@ -547,8 +565,9 @@
     </template>
     <template
             description="Round the number to a given precision.&#10;Parameters:&#10;- precision(number) Specifies the precision of rounding&#10;- method(enum common|ceil|floor) Method of rounding: 'common' rounds either up or down, 'ceil' always rounds up, and 'floor' always rounds down."
-            name="|round" toReformat="false" toShortenFQNames="true" value="|round($1precision$, ${2:method})&#10;">
+            name="|round" toReformat="false" toShortenFQNames="true" value="|round($1precision$, $2method$)&#10;">
         <variable alwaysStopAt="true" defaultValue="" expression="" name="1precision"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="2method"/>
         <context>
             <option name="HTML" value="true"/>
             <option name="CSS" value="true"/>
@@ -577,8 +596,9 @@
     <template
             description="Filters a sequence of objects by applying a test to an attribute of an object and only selecting the ones with the test succeeding.&#10;Parameters:&#10;- attr(String) Attribute to test for and select items that contain it&#10;- exp_test(name of expression test) Specify which expression test to run for making the selection"
             name="|selectattr" toReformat="false" toShortenFQNames="true"
-            value="|selectattr(&quot;$1attr$&quot;, ${2:exp_test})&#10;">
+            value="|selectattr(&quot;$1attr$&quot;, $2exp_test$)&#10;">
         <variable alwaysStopAt="true" defaultValue="" expression="" name="1attr"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="2exp_test"/>
         <context>
             <option name="HTML" value="true"/>
             <option name="CSS" value="true"/>
@@ -596,8 +616,9 @@
     </template>
     <template
             description="Slice an iterator and return a list of lists containing those items.&#10;Parameters:&#10;- slices(number) Specifies how many items will be sliced&#10;- fillWith(object) Specifies which object to use to fill missing values on final iteration"
-            name="|slice" toReformat="false" toShortenFQNames="true" value="|slice($1slices$, ${2:fillWith})&#10;">
+            name="|slice" toReformat="false" toShortenFQNames="true" value="|slice($1slices$, $2fillWith$)&#10;">
         <variable alwaysStopAt="true" defaultValue="" expression="" name="1slices"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="2fillWith"/>
         <context>
             <option name="HTML" value="true"/>
             <option name="CSS" value="true"/>
@@ -607,8 +628,10 @@
     <template
             description="Sort an iterable.&#10;Parameters:&#10;- reverse(boolean) Boolean to reverse the sort order&#10;- case_sensitive(boolean) Determines whether or not the sorting is case sensitive&#10;- attribute(String) Specifies an attribute to sort by"
             name="|sort" toReformat="false" toShortenFQNames="true"
-            value="|sort($1reverse$, ${2:case_sensitive}, &quot;${3:attribute}&quot;)&#10;">
+            value="|sort($1reverse$, $2case_sensitive$, &quot;$3attribute$&quot;)&#10;">
         <variable alwaysStopAt="true" defaultValue="" expression="" name="1reverse"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="2case_sensitive"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="3attribute"/>
         <context>
             <option name="HTML" value="true"/>
             <option name="CSS" value="true"/>
@@ -618,8 +641,9 @@
     <template
             description="Splits the input string into a list on the given separator&#10;Parameters:&#10;- separator(String) Specifies the separator to split the variable by&#10;- limit(number) Limits resulting list by putting remainder of string into last list item"
             name="|split" toReformat="false" toShortenFQNames="true"
-            value="|split(&quot;$1separator$&quot;, ${2:limit})&#10;">
+            value="|split(&quot;$1separator$&quot;, $2limit$)&#10;">
         <variable alwaysStopAt="true" defaultValue="" expression="" name="1separator"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="2limit"/>
         <context>
             <option name="HTML" value="true"/>
             <option name="CSS" value="true"/>
@@ -656,8 +680,9 @@
     <template
             description="Returns the sum of a sequence of numbers plus the value of parameter &#8216;start&#8217; (which defaults to 0). When the sequence is empty it returns start.&#10;Parameters:&#10;- start(number) Sets a value to return, if there is nothing in the variable to sum&#10;- attribute(String) Specify an optional attribute of dict to sum"
             name="|sum" toReformat="false" toShortenFQNames="true"
-            value="|sum($1start$, &quot;${2:attribute}&quot;)&#10;">
+            value="|sum($1start$, &quot;$2attribute$&quot;)&#10;">
         <variable alwaysStopAt="true" defaultValue="" expression="" name="1start"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="2attribute"/>
         <context>
             <option name="HTML" value="true"/>
             <option name="CSS" value="true"/>
@@ -703,8 +728,10 @@
     <template
             description="Return a truncated copy of the string. The length is specified with the first parameter which defaults to 255. If the second parameter is true the filter will cut the text at length. Otherwise it will discard the last word. If the text was in fact truncated it will append an ellipsis sign (&quot;...&quot;). If you want a different ellipsis sign than &quot;...&quot; you can specify it using the third parameter.&#10;Parameters:&#10;- length(number) Specifies the length at which to truncate the text (includes HTML characters)&#10;- killwords(boolean) If true, the string will cut text at length&#10;- end(String) The characters that will be added to indicate where the text was truncated"
             name="|truncate" toReformat="false" toShortenFQNames="true"
-            value="|truncate($1length$, ${2:killwords}, &quot;${3:end}&quot;)&#10;">
+            value="|truncate($1length$, $2killwords$, &quot;$3end$&quot;)&#10;">
         <variable alwaysStopAt="true" defaultValue="" expression="" name="1length"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="2killwords"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="3end"/>
         <context>
             <option name="HTML" value="true"/>
             <option name="CSS" value="true"/>
@@ -714,8 +741,10 @@
     <template
             description="Truncates a given string, respecting html markup (i.e. will properly close all nested tags)&#10;Parameters:&#10;- length(number) Length at which to truncate text (HTML characters not included)&#10;- end(String) The characters that will be added to indicate where the text was truncated&#10;- breakword(boolean) If set to true, text will be truncated in the middle of words"
             name="|truncatehtml" toReformat="false" toShortenFQNames="true"
-            value="|truncatehtml($1length$, &quot;${2:end}&quot;, ${3:breakword})&#10;">
+            value="|truncatehtml($1length$, &quot;$2end$&quot;, $3breakword$)&#10;">
         <variable alwaysStopAt="true" defaultValue="" expression="" name="1length"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="2end"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="3breakword"/>
         <context>
             <option name="HTML" value="true"/>
             <option name="CSS" value="true"/>
@@ -770,8 +799,10 @@
     <template
             description="Converts URLs in plain text into clickable links.&#10;Parameters:&#10;- trim_url_limit(number) Sets a character limit&#10;- nofollow(boolean) Adds nofollow to generated link tag&#10;- target(String) Adds target attr to generated link tag"
             name="|urlize" toReformat="false" toShortenFQNames="true"
-            value="|urlize($1trim_url_limit$, ${2:nofollow}, &quot;${3:target}&quot;)&#10;">
+            value="|urlize($1trim_url_limit$, $2nofollow$, &quot;$3target$&quot;)&#10;">
         <variable alwaysStopAt="true" defaultValue="" expression="" name="1trim_url_limit"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="2nofollow"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="3target"/>
         <context>
             <option name="HTML" value="true"/>
             <option name="CSS" value="true"/>
@@ -789,8 +820,9 @@
     <template
             description="Return a copy of the string passed to the filter wrapped after 79 characters.&#10;Parameters:&#10;- width(number) Sets the width of spaces at which to wrap the text&#10;- break_long_words(boolean) If true, long words will be broken when wrapped"
             name="|wordwrap" toReformat="false" toShortenFQNames="true"
-            value="|wordwrap($1width$, ${2:break_long_words})&#10;">
+            value="|wordwrap($1width$, $2break_long_words$)&#10;">
         <variable alwaysStopAt="true" defaultValue="" expression="" name="1width"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="2break_long_words"/>
         <context>
             <option name="HTML" value="true"/>
             <option name="CSS" value="true"/>
@@ -821,8 +853,10 @@
     <template
             description="Renders the blog comments embed tag&#10;Parameters:&#10;- select_blog('default' or blog id) Species which blog is connected to the comments embed&#10;- limit(number) Sets maximum number of comments&#10;- skip_css(bool) "
             name="~blog_comments" toReformat="false" toShortenFQNames="true"
-            value="{% blog_comments &quot;my_blog_comments&quot; &#10;&#09;select_blog=&quot;$1select_blog$&quot;, &#10;&#09;limit=&quot;${2:limit}&quot;, &#10;&#09;skip_css=&quot;${3:skip_css}&quot; %}&#10;">
+            value="{% blog_comments &quot;my_blog_comments&quot; &#10;&#09;select_blog=&quot;$1select_blog$&quot;, &#10;&#09;limit=&quot;$2limit$&quot;, &#10;&#09;skip_css=&quot;$3skip_css$&quot; %}&#10;">
         <variable alwaysStopAt="true" defaultValue="" expression="" name="1select_blog"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="2limit"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="3skip_css"/>
         <context>
             <option name="HTML" value="true"/>
             <option name="CSS" value="true"/>
@@ -832,8 +866,9 @@
     <template
             description="Blog social sharing module&#10;Parameters:&#10;- select_blog('default' or blog id) Species which blog is connected to the share counters&#10;- downgrade_shared_url(boolean) Use http in the url sent to the social media networks. Used to preserve counts when upgrading domains to https only."
             name="~blog_social_sharing" toReformat="false" toShortenFQNames="true"
-            value="{% blog_social_sharing &quot;my_blog_social_sharing&quot; &#10;&#09;select_blog=&quot;$1select_blog$&quot;, &#10;&#09;downgrade_shared_url=&quot;${2:downgrade_shared_url}&quot; %}&#10;">
+            value="{% blog_social_sharing &quot;my_blog_social_sharing&quot; &#10;&#09;select_blog=&quot;$1select_blog$&quot;, &#10;&#09;downgrade_shared_url=&quot;$2downgrade_shared_url$&quot; %}&#10;">
         <variable alwaysStopAt="true" defaultValue="" expression="" name="1select_blog"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="2downgrade_shared_url"/>
         <context>
             <option name="HTML" value="true"/>
             <option name="CSS" value="true"/>
@@ -843,8 +878,12 @@
     <template
             description="Blog subscription module&#10;Parameters:&#10;- select_blog('default' or blog id) Selects which blog subscription form to render&#10;- title(String) Defines text in an h3 tag title above the subscribe form&#10;- no_title(boolean)  If True, the h3 tag above the title is removed&#10;- response_message(String) Defines the inline thank-you message that is rendered when a user submits a form&#10;- edit_form_link(String) Generates a link that allows users to click through to the corresponding Form editor screen"
             name="~blog_subscribe" toReformat="false" toShortenFQNames="true"
-            value="{% blog_subscribe &quot;my_blog_subscribe&quot; &#10;&#09;select_blog=&quot;$1select_blog$&quot;, &#10;&#09;title=&quot;${2:title}&quot;, &#10;&#09;no_title=&quot;${3:no_title}&quot;, &#10;&#09;response_message=&quot;${4:response_message}&quot;, &#10;&#09;edit_form_link=&quot;${5:edit_form_link}&quot; %}&#10;">
+            value="{% blog_subscribe &quot;my_blog_subscribe&quot; &#10;&#09;select_blog=&quot;$1select_blog$&quot;, &#10;&#09;title=&quot;$2title$&quot;, &#10;&#09;no_title=&quot;$3no_title$&quot;, &#10;&#09;response_message=&quot;$4response_message$&quot;, &#10;&#09;edit_form_link=&quot;$5edit_form_link$&quot; %}&#10;">
         <variable alwaysStopAt="true" defaultValue="" expression="" name="1select_blog"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="2title"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="3no_title"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="4response_message"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="5edit_form_link"/>
         <context>
             <option name="HTML" value="true"/>
             <option name="CSS" value="true"/>
@@ -875,8 +914,9 @@
     <template
             description="A list of options&#10;Parameters:&#10;- choices(String) Comma-separated list of values, or list of value-label pairs&#10;- value(String) The default field value for the dropdown"
             name="~choice" toReformat="false" toShortenFQNames="true"
-            value="{% choice &quot;my_choice&quot; &#10;&#09;choices=&quot;$1choices$&quot;, &#10;&#09;value=&quot;${2:value}&quot; %}&#10;">
+            value="{% choice &quot;my_choice&quot; &#10;&#09;choices=&quot;$1choices$&quot;, &#10;&#09;value=&quot;$2value$&quot; %}&#10;">
         <variable alwaysStopAt="true" defaultValue="" expression="" name="1choices"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="2value"/>
         <context>
             <option name="HTML" value="true"/>
             <option name="CSS" value="true"/>
@@ -906,8 +946,14 @@
     <template
             description="Renders a CTA module&#10;Parameters:&#10;- embed_code(String) The embed code for the CTA&#10;- full_html(String) The embed code for the CTA. Same as embed_code&#10;- image_src(String) Image src url that defines the preview image in the content editor&#10;- image_editor(String) Markup for the image editor preview&#10;- guid(String) The unique ID number of the default CTA&#10;- image_html(String) CTA image HTML without the CTA script&#10;- image_email(String) Email-friendly version of the CTA code"
             name="~cta" toReformat="false" toShortenFQNames="true"
-            value="{% cta &quot;my_cta&quot; &#10;&#09;embed_code=&quot;$1embed_code$&quot;, &#10;&#09;full_html=&quot;${2:full_html}&quot;, &#10;&#09;image_src=&quot;${3:image_src}&quot;, &#10;&#09;image_editor=&quot;${4:image_editor}&quot;, &#10;&#09;guid=&quot;${5:guid}&quot;, &#10;&#09;image_html=&quot;${6:image_html}&quot;, &#10;&#09;image_email=&quot;${7:image_email}&quot; %}&#10;">
+            value="{% cta &quot;my_cta&quot; &#10;&#09;embed_code=&quot;$1embed_code$&quot;, &#10;&#09;full_html=&quot;$2full_html$&quot;, &#10;&#09;image_src=&quot;$3image_src$&quot;, &#10;&#09;image_editor=&quot;$4image_editor$&quot;, &#10;&#09;guid=&quot;$5guid$&quot;, &#10;&#09;image_html=&quot;$6image_html$&quot;, &#10;&#09;image_email=&quot;$7image_email$&quot; %}&#10;">
         <variable alwaysStopAt="true" defaultValue="" expression="" name="1embed_code"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="2full_html"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="3image_src"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="4image_editor"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="5guid"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="6image_html"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="7image_email"/>
         <context>
             <option name="HTML" value="true"/>
             <option name="CSS" value="true"/>
@@ -917,8 +963,9 @@
     <template
             description="A custom module&#10;Parameters:&#10;- widget_definition(json object) &#10;- widget_name(String) Specifies the internal Design Manager name of the custom module that you would like to render"
             name="~custom_widget" toReformat="false" toShortenFQNames="true"
-            value="{% custom_widget &quot;my_custom_widget&quot; &#10;&#09;widget_definition=&quot;$1widget_definition$&quot;, &#10;&#09;widget_name=&quot;${2:widget_name}&quot; %}&#10;">
+            value="{% custom_widget &quot;my_custom_widget&quot; &#10;&#09;widget_definition=&quot;$1widget_definition$&quot;, &#10;&#09;widget_name=&quot;$2widget_name$&quot; %}&#10;">
         <variable alwaysStopAt="true" defaultValue="" expression="" name="1widget_definition"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="2widget_name"/>
         <context>
             <option name="HTML" value="true"/>
             <option name="CSS" value="true"/>
@@ -939,8 +986,10 @@
     <template
             description="Creates container that supports drag-and-drop in content editors.&#10;Parameters:&#10;- name(string) Identifier when storing data for a drag-and-drop area in the editors. Must be unique for all drag-and-drop areas in a template.&#10;- label(string) Label used in the editor for the drag-and-drop area.&#10;- class(string) Class names to add to the wrapping div."
             name="~dnd_area" toReformat="false" toShortenFQNames="true"
-            value="{% dnd_area &quot;my_dnd_area&quot; &#10;&#09;name=&quot;$1name$&quot;, &#10;&#09;label=&quot;${2:label}&quot;, &#10;&#09;class=&quot;${3:class}&quot; %}&#10;&#10;{% end_dnd_area %}&#10;">
+            value="{% dnd_area &quot;my_dnd_area&quot; &#10;&#09;name=&quot;$1name$&quot;, &#10;&#09;label=&quot;$2label$&quot;, &#10;&#09;class=&quot;$3class$&quot; %}&#10;&#10;{% end_dnd_area %}&#10;">
         <variable alwaysStopAt="true" defaultValue="" expression="" name="1name"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="2label"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="3class"/>
         <context>
             <option name="HTML" value="true"/>
             <option name="CSS" value="true"/>
@@ -950,8 +999,12 @@
     <template
             description="A column inside a drag-and-drop area. Columns can only be children of a section or a row tag.&#10;Parameters:&#10;- offset(integer) Number of rows to offset the module in the row (0-11).&#10;- width(integer) Number of rows wide the module should be.&#10;- margin(dict) Add top and bottom margin in pixels.&#10;- background_image(dict) Add a background image to the row.&#10;- background_color(dict) Specify a background color for the the row."
             name="~dnd_column" toReformat="false" toShortenFQNames="true"
-            value="{% dnd_column &quot;my_dnd_column&quot; &#10;&#09;offset=&quot;$1offset$&quot;, &#10;&#09;width=&quot;${2:width}&quot;, &#10;&#09;margin=&quot;${3:margin}&quot;, &#10;&#09;background_image=&quot;${4:background_image}&quot;, &#10;&#09;background_color=&quot;${5:background_color}&quot; %}&#10;&#10;{% end_dnd_column %}&#10;">
+            value="{% dnd_column &quot;my_dnd_column&quot; &#10;&#09;offset=&quot;$1offset$&quot;, &#10;&#09;width=&quot;$2width$&quot;, &#10;&#09;margin=&quot;$3margin$&quot;, &#10;&#09;background_image=&quot;$4background_image$&quot;, &#10;&#09;background_color=&quot;$5background_color$&quot; %}&#10;&#10;{% end_dnd_column %}&#10;">
         <variable alwaysStopAt="true" defaultValue="" expression="" name="1offset"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="2width"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="3margin"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="4background_image"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="5background_color"/>
         <context>
             <option name="HTML" value="true"/>
             <option name="CSS" value="true"/>
@@ -961,8 +1014,11 @@
     <template
             description="Creates a wrapped module inside a drag-and-drop area.&#10;Parameters:&#10;- path(string) Path to the module.&#10;- offset(integer) Number of rows to offset the module in the row (0-11).&#10;- width(integer) Number of rows wide the module should be.&#10;- flexbox_positioning(string) Adjust position of the module inside the row. Possible values are TOP_LEFT, TOP_CENTER, or TOP_RIGHT."
             name="~dnd_module" toReformat="false" toShortenFQNames="true"
-            value="{% dnd_module &quot;my_dnd_module&quot; &#10;&#09;path=&quot;$1path$&quot;, &#10;&#09;offset=&quot;${2:offset}&quot;, &#10;&#09;width=&quot;${3:width}&quot;, &#10;&#09;flexbox_positioning=&quot;${4:flexbox_positioning}&quot; %}&#10;&#10;{% end_dnd_module %}&#10;">
+            value="{% dnd_module &quot;my_dnd_module&quot; &#10;&#09;path=&quot;$1path$&quot;, &#10;&#09;offset=&quot;$2offset$&quot;, &#10;&#09;width=&quot;$3width$&quot;, &#10;&#09;flexbox_positioning=&quot;$4flexbox_positioning$&quot; %}&#10;&#10;{% end_dnd_module %}&#10;">
         <variable alwaysStopAt="true" defaultValue="" expression="" name="1path"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="2offset"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="3width"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="4flexbox_positioning"/>
         <context>
             <option name="HTML" value="true"/>
             <option name="CSS" value="true"/>
@@ -972,8 +1028,11 @@
     <template
             description="A row inside a drag-and-drop area. Rows can only be children of columns.&#10;Parameters:&#10;- margin(dict) Add top and bottom margin in pixels.&#10;- padding(dict) Add top, bottom, left, and right padding in pixels.&#10;- background_image(dict) Add a background image to the row.&#10;- background_color(dict) Specify a background color for the the row."
             name="~dnd_row" toReformat="false" toShortenFQNames="true"
-            value="{% dnd_row &quot;my_dnd_row&quot; &#10;&#09;margin=&quot;$1margin$&quot;, &#10;&#09;padding=&quot;${2:padding}&quot;, &#10;&#09;background_image=&quot;${3:background_image}&quot;, &#10;&#09;background_color=&quot;${4:background_color}&quot; %}&#10;&#10;{% end_dnd_row %}&#10;">
+            value="{% dnd_row &quot;my_dnd_row&quot; &#10;&#09;margin=&quot;$1margin$&quot;, &#10;&#09;padding=&quot;$2padding$&quot;, &#10;&#09;background_image=&quot;$3background_image$&quot;, &#10;&#09;background_color=&quot;$4background_color$&quot; %}&#10;&#10;{% end_dnd_row %}&#10;">
         <variable alwaysStopAt="true" defaultValue="" expression="" name="1margin"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="2padding"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="3background_image"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="4background_color"/>
         <context>
             <option name="HTML" value="true"/>
             <option name="CSS" value="true"/>
@@ -983,8 +1042,12 @@
     <template
             description="A top-level row inside a drag-and-drop area. Sections can only be children of a drag-and-drop area tag.&#10;Parameters:&#10;- max_width(number) Maximum width of the section.&#10;- margin(dict) Add top and bottom margin in pixels.&#10;- padding(dict) Add top, bottom, left, and right padding in pixels.&#10;- background_image(dict) Add a background image to the row.&#10;- background_color(dict) Specify a background color for the the row."
             name="~dnd_section" toReformat="false" toShortenFQNames="true"
-            value="{% dnd_section &quot;my_dnd_section&quot; &#10;&#09;max_width=&quot;$1max_width$&quot;, &#10;&#09;margin=&quot;${2:margin}&quot;, &#10;&#09;padding=&quot;${3:padding}&quot;, &#10;&#09;background_image=&quot;${4:background_image}&quot;, &#10;&#09;background_color=&quot;${5:background_color}&quot; %}&#10;&#10;{% end_dnd_section %}&#10;">
+            value="{% dnd_section &quot;my_dnd_section&quot; &#10;&#09;max_width=&quot;$1max_width$&quot;, &#10;&#09;margin=&quot;$2margin$&quot;, &#10;&#09;padding=&quot;$3padding$&quot;, &#10;&#09;background_image=&quot;$4background_image$&quot;, &#10;&#09;background_color=&quot;$5background_color$&quot; %}&#10;&#10;{% end_dnd_section %}&#10;">
         <variable alwaysStopAt="true" defaultValue="" expression="" name="1max_width"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="2margin"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="3padding"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="4background_image"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="5background_color"/>
         <context>
             <option name="HTML" value="true"/>
             <option name="CSS" value="true"/>
@@ -1002,8 +1065,9 @@
     <template
             description="Allows looping over a list value in an email where a for loop would not work. Use &quot;item.&quot; to access the current element of the list.&#10;Parameters:&#10;- list(String) &#10;- item(String) "
             name="~email_each" toReformat="false" toShortenFQNames="true"
-            value="{% email_each &quot;my_email_each&quot; &#10;&#09;list=&quot;$1list$&quot;, &#10;&#09;item=&quot;${2:item}&quot; %}&#10;&#10;{% endemail_each %}&#10;">
+            value="{% email_each &quot;my_email_each&quot; &#10;&#09;list=&quot;$1list$&quot;, &#10;&#09;item=&quot;$2item$&quot; %}&#10;&#10;{% endemail_each %}&#10;">
         <variable alwaysStopAt="true" defaultValue="" expression="" name="1list"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="2item"/>
         <context>
             <option name="HTML" value="true"/>
             <option name="CSS" value="true"/>
@@ -1013,8 +1077,10 @@
     <template
             description="An email flexible area tag is a widget container which renders its contained widgets in a box grid, &#10;with an email friendly table-based layout.&#10;&#10;The layout schema is defined in a JSON structure at the content level; these tags are always empty&#10;in their declaring templates.&#10;Parameters:&#10;- name(String) &#10;- no_wrapper(boolean) &#10;- extra_classes(String) "
             name="~email_flex_area" toReformat="false" toShortenFQNames="true"
-            value="{% email_flex_area &quot;my_email_flex_area&quot; &#10;&#09;name=&quot;$1name$&quot;, &#10;&#09;no_wrapper=&quot;${2:no_wrapper}&quot;, &#10;&#09;extra_classes=&quot;${3:extra_classes}&quot; %}&#10;">
+            value="{% email_flex_area &quot;my_email_flex_area&quot; &#10;&#09;name=&quot;$1name$&quot;, &#10;&#09;no_wrapper=&quot;$2no_wrapper$&quot;, &#10;&#09;extra_classes=&quot;$3extra_classes$&quot; %}&#10;">
         <variable alwaysStopAt="true" defaultValue="" expression="" name="1name"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="2no_wrapper"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="3extra_classes"/>
         <context>
             <option name="HTML" value="true"/>
             <option name="CSS" value="true"/>
@@ -1024,8 +1090,11 @@
     <template
             description="Simple email unsubscribe form&#10;Parameters:&#10;- header(String) Renders text in an h1 tag above the unsubscribe form&#10;- input_help_text(String) Renders help text in an h3 tag above your email unsubscribe form field&#10;- button_text(String) Changes the text of the unsubscribe form submit button&#10;- input_placeholder(String) Adds placeholder text within the email address form field"
             name="~email_simple_subscription" toReformat="false" toShortenFQNames="true"
-            value="{% email_simple_subscription &quot;my_email_simple_subscription&quot; &#10;&#09;header=&quot;$1header$&quot;, &#10;&#09;input_help_text=&quot;${2:input_help_text}&quot;, &#10;&#09;button_text=&quot;${3:button_text}&quot;, &#10;&#09;input_placeholder=&quot;${4:input_placeholder}&quot; %}&#10;">
+            value="{% email_simple_subscription &quot;my_email_simple_subscription&quot; &#10;&#09;header=&quot;$1header$&quot;, &#10;&#09;input_help_text=&quot;$2input_help_text$&quot;, &#10;&#09;button_text=&quot;$3button_text$&quot;, &#10;&#09;input_placeholder=&quot;$4input_placeholder$&quot; %}&#10;">
         <variable alwaysStopAt="true" defaultValue="" expression="" name="1header"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="2input_help_text"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="3button_text"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="4input_placeholder"/>
         <context>
             <option name="HTML" value="true"/>
             <option name="CSS" value="true"/>
@@ -1035,8 +1104,15 @@
     <template
             description="Email subscription preferences form&#10;Parameters:&#10;- header(String) Renders text in an h1 tag above the subscription preferences form&#10;- subheader_text(String) Populates text below the heading above the unsubscribe preferences&#10;- unsubscribe_single_text(String) Renders text in a &lt;p class=&quot;header&quot;&gt; above the subscription options&#10;- unsubscribe_all_text(String) Renders text in a &lt;p class=&quot;header&quot;&gt; above the unsubscribe from all emails checkbox input&#10;- unsubscribe_all_unsubbed_text(String) Populates text within a &lt;p&gt; that renders, if a contact is currently unsubscribed from all emails&#10;- unsubscribe_all_option(String) Sets the text next to the unsubscribe from all emails checkbox input&#10;- button_text(String) Sets the text of the submit button that updates subscription preferences&#10;- resubscribe_button_text(String) Sets the text of the submit button for when contacts are resubscribing"
             name="~email_subscriptions" toReformat="false" toShortenFQNames="true"
-            value="{% email_subscriptions &quot;my_email_subscriptions&quot; &#10;&#09;header=&quot;$1header$&quot;, &#10;&#09;subheader_text=&quot;${2:subheader_text}&quot;, &#10;&#09;unsubscribe_single_text=&quot;${3:unsubscribe_single_text}&quot;, &#10;&#09;unsubscribe_all_text=&quot;${4:unsubscribe_all_text}&quot;, &#10;&#09;unsubscribe_all_unsubbed_text=&quot;${5:unsubscribe_all_unsubbed_text}&quot;, &#10;&#09;unsubscribe_all_option=&quot;${6:unsubscribe_all_option}&quot;, &#10;&#09;button_text=&quot;${7:button_text}&quot;, &#10;&#09;resubscribe_button_text=&quot;${8:resubscribe_button_text}&quot; %}&#10;">
+            value="{% email_subscriptions &quot;my_email_subscriptions&quot; &#10;&#09;header=&quot;$1header$&quot;, &#10;&#09;subheader_text=&quot;$2subheader_text$&quot;, &#10;&#09;unsubscribe_single_text=&quot;$3unsubscribe_single_text$&quot;, &#10;&#09;unsubscribe_all_text=&quot;$4unsubscribe_all_text$&quot;, &#10;&#09;unsubscribe_all_unsubbed_text=&quot;$5unsubscribe_all_unsubbed_text$&quot;, &#10;&#09;unsubscribe_all_option=&quot;$6unsubscribe_all_option$&quot;, &#10;&#09;button_text=&quot;$7button_text$&quot;, &#10;&#09;resubscribe_button_text=&quot;$8resubscribe_button_text$&quot; %}&#10;">
         <variable alwaysStopAt="true" defaultValue="" expression="" name="1header"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="2subheader_text"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="3unsubscribe_single_text"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="4unsubscribe_all_text"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="5unsubscribe_all_unsubbed_text"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="6unsubscribe_all_option"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="7button_text"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="8resubscribe_button_text"/>
         <context>
             <option name="HTML" value="true"/>
             <option name="CSS" value="true"/>
@@ -1046,8 +1122,11 @@
     <template
             description="Email unsubscribe form&#10;Parameters:&#10;- header(String) Renders text in an h1 tag above the unsubscribe form&#10;- subheader_text(String) Populates text above the confirmation message&#10;- unsubscribe_all_success(String) Sets the text that will display when someone unsubscribes from all email communications&#10;- subscription_update_success(String) Sets the text when a recipient updates his or her subscription preferences"
             name="~email_subscriptions_confirmation" toReformat="false" toShortenFQNames="true"
-            value="{% email_subscriptions_confirmation &quot;my_email_subscriptions_confirmation&quot; &#10;&#09;header=&quot;$1header$&quot;, &#10;&#09;subheader_text=&quot;${2:subheader_text}&quot;, &#10;&#09;unsubscribe_all_success=&quot;${3:unsubscribe_all_success}&quot;, &#10;&#09;subscription_update_success=&quot;${4:subscription_update_success}&quot; %}&#10;">
+            value="{% email_subscriptions_confirmation &quot;my_email_subscriptions_confirmation&quot; &#10;&#09;header=&quot;$1header$&quot;, &#10;&#09;subheader_text=&quot;$2subheader_text$&quot;, &#10;&#09;unsubscribe_all_success=&quot;$3unsubscribe_all_success$&quot;, &#10;&#09;subscription_update_success=&quot;$4subscription_update_success$&quot; %}&#10;">
         <variable alwaysStopAt="true" defaultValue="" expression="" name="1header"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="2subheader_text"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="3unsubscribe_all_success"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="4subscription_update_success"/>
         <context>
             <option name="HTML" value="true"/>
             <option name="CSS" value="true"/>
@@ -1078,8 +1157,9 @@
     <template
             description="Deprecated: Use follow me default module instead.&#10;Parameters:&#10;- title(String) Prints an h3 heading tag above the follow me module&#10;- module_title_tag(String) Specifies a heading tag h1-h6 to use for the module title"
             name="~follow_me" toReformat="false" toShortenFQNames="true"
-            value="{% follow_me &quot;my_follow_me&quot; &#10;&#09;title=&quot;$1title$&quot;, &#10;&#09;module_title_tag=&quot;${2:module_title_tag}&quot; %}&#10;">
+            value="{% follow_me &quot;my_follow_me&quot; &#10;&#09;title=&quot;$1title$&quot;, &#10;&#09;module_title_tag=&quot;$2module_title_tag$&quot; %}&#10;">
         <variable alwaysStopAt="true" defaultValue="" expression="" name="1title"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="2module_title_tag"/>
         <context>
             <option name="HTML" value="true"/>
             <option name="CSS" value="true"/>
@@ -1099,8 +1179,28 @@
     <template
             description="Insert one of the forms created in the Form Manager&#10;Parameters:&#10;- form_key(String) A unique id to target this form instance on the page&#10;- form_to_use(String) The form ID of the form to render by default&#10;- title(String) Populates an h3 header tag above the form&#10;- no_title(boolean) If True, the h3 tag above the title is removed.&#10;- form_follow_ups_follow_up_type(enum no_action|simple|automation) Specifies follow up action&#10;- simple_email_for_live_id(number) Specifies the ID of the simple follow-up email for the live page&#10;- simple_email_for_buffer_id(number) Specifies the ID of the simple follow-up email for the auto-save version of a page&#10;- follow_up_type_simple(boolean) If true, enables a simple follow-up email&#10;- follow_up_type_automation(boolean) If true, enrolls submissions in a workflow&#10;- simple_email_campaign_id(number) Specifies the ID of the simple follow-up email&#10;- form_follow_ups_workflow_id(number) Specifies the ID of the follow-up workflow&#10;- response_redirect_url(String) If redirecting to an external page, this parameter specifies the URL to redirect to&#10;- response_redirect_id(number) If redirecting to HubSpot hosted page, this parameter specifies the page ID of that page&#10;- response_response_type(enum inline|redirect) Determines whether to redirect to another page or to display an inline thank you message on submission&#10;- response_message(String) Sets an inline thank you message&#10;- notifications_are_overridden(boolean) If True, the form will send notifications to specified addresses selected in the notifications_override_email_addresses&#10;- notifications_override_guid_buffer(String) ID of override settings in auto-save version of page&#10;- notifications_override_guid(String) ID of override settings in live version of page&#10;- notifications_override_email_addresses(JSON list) These email addresses will override  the email notification settings set in the form&#10;- gotowebinar_webinar_key(String) Specifies the GoToWebinar webinar to enroll contacts who submit the form into&#10;- sfdc_campaign(String) Specifies the Salesforce campaign to enroll contacts who submit the form into"
             name="~form" toReformat="false" toShortenFQNames="true"
-            value="{% form &quot;my_form&quot; &#10;&#09;form_key=&quot;$1form_key$&quot;, &#10;&#09;form_to_use=&quot;${2:form_to_use}&quot;, &#10;&#09;title=&quot;${3:title}&quot;, &#10;&#09;no_title=&quot;${4:no_title}&quot;, &#10;&#09;form_follow_ups_follow_up_type=&quot;${5:form_follow_ups_follow_up_type}&quot;, &#10;&#09;simple_email_for_live_id=&quot;${6:simple_email_for_live_id}&quot;, &#10;&#09;simple_email_for_buffer_id=&quot;${7:simple_email_for_buffer_id}&quot;, &#10;&#09;follow_up_type_simple=&quot;${8:follow_up_type_simple}&quot;, &#10;&#09;follow_up_type_automation=&quot;${9:follow_up_type_automation}&quot;, &#10;&#09;simple_email_campaign_id=&quot;${10:simple_email_campaign_id}&quot;, &#10;&#09;form_follow_ups_workflow_id=&quot;${11:form_follow_ups_workflow_id}&quot;, &#10;&#09;response_redirect_url=&quot;${12:response_redirect_url}&quot;, &#10;&#09;response_redirect_id=&quot;${13:response_redirect_id}&quot;, &#10;&#09;response_response_type=&quot;${14:response_response_type}&quot;, &#10;&#09;response_message=&quot;${15:response_message}&quot;, &#10;&#09;notifications_are_overridden=&quot;${16:notifications_are_overridden}&quot;, &#10;&#09;notifications_override_guid_buffer=&quot;${17:notifications_override_guid_buffer}&quot;, &#10;&#09;notifications_override_guid=&quot;${18:notifications_override_guid}&quot;, &#10;&#09;notifications_override_email_addresses=&quot;${19:notifications_override_email_addresses}&quot;, &#10;&#09;gotowebinar_webinar_key=&quot;${20:gotowebinar_webinar_key}&quot;, &#10;&#09;sfdc_campaign=&quot;${21:sfdc_campaign}&quot; %}&#10;">
+            value="{% form &quot;my_form&quot; &#10;&#09;form_key=&quot;$1form_key$&quot;, &#10;&#09;form_to_use=&quot;$2form_to_use$&quot;, &#10;&#09;title=&quot;$3title$&quot;, &#10;&#09;no_title=&quot;$4no_title$&quot;, &#10;&#09;form_follow_ups_follow_up_type=&quot;$5form_follow_ups_follow_up_type$&quot;, &#10;&#09;simple_email_for_live_id=&quot;$6simple_email_for_live_id$&quot;, &#10;&#09;simple_email_for_buffer_id=&quot;$7simple_email_for_buffer_id$&quot;, &#10;&#09;follow_up_type_simple=&quot;$8follow_up_type_simple$&quot;, &#10;&#09;follow_up_type_automation=&quot;$9follow_up_type_automation$&quot;, &#10;&#09;simple_email_campaign_id=&quot;$10simple_email_campaign_id$&quot;, &#10;&#09;form_follow_ups_workflow_id=&quot;$11form_follow_ups_workflow_id$&quot;, &#10;&#09;response_redirect_url=&quot;$12response_redirect_url$&quot;, &#10;&#09;response_redirect_id=&quot;$13response_redirect_id$&quot;, &#10;&#09;response_response_type=&quot;$14response_response_type$&quot;, &#10;&#09;response_message=&quot;$15response_message$&quot;, &#10;&#09;notifications_are_overridden=&quot;$16notifications_are_overridden$&quot;, &#10;&#09;notifications_override_guid_buffer=&quot;$17notifications_override_guid_buffer$&quot;, &#10;&#09;notifications_override_guid=&quot;$18notifications_override_guid$&quot;, &#10;&#09;notifications_override_email_addresses=&quot;$19notifications_override_email_addresses$&quot;, &#10;&#09;gotowebinar_webinar_key=&quot;$20gotowebinar_webinar_key$&quot;, &#10;&#09;sfdc_campaign=&quot;$21sfdc_campaign$&quot; %}&#10;">
         <variable alwaysStopAt="true" defaultValue="" expression="" name="1form_key"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="2form_to_use"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="3title"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="4no_title"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="5form_follow_ups_follow_up_type"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="6simple_email_for_live_id"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="7simple_email_for_buffer_id"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="8follow_up_type_simple"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="9follow_up_type_automation"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="10simple_email_campaign_id"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="11form_follow_ups_workflow_id"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="12response_redirect_url"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="13response_redirect_id"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="14response_response_type"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="15response_message"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="16notifications_are_overridden"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="17notifications_override_guid_buffer"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="18notifications_override_guid"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="19notifications_override_email_addresses"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="20gotowebinar_webinar_key"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="21sfdc_campaign"/>
         <context>
             <option name="HTML" value="true"/>
             <option name="CSS" value="true"/>
@@ -1120,8 +1220,17 @@
     <template
             description="Gallery&#10;Parameters:&#10;- slides(json list) A JSON list of the default caption, the link url, the alt text, the image src, and whether to open in a new tab&#10;- loop_slides(boolean) When True, continuously loop through slides&#10;- num_seconds(number) Time in seconds to pause between slides&#10;- show_pagination(boolean) Provide buttons below slider to randomly navigate among slides&#10;- sizing(enum static|resize) Determines whether the slider changes sizes, based on the height of the slides&#10;- auto_advance(boolean) Automatically advance slides after the time set in num_seconds&#10;- transition(enum slide|) Sets the type of slide transition&#10;- caption_position(enum below|superimpose) Affects positioning of caption on or below the slide&#10;- display_mode(enum standard|thumbnail|lightbox) Determines which mode the slider will display&#10;- lightboxRows(number) Rows in lightbox mode"
             name="~gallery" toReformat="false" toShortenFQNames="true"
-            value="{% gallery &quot;my_gallery&quot; &#10;&#09;slides=&quot;$1slides$&quot;, &#10;&#09;loop_slides=&quot;${2:loop_slides}&quot;, &#10;&#09;num_seconds=&quot;${3:num_seconds}&quot;, &#10;&#09;show_pagination=&quot;${4:show_pagination}&quot;, &#10;&#09;sizing=&quot;${5:sizing}&quot;, &#10;&#09;auto_advance=&quot;${6:auto_advance}&quot;, &#10;&#09;transition=&quot;${7:transition}&quot;, &#10;&#09;caption_position=&quot;${8:caption_position}&quot;, &#10;&#09;display_mode=&quot;${9:display_mode}&quot;, &#10;&#09;lightboxRows=&quot;${10:lightboxRows}&quot; %}&#10;">
+            value="{% gallery &quot;my_gallery&quot; &#10;&#09;slides=&quot;$1slides$&quot;, &#10;&#09;loop_slides=&quot;$2loop_slides$&quot;, &#10;&#09;num_seconds=&quot;$3num_seconds$&quot;, &#10;&#09;show_pagination=&quot;$4show_pagination$&quot;, &#10;&#09;sizing=&quot;$5sizing$&quot;, &#10;&#09;auto_advance=&quot;$6auto_advance$&quot;, &#10;&#09;transition=&quot;$7transition$&quot;, &#10;&#09;caption_position=&quot;$8caption_position$&quot;, &#10;&#09;display_mode=&quot;$9display_mode$&quot;, &#10;&#09;lightboxRows=&quot;$10lightboxRows$&quot; %}&#10;">
         <variable alwaysStopAt="true" defaultValue="" expression="" name="1slides"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="2loop_slides"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="3num_seconds"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="4show_pagination"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="5sizing"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="6auto_advance"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="7transition"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="8caption_position"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="9display_mode"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="10lightboxRows"/>
         <context>
             <option name="HTML" value="true"/>
             <option name="CSS" value="true"/>
@@ -1150,8 +1259,10 @@
     <template
             description="Allow visitors to search your site on Google&#10;Parameters:&#10;- prefill_input_with_pathname(boolean) Uses the end part of the URL to fill the search query field&#10;- search_field_label(String) Populates the label text in the &lt;label&gt; above the search input&#10;- search_button_text(String) Populates the text of the search submit button &lt;a&gt;"
             name="~google_search" toReformat="false" toShortenFQNames="true"
-            value="{% google_search &quot;my_google_search&quot; &#10;&#09;prefill_input_with_pathname=&quot;$1prefill_input_with_pathname$&quot;, &#10;&#09;search_field_label=&quot;${2:search_field_label}&quot;, &#10;&#09;search_button_text=&quot;${3:search_button_text}&quot; %}&#10;">
+            value="{% google_search &quot;my_google_search&quot; &#10;&#09;prefill_input_with_pathname=&quot;$1prefill_input_with_pathname$&quot;, &#10;&#09;search_field_label=&quot;$2search_field_label$&quot;, &#10;&#09;search_button_text=&quot;$3search_button_text$&quot; %}&#10;">
         <variable alwaysStopAt="true" defaultValue="" expression="" name="1prefill_input_with_pathname"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="2search_field_label"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="3search_button_text"/>
         <context>
             <option name="HTML" value="true"/>
             <option name="CSS" value="true"/>
@@ -1161,8 +1272,9 @@
     <template
             description="One line of text to be displayed in a large font size&#10;Parameters:&#10;- header_tag(String) Select which heading tag to render (h1-h6)&#10;- value(String) Renders default text within the heading module"
             name="~header" toReformat="false" toShortenFQNames="true"
-            value="{% header &quot;my_header&quot; &#10;&#09;header_tag=&quot;$1header_tag$&quot;, &#10;&#09;value=&quot;${2:value}&quot; %}&#10;">
+            value="{% header &quot;my_header&quot; &#10;&#09;header_tag=&quot;$1header_tag$&quot;, &#10;&#09;value=&quot;$2value$&quot; %}&#10;">
         <variable alwaysStopAt="true" defaultValue="" expression="" name="1header_tag"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="2value"/>
         <context>
             <option name="HTML" value="true"/>
             <option name="CSS" value="true"/>
@@ -1172,8 +1284,15 @@
     <template
             description="Render an icon from the HubSpot icon library&#10;Parameters:&#10;- name(String) The icon name&#10;- set(String) The icon set name. Currently defined sets: fontawesome-5 (see https://fontawesome.com/icons&#10;- style(String) The icon style. Regular, solid, or light&#10;- format(String) The output format. svg or unicode&#10;- width(String) The output image width. For svg format only&#10;- height(String) The output image height. For svg format only&#10;- purpose(String) The role of the icon in its context. Either 'semantic' or 'decorative'&#10;- title(String) A descriptive title for the icon"
             name="~icon" toReformat="false" toShortenFQNames="true"
-            value="{% icon &quot;my_icon&quot; &#10;&#09;name=&quot;$1name$&quot;, &#10;&#09;set=&quot;${2:set}&quot;, &#10;&#09;style=&quot;${3:style}&quot;, &#10;&#09;format=&quot;${4:format}&quot;, &#10;&#09;width=&quot;${5:width}&quot;, &#10;&#09;height=&quot;${6:height}&quot;, &#10;&#09;purpose=&quot;${7:purpose}&quot;, &#10;&#09;title=&quot;${8:title}&quot; %}&#10;">
+            value="{% icon &quot;my_icon&quot; &#10;&#09;name=&quot;$1name$&quot;, &#10;&#09;set=&quot;$2set$&quot;, &#10;&#09;style=&quot;$3style$&quot;, &#10;&#09;format=&quot;$4format$&quot;, &#10;&#09;width=&quot;$5width$&quot;, &#10;&#09;height=&quot;$6height$&quot;, &#10;&#09;purpose=&quot;$7purpose$&quot;, &#10;&#09;title=&quot;$8title$&quot; %}&#10;">
         <variable alwaysStopAt="true" defaultValue="" expression="" name="1name"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="2set"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="3style"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="4format"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="5width"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="6height"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="7purpose"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="8title"/>
         <context>
             <option name="HTML" value="true"/>
             <option name="CSS" value="true"/>
@@ -1193,8 +1312,14 @@
     <template
             description="Renders an image tag&#10;Parameters:&#10;- alt(String) Sets the default alt text for the image&#10;- width(number) Sets the width attribute of the img tag&#10;- height(number) Sets a min-height in a style attribute of the img tag for email templates only&#10;- align(String) Sets the align attribute of the img tag (right, left, center)&#10;- hspace(number) Sets the hspace attribute of the img tag&#10;- style(String) Adds inline CSS declarations to the img tag&#10;- src(String) Populates the src attribute of the img tag"
             name="~image" toReformat="false" toShortenFQNames="true"
-            value="{% image &quot;my_image&quot; &#10;&#09;alt=&quot;$1alt$&quot;, &#10;&#09;width=&quot;${2:width}&quot;, &#10;&#09;height=&quot;${3:height}&quot;, &#10;&#09;align=&quot;${4:align}&quot;, &#10;&#09;hspace=&quot;${5:hspace}&quot;, &#10;&#09;style=&quot;${6:style}&quot;, &#10;&#09;src=&quot;${7:src}&quot; %}&#10;">
+            value="{% image &quot;my_image&quot; &#10;&#09;alt=&quot;$1alt$&quot;, &#10;&#09;width=&quot;$2width$&quot;, &#10;&#09;height=&quot;$3height$&quot;, &#10;&#09;align=&quot;$4align$&quot;, &#10;&#09;hspace=&quot;$5hspace$&quot;, &#10;&#09;style=&quot;$6style$&quot;, &#10;&#09;src=&quot;$7src$&quot; %}&#10;">
         <variable alwaysStopAt="true" defaultValue="" expression="" name="1alt"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="2width"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="3height"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="4align"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="5hspace"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="6style"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="7src"/>
         <context>
             <option name="HTML" value="true"/>
             <option name="CSS" value="true"/>
@@ -1204,8 +1329,21 @@
     <template
             description="Image slider&#10;Parameters:&#10;- slides(json list) A JSON list of the default caption, the link url, the alt text, the image src, and whether to open in a new tab&#10;- loop_slides(boolean) When True, continuously loop through slides&#10;- num_seconds(number) Time in seconds to pause between slides&#10;- show_pagination(boolean) Provide buttons below slider to randomly navigate among slides&#10;- sizing(enum static|resize) Determines whether the slider changes sizes, based on the height of the slides&#10;- auto_advance(boolean) Automatically advance slides after the time set in num_seconds&#10;- transition(enum slide|) Sets the type of slide transition&#10;- caption_position(enum below|superimpose) Affects positioning of caption on or below the slide&#10;- lightbox(boolean) Displays thumbnail image in lightbox, when clicked&#10;- only_thumbnails(boolean) Display images as thumbnails instead of a slider&#10;- with_thumbnail_nav(boolean) Include thumbnails below slider for navigation&#10;- display_mode(enum standard|thumbnail|lightbox) Determines which mode the slider will display&#10;- version(string) Gallery Version Number&#10;- lightboxRows(number) Rows in lightbox mode"
             name="~image_slider" toReformat="false" toShortenFQNames="true"
-            value="{% image_slider &quot;my_image_slider&quot; &#10;&#09;slides=&quot;$1slides$&quot;, &#10;&#09;loop_slides=&quot;${2:loop_slides}&quot;, &#10;&#09;num_seconds=&quot;${3:num_seconds}&quot;, &#10;&#09;show_pagination=&quot;${4:show_pagination}&quot;, &#10;&#09;sizing=&quot;${5:sizing}&quot;, &#10;&#09;auto_advance=&quot;${6:auto_advance}&quot;, &#10;&#09;transition=&quot;${7:transition}&quot;, &#10;&#09;caption_position=&quot;${8:caption_position}&quot;, &#10;&#09;lightbox=&quot;${9:lightbox}&quot;, &#10;&#09;only_thumbnails=&quot;${10:only_thumbnails}&quot;, &#10;&#09;with_thumbnail_nav=&quot;${11:with_thumbnail_nav}&quot;, &#10;&#09;display_mode=&quot;${12:display_mode}&quot;, &#10;&#09;version=&quot;${13:version}&quot;, &#10;&#09;lightboxRows=&quot;${14:lightboxRows}&quot; %}&#10;">
+            value="{% image_slider &quot;my_image_slider&quot; &#10;&#09;slides=&quot;$1slides$&quot;, &#10;&#09;loop_slides=&quot;$2loop_slides$&quot;, &#10;&#09;num_seconds=&quot;$3num_seconds$&quot;, &#10;&#09;show_pagination=&quot;$4show_pagination$&quot;, &#10;&#09;sizing=&quot;$5sizing$&quot;, &#10;&#09;auto_advance=&quot;$6auto_advance$&quot;, &#10;&#09;transition=&quot;$7transition$&quot;, &#10;&#09;caption_position=&quot;$8caption_position$&quot;, &#10;&#09;lightbox=&quot;$9lightbox$&quot;, &#10;&#09;only_thumbnails=&quot;$10only_thumbnails$&quot;, &#10;&#09;with_thumbnail_nav=&quot;$11with_thumbnail_nav$&quot;, &#10;&#09;display_mode=&quot;$12display_mode$&quot;, &#10;&#09;version=&quot;$13version$&quot;, &#10;&#09;lightboxRows=&quot;$14lightboxRows$&quot; %}&#10;">
         <variable alwaysStopAt="true" defaultValue="" expression="" name="1slides"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="2loop_slides"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="3num_seconds"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="4show_pagination"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="5sizing"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="6auto_advance"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="7transition"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="8caption_position"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="9lightbox"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="10only_thumbnails"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="11with_thumbnail_nav"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="12display_mode"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="13version"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="14lightboxRows"/>
         <context>
             <option name="HTML" value="true"/>
             <option name="CSS" value="true"/>
@@ -1246,8 +1384,9 @@
     <template
             description="A rich text area that can be edited inline inside modules&#10;Parameters:&#10;- value(String) Sets the default content of the rich text module&#10;- field(String) Required name of the module field to which this text is associated"
             name="~inline_rich_text" toReformat="false" toShortenFQNames="true"
-            value="{% inline_rich_text &quot;my_inline_rich_text&quot; &#10;&#09;value=&quot;$1value$&quot;, &#10;&#09;field=&quot;${2:field}&quot; %}&#10;">
+            value="{% inline_rich_text &quot;my_inline_rich_text&quot; &#10;&#09;value=&quot;$1value$&quot;, &#10;&#09;field=&quot;$2field$&quot; %}&#10;">
         <variable alwaysStopAt="true" defaultValue="" expression="" name="1value"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="2field"/>
         <context>
             <option name="HTML" value="true"/>
             <option name="CSS" value="true"/>
@@ -1257,8 +1396,9 @@
     <template
             description="A single line of text with no formatting that can be edited inline inside modules&#10;Parameters:&#10;- value(String) The default text of the single line text field&#10;- field(String) Required name of the module field to which this text is associated"
             name="~inline_text" toReformat="false" toShortenFQNames="true"
-            value="{% inline_text &quot;my_inline_text&quot; &#10;&#09;value=&quot;$1value$&quot;, &#10;&#09;field=&quot;${2:field}&quot; %}&#10;">
+            value="{% inline_text &quot;my_inline_text&quot; &#10;&#09;value=&quot;$1value$&quot;, &#10;&#09;field=&quot;$2field$&quot; %}&#10;">
         <variable alwaysStopAt="true" defaultValue="" expression="" name="1value"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="2field"/>
         <context>
             <option name="HTML" value="true"/>
             <option name="CSS" value="true"/>
@@ -1279,8 +1419,17 @@
     <template
             description="Insert a linked image from File Manager.&#10;Parameters:&#10;- open_in_new_tab(boolean) Selects whether or not to open the destination URL in another tab&#10;- target(String) Sets the target attr of link tag&#10;- link(String) Sets the destination URL of the link that wraps the img tag&#10;- alt(String) Sets the default alt text for the image&#10;- width(number) Sets the width attribute of the img tag&#10;- height(number) Sets a min-height in a style attribute of the img tag for email templates only&#10;- align(String) Sets the align attribute of the img tag (right, left, center)&#10;- hspace(number) Sets the hspace attribute of the img tag&#10;- style(String) Adds inline CSS declarations to the img tag&#10;- src(String) Populates the src attribute of the img tag"
             name="~linked_image" toReformat="false" toShortenFQNames="true"
-            value="{% linked_image &quot;my_linked_image&quot; &#10;&#09;open_in_new_tab=&quot;$1open_in_new_tab$&quot;, &#10;&#09;target=&quot;${2:target}&quot;, &#10;&#09;link=&quot;${3:link}&quot;, &#10;&#09;alt=&quot;${4:alt}&quot;, &#10;&#09;width=&quot;${5:width}&quot;, &#10;&#09;height=&quot;${6:height}&quot;, &#10;&#09;align=&quot;${7:align}&quot;, &#10;&#09;hspace=&quot;${8:hspace}&quot;, &#10;&#09;style=&quot;${9:style}&quot;, &#10;&#09;src=&quot;${10:src}&quot; %}&#10;">
+            value="{% linked_image &quot;my_linked_image&quot; &#10;&#09;open_in_new_tab=&quot;$1open_in_new_tab$&quot;, &#10;&#09;target=&quot;$2target$&quot;, &#10;&#09;link=&quot;$3link$&quot;, &#10;&#09;alt=&quot;$4alt$&quot;, &#10;&#09;width=&quot;$5width$&quot;, &#10;&#09;height=&quot;$6height$&quot;, &#10;&#09;align=&quot;$7align$&quot;, &#10;&#09;hspace=&quot;$8hspace$&quot;, &#10;&#09;style=&quot;$9style$&quot;, &#10;&#09;src=&quot;$10src$&quot; %}&#10;">
         <variable alwaysStopAt="true" defaultValue="" expression="" name="1open_in_new_tab"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="2target"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="3link"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="4alt"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="5width"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="6height"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="7align"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="8hspace"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="9style"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="10src"/>
         <context>
             <option name="HTML" value="true"/>
             <option name="CSS" value="true"/>
@@ -1290,8 +1439,19 @@
     <template
             description="Logo image&#10;Parameters:&#10;- suppress_company_name(boolean) Hides company name if an image logo isn't set&#10;- override_inherited_src(boolean) If true, use src from logo widget rather than src inherited from settings or template.&#10;- src(String) Populates the src attribute of the img tag&#10;- alt(String) Sets the default alt text for the image&#10;- link(String) Sets the destination URL of the link that wraps the img tag&#10;- width(number) Sets the width attribute of the img tag&#10;- height(number) Sets a min-height in a style attribute of the img tag for email templates only&#10;- align(String) Sets the align attribute of the img tag (right, left, center)&#10;- hspace(number) Sets the hspace attribute of the img tag&#10;- style(String) Adds inline CSS declarations to the img tag&#10;- open_in_new_tab(boolean) Selects whether or not to open the destination URL in another tab&#10;- heading_style(String) Sets the link heading style. Can be one of h1, h2, h3, or h4"
             name="~logo" toReformat="false" toShortenFQNames="true"
-            value="{% logo &quot;my_logo&quot; &#10;&#09;suppress_company_name=&quot;$1suppress_company_name$&quot;, &#10;&#09;override_inherited_src=&quot;${2:override_inherited_src}&quot;, &#10;&#09;src=&quot;${3:src}&quot;, &#10;&#09;alt=&quot;${4:alt}&quot;, &#10;&#09;link=&quot;${5:link}&quot;, &#10;&#09;width=&quot;${6:width}&quot;, &#10;&#09;height=&quot;${7:height}&quot;, &#10;&#09;align=&quot;${8:align}&quot;, &#10;&#09;hspace=&quot;${9:hspace}&quot;, &#10;&#09;style=&quot;${10:style}&quot;, &#10;&#09;open_in_new_tab=&quot;${11:open_in_new_tab}&quot;, &#10;&#09;heading_style=&quot;${12:heading_style}&quot; %}&#10;">
+            value="{% logo &quot;my_logo&quot; &#10;&#09;suppress_company_name=&quot;$1suppress_company_name$&quot;, &#10;&#09;override_inherited_src=&quot;$2override_inherited_src$&quot;, &#10;&#09;src=&quot;$3src$&quot;, &#10;&#09;alt=&quot;$4alt$&quot;, &#10;&#09;link=&quot;$5link$&quot;, &#10;&#09;width=&quot;$6width$&quot;, &#10;&#09;height=&quot;$7height$&quot;, &#10;&#09;align=&quot;$8align$&quot;, &#10;&#09;hspace=&quot;$9hspace$&quot;, &#10;&#09;style=&quot;$10style$&quot;, &#10;&#09;open_in_new_tab=&quot;$11open_in_new_tab$&quot;, &#10;&#09;heading_style=&quot;$12heading_style$&quot; %}&#10;">
         <variable alwaysStopAt="true" defaultValue="" expression="" name="1suppress_company_name"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="2override_inherited_src"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="3src"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="4alt"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="5link"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="6width"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="7height"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="8align"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="9hspace"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="10style"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="11open_in_new_tab"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="12heading_style"/>
         <context>
             <option name="HTML" value="true"/>
             <option name="CSS" value="true"/>
@@ -1301,8 +1461,9 @@
     <template
             description="Macros allow you to print multiple statements with a dynamic value or values&#10;Parameters:&#10;- macro_name(String) The name given to a macro&#10;- argument_names(String) Named arguments that are dynamically, when the macro is run"
             name="~macro" toReformat="false" toShortenFQNames="true"
-            value="{% macro &quot;my_macro&quot; &#10;&#09;macro_name=&quot;$1macro_name$&quot;, &#10;&#09;argument_names=&quot;${2:argument_names}&quot; %}&#10;&#10;{% endmacro %}&#10;">
+            value="{% macro &quot;my_macro&quot; &#10;&#09;macro_name=&quot;$1macro_name$&quot;, &#10;&#09;argument_names=&quot;$2argument_names$&quot; %}&#10;&#10;{% endmacro %}&#10;">
         <variable alwaysStopAt="true" defaultValue="" expression="" name="1macro_name"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="2argument_names"/>
         <context>
             <option name="HTML" value="true"/>
             <option name="CSS" value="true"/>
@@ -1312,8 +1473,14 @@
     <template
             description="Render a login form.&#10;Parameters:&#10;- email_label(String) Label for email input field&#10;- password_label(String) Label for password input field&#10;- remember_me_label(String) Label for Remember Me checkbox&#10;- submit_button_text(String) Label for form submit button&#10;- reset_password_text(String) Label for password reset link&#10;- reset_password_link(String) Link to password reset request page&#10;- show_password(String) Label for Show password buttons"
             name="~member_login" toReformat="false" toShortenFQNames="true"
-            value="{% member_login &quot;my_member_login&quot; &#10;&#09;email_label=&quot;$1email_label$&quot;, &#10;&#09;password_label=&quot;${2:password_label}&quot;, &#10;&#09;remember_me_label=&quot;${3:remember_me_label}&quot;, &#10;&#09;submit_button_text=&quot;${4:submit_button_text}&quot;, &#10;&#09;reset_password_text=&quot;${5:reset_password_text}&quot;, &#10;&#09;reset_password_link=&quot;${6:reset_password_link}&quot;, &#10;&#09;show_password=&quot;${7:show_password}&quot; %}&#10;">
+            value="{% member_login &quot;my_member_login&quot; &#10;&#09;email_label=&quot;$1email_label$&quot;, &#10;&#09;password_label=&quot;$2password_label$&quot;, &#10;&#09;remember_me_label=&quot;$3remember_me_label$&quot;, &#10;&#09;submit_button_text=&quot;$4submit_button_text$&quot;, &#10;&#09;reset_password_text=&quot;$5reset_password_text$&quot;, &#10;&#09;reset_password_link=&quot;$6reset_password_link$&quot;, &#10;&#09;show_password=&quot;$7show_password$&quot; %}&#10;">
         <variable alwaysStopAt="true" defaultValue="" expression="" name="1email_label"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="2password_label"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="3remember_me_label"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="4submit_button_text"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="5reset_password_text"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="6reset_password_link"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="7show_password"/>
         <context>
             <option name="HTML" value="true"/>
             <option name="CSS" value="true"/>
@@ -1323,8 +1490,12 @@
     <template
             description="Render a registration form.&#10;Parameters:&#10;- email_label(String) Label for email input field&#10;- password_label(String) Label for password input field&#10;- password_confirm_label(String) Label for password confirm input field&#10;- submit_button_text(String) Label for form submit button&#10;- show_password(String) Label for Show password buttons"
             name="~member_register" toReformat="false" toShortenFQNames="true"
-            value="{% member_register &quot;my_member_register&quot; &#10;&#09;email_label=&quot;$1email_label$&quot;, &#10;&#09;password_label=&quot;${2:password_label}&quot;, &#10;&#09;password_confirm_label=&quot;${3:password_confirm_label}&quot;, &#10;&#09;submit_button_text=&quot;${4:submit_button_text}&quot;, &#10;&#09;show_password=&quot;${5:show_password}&quot; %}&#10;">
+            value="{% member_register &quot;my_member_register&quot; &#10;&#09;email_label=&quot;$1email_label$&quot;, &#10;&#09;password_label=&quot;$2password_label$&quot;, &#10;&#09;password_confirm_label=&quot;$3password_confirm_label$&quot;, &#10;&#09;submit_button_text=&quot;$4submit_button_text$&quot;, &#10;&#09;show_password=&quot;$5show_password$&quot; %}&#10;">
         <variable alwaysStopAt="true" defaultValue="" expression="" name="1email_label"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="2password_label"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="3password_confirm_label"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="4submit_button_text"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="5show_password"/>
         <context>
             <option name="HTML" value="true"/>
             <option name="CSS" value="true"/>
@@ -1334,8 +1505,14 @@
     <template
             description="Advanced menu module&#10;Parameters:&#10;- flow(enum horizontal|vertical)  This adds classes to the menu tree so that they can be styled accordingly&#10;- root_type(enum site_root|top_parent|parent|page_id|page_name|breadcrumb) Specifies the type of advanced menu&#10;- root_key(String) Used to find the menu root. When root_type is set to page_id or page_name, this param should be the page ID or the label of the page, respectively&#10;- max_levels(number) Determines how many levels of nested menus render in the markup&#10;- flyouts(boolean) When true, a class is added to the menu tree that can be styled to allow child menu items will appear when you hover over the parent&#10;- site_map_name(String) Name of menu tree from Advanced Menus&#10;- id(String) The menu id from Advanced Menus"
             name="~menu" toReformat="false" toShortenFQNames="true"
-            value="{% menu &quot;my_menu&quot; &#10;&#09;flow=&quot;$1flow$&quot;, &#10;&#09;root_type=&quot;${2:root_type}&quot;, &#10;&#09;root_key=&quot;${3:root_key}&quot;, &#10;&#09;max_levels=&quot;${4:max_levels}&quot;, &#10;&#09;flyouts=&quot;${5:flyouts}&quot;, &#10;&#09;site_map_name=&quot;${6:site_map_name}&quot;, &#10;&#09;id=&quot;${7:id}&quot; %}&#10;">
+            value="{% menu &quot;my_menu&quot; &#10;&#09;flow=&quot;$1flow$&quot;, &#10;&#09;root_type=&quot;$2root_type$&quot;, &#10;&#09;root_key=&quot;$3root_key$&quot;, &#10;&#09;max_levels=&quot;$4max_levels$&quot;, &#10;&#09;flyouts=&quot;$5flyouts$&quot;, &#10;&#09;site_map_name=&quot;$6site_map_name$&quot;, &#10;&#09;id=&quot;$7id$&quot; %}&#10;">
         <variable alwaysStopAt="true" defaultValue="" expression="" name="1flow"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="2root_type"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="3root_key"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="4max_levels"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="5flyouts"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="6site_map_name"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="7id"/>
         <context>
             <option name="HTML" value="true"/>
             <option name="CSS" value="true"/>
@@ -1345,8 +1522,9 @@
     <template
             description="A module&#10;Parameters:&#10;- module_id(String) The id of the module to render&#10;- path(String) The path of the module to render. Include leading slash for absolute path, otherwise path is relative to template. Reference HubSpot default modules with paths corresponding to their HubL tags such as @hubspot/rich_text, @hubspot/linked_image, etc."
             name="~module" toReformat="false" toShortenFQNames="true"
-            value="{% module &quot;my_module&quot; &#10;&#09;module_id=&quot;$1module_id$&quot;, &#10;&#09;path=&quot;${2:path}&quot; %}&#10;">
+            value="{% module &quot;my_module&quot; &#10;&#09;module_id=&quot;$1module_id$&quot;, &#10;&#09;path=&quot;$2path$&quot; %}&#10;">
         <variable alwaysStopAt="true" defaultValue="" expression="" name="1module_id"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="2path"/>
         <context>
             <option name="HTML" value="true"/>
             <option name="CSS" value="true"/>
@@ -1373,8 +1551,10 @@
     <template
             description="Requests a password to access a landing page.&#10;Parameters:&#10;- submit_button_text(String) Label for button below password entry field&#10;- password_placeholder(String) Placeholder text for the password field&#10;- bad_password_message(String) Text to display if an incorrect password is entered"
             name="~password_prompt" toReformat="false" toShortenFQNames="true"
-            value="{% password_prompt &quot;my_password_prompt&quot; &#10;&#09;submit_button_text=&quot;$1submit_button_text$&quot;, &#10;&#09;password_placeholder=&quot;${2:password_placeholder}&quot;, &#10;&#09;bad_password_message=&quot;${3:bad_password_message}&quot; %}&#10;">
+            value="{% password_prompt &quot;my_password_prompt&quot; &#10;&#09;submit_button_text=&quot;$1submit_button_text$&quot;, &#10;&#09;password_placeholder=&quot;$2password_placeholder$&quot;, &#10;&#09;bad_password_message=&quot;$3bad_password_message$&quot; %}&#10;">
         <variable alwaysStopAt="true" defaultValue="" expression="" name="1submit_button_text"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="2password_placeholder"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="3bad_password_message"/>
         <context>
             <option name="HTML" value="true"/>
             <option name="CSS" value="true"/>
@@ -1384,8 +1564,11 @@
     <template
             description="Render a password reset form.&#10;Parameters:&#10;- password_label(String) Label for password input field&#10;- password_confirm_label(String) Label from password confirm field&#10;- submit_button_text(String) Label for form submit button&#10;- show_password(String) Label for Show password buttons"
             name="~password_reset" toReformat="false" toShortenFQNames="true"
-            value="{% password_reset &quot;my_password_reset&quot; &#10;&#09;password_label=&quot;$1password_label$&quot;, &#10;&#09;password_confirm_label=&quot;${2:password_confirm_label}&quot;, &#10;&#09;submit_button_text=&quot;${3:submit_button_text}&quot;, &#10;&#09;show_password=&quot;${4:show_password}&quot; %}&#10;">
+            value="{% password_reset &quot;my_password_reset&quot; &#10;&#09;password_label=&quot;$1password_label$&quot;, &#10;&#09;password_confirm_label=&quot;$2password_confirm_label$&quot;, &#10;&#09;submit_button_text=&quot;$3submit_button_text$&quot;, &#10;&#09;show_password=&quot;$4show_password$&quot; %}&#10;">
         <variable alwaysStopAt="true" defaultValue="" expression="" name="1password_label"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="2password_confirm_label"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="3submit_button_text"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="4show_password"/>
         <context>
             <option name="HTML" value="true"/>
             <option name="CSS" value="true"/>
@@ -1395,8 +1578,9 @@
     <template
             description="Render a password reset request form.&#10;Parameters:&#10;- email_label(String) Label for email input field&#10;- submit_button_text(String) Label for form submit button"
             name="~password_reset_request" toReformat="false" toShortenFQNames="true"
-            value="{% password_reset_request &quot;my_password_reset_request&quot; &#10;&#09;email_label=&quot;$1email_label$&quot;, &#10;&#09;submit_button_text=&quot;${2:submit_button_text}&quot; %}&#10;">
+            value="{% password_reset_request &quot;my_password_reset_request&quot; &#10;&#09;email_label=&quot;$1email_label$&quot;, &#10;&#09;submit_button_text=&quot;$2submit_button_text$&quot; %}&#10;">
         <variable alwaysStopAt="true" defaultValue="" expression="" name="1email_label"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="2submit_button_text"/>
         <context>
             <option name="HTML" value="true"/>
             <option name="CSS" value="true"/>
@@ -1406,8 +1590,14 @@
     <template
             description="Include a list of links to filter blog posts. Filter posts by tag, month, or author. &#10;This module can only be used in templates for: Blog Post&#10;Parameters:&#10;- select_blog('default' or blog id) Selects the HubSpot blog to use for the listing&#10;- expand_link_text(String) Text link to display if more posts than max_links number available&#10;- title_tag(String) Sets the tag used for the list title &#10;- list_tag(String) Sets the tag used for the list&#10;- list_title(String) List title to display&#10;- max_links(number) Sets maximum number of links&#10;- filter_type(enum author|month|tag) Selects the type of filter"
             name="~post_filter" toReformat="false" toShortenFQNames="true"
-            value="{% post_filter &quot;my_post_filter&quot; &#10;&#09;select_blog=&quot;$1select_blog$&quot;, &#10;&#09;expand_link_text=&quot;${2:expand_link_text}&quot;, &#10;&#09;title_tag=&quot;${3:title_tag}&quot;, &#10;&#09;list_tag=&quot;${4:list_tag}&quot;, &#10;&#09;list_title=&quot;${5:list_title}&quot;, &#10;&#09;max_links=&quot;${6:max_links}&quot;, &#10;&#09;filter_type=&quot;${7:filter_type}&quot; %}&#10;">
+            value="{% post_filter &quot;my_post_filter&quot; &#10;&#09;select_blog=&quot;$1select_blog$&quot;, &#10;&#09;expand_link_text=&quot;$2expand_link_text$&quot;, &#10;&#09;title_tag=&quot;$3title_tag$&quot;, &#10;&#09;list_tag=&quot;$4list_tag$&quot;, &#10;&#09;list_title=&quot;$5list_title$&quot;, &#10;&#09;max_links=&quot;$6max_links$&quot;, &#10;&#09;filter_type=&quot;$7filter_type$&quot; %}&#10;">
         <variable alwaysStopAt="true" defaultValue="" expression="" name="1select_blog"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="2expand_link_text"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="3title_tag"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="4list_tag"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="5list_title"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="6max_links"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="7filter_type"/>
         <context>
             <option name="HTML" value="true"/>
             <option name="CSS" value="true"/>
@@ -1417,8 +1607,14 @@
     <template
             description="Include a listing of links to blog posts. Order posts by date or popularity.&#10;This module can only be used in templates for: Blog Post&#10;Parameters:&#10;- select_blog('default' or blog id) Selects the HubSpot blog to use for the listing&#10;- title_tag(String) Sets the tag used for the list title&#10;- list_tag(String) Sets the tag used for the list&#10;- list_title(String) List title to display&#10;- include_featured_image(boolean) Display featured image along with post link&#10;- listing_type(enum recent|popular_all_time|popular_past_year|popular_past_six_months|popular_past_month|recommended) Selects the type of listing to render&#10;- max_links(number) Sets maximum number of links"
             name="~post_listing" toReformat="false" toShortenFQNames="true"
-            value="{% post_listing &quot;my_post_listing&quot; &#10;&#09;select_blog=&quot;$1select_blog$&quot;, &#10;&#09;title_tag=&quot;${2:title_tag}&quot;, &#10;&#09;list_tag=&quot;${3:list_tag}&quot;, &#10;&#09;list_title=&quot;${4:list_title}&quot;, &#10;&#09;include_featured_image=&quot;${5:include_featured_image}&quot;, &#10;&#09;listing_type=&quot;${6:listing_type}&quot;, &#10;&#09;max_links=&quot;${7:max_links}&quot; %}&#10;">
+            value="{% post_listing &quot;my_post_listing&quot; &#10;&#09;select_blog=&quot;$1select_blog$&quot;, &#10;&#09;title_tag=&quot;$2title_tag$&quot;, &#10;&#09;list_tag=&quot;$3list_tag$&quot;, &#10;&#09;list_title=&quot;$4list_title$&quot;, &#10;&#09;include_featured_image=&quot;$5include_featured_image$&quot;, &#10;&#09;listing_type=&quot;$6listing_type$&quot;, &#10;&#09;max_links=&quot;$7max_links$&quot; %}&#10;">
         <variable alwaysStopAt="true" defaultValue="" expression="" name="1select_blog"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="2title_tag"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="3list_tag"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="4list_title"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="5include_featured_image"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="6listing_type"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="7max_links"/>
         <context>
             <option name="HTML" value="true"/>
             <option name="CSS" value="true"/>
@@ -1458,8 +1654,17 @@
     <template
             description="Returns a list of related blog post objects for the specified blog, sorted by relevance for the given parameters&#10;Parameters:&#10;- blog_ids(comma separated blog ids) Limit results to these blog(s)&#10;- blog_post_ids(comma separated blog post ids) Blog posts to use in similarity search&#10;- blog_post_override(comma separated blog post ids) Blog posts that must be included in results&#10;- limit(number) Max number of posts to return&#10;- tags(comma separated tag names) The tag name(s) to filter with&#10;- start_date(date (yyyy-mm-dd)) Earliest published date&#10;- end_date(date (yyyy-mm-dd)) Latest published date&#10;- blog_authors(comma separated blog author names) Limit results to these author name(s)&#10;- path_prefixes(comma separated path prefixes) The path prefixes&#10;- post_formatter(string) Name of macro to render a blog post"
             name="~related_blog_posts" toReformat="false" toShortenFQNames="true"
-            value="{% related_blog_posts &quot;my_related_blog_posts&quot; &#10;&#09;blog_ids=&quot;$1blog_ids$&quot;, &#10;&#09;blog_post_ids=&quot;${2:blog_post_ids}&quot;, &#10;&#09;blog_post_override=&quot;${3:blog_post_override}&quot;, &#10;&#09;limit=&quot;${4:limit}&quot;, &#10;&#09;tags=&quot;${5:tags}&quot;, &#10;&#09;start_date=&quot;${6:start_date}&quot;, &#10;&#09;end_date=&quot;${7:end_date}&quot;, &#10;&#09;blog_authors=&quot;${8:blog_authors}&quot;, &#10;&#09;path_prefixes=&quot;${9:path_prefixes}&quot;, &#10;&#09;post_formatter=&quot;${10:post_formatter}&quot; %}&#10;">
+            value="{% related_blog_posts &quot;my_related_blog_posts&quot; &#10;&#09;blog_ids=&quot;$1blog_ids$&quot;, &#10;&#09;blog_post_ids=&quot;$2blog_post_ids$&quot;, &#10;&#09;blog_post_override=&quot;$3blog_post_override$&quot;, &#10;&#09;limit=&quot;$4limit$&quot;, &#10;&#09;tags=&quot;$5tags$&quot;, &#10;&#09;start_date=&quot;$6start_date$&quot;, &#10;&#09;end_date=&quot;$7end_date$&quot;, &#10;&#09;blog_authors=&quot;$8blog_authors$&quot;, &#10;&#09;path_prefixes=&quot;$9path_prefixes$&quot;, &#10;&#09;post_formatter=&quot;$10post_formatter$&quot; %}&#10;">
         <variable alwaysStopAt="true" defaultValue="" expression="" name="1blog_ids"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="2blog_post_ids"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="3blog_post_override"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="4limit"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="5tags"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="6start_date"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="7end_date"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="8blog_authors"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="9path_prefixes"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="10post_formatter"/>
         <context>
             <option name="HTML" value="true"/>
             <option name="CSS" value="true"/>
@@ -1506,8 +1711,27 @@
     <template
             description="RSS Listing&#10;Parameters:&#10;- show_title(boolean) Shows or hides RSS feed title&#10;- show_date(boolean) Displays post date&#10;- show_author(boolean) Displays author name&#10;- show_detail(boolean) Display post summary up to number of characters set by limit_to_chars parameter&#10;- title(String) Populates a heading above the RSS feed listing&#10;- limit_to_chars(number) Maximum number of characters to display in summary&#10;- publish_date_format(String)  Format for the publish date. Possible values include 'short', 'medium', 'long', or custom (MMMM d, yyyy)&#10;- attribution_text(String) The text which attributes an author to a post&#10;- click_through_text(String) The text which will be displayed for the click through link at the end of a post summary&#10;- publish_date_text(String) The text which indicates when a post was published&#10;- include_featured_image(boolean) Displays featured image with post link for HubSpot generated RSS feeds&#10;- item_title_tag(String) Specifies HTML tag of each post title&#10;- is_external(boolean) RSS feed is from an external blog&#10;- number_of_items(number) Maximum number of posts to display&#10;- publish_date_language(String) Specifies the language of the publish date (for external feeds)&#10;- rss_url(string) The URL where the RSS feed is located&#10;- content_group_id(number) ID for blog when feed source is internal blog&#10;- tag_id(number) ID for tag when feed source is internal blog&#10;- select_blog('default' or blog id) Can be used to select an internal HubSpot blog feed&#10;- feed_source(String) Set source for RSS feed (contains is_external, rss_url, and/or content_group_id"
             name="~rss_listing" toReformat="false" toShortenFQNames="true"
-            value="{% rss_listing &quot;my_rss_listing&quot; &#10;&#09;show_title=&quot;$1show_title$&quot;, &#10;&#09;show_date=&quot;${2:show_date}&quot;, &#10;&#09;show_author=&quot;${3:show_author}&quot;, &#10;&#09;show_detail=&quot;${4:show_detail}&quot;, &#10;&#09;title=&quot;${5:title}&quot;, &#10;&#09;limit_to_chars=&quot;${6:limit_to_chars}&quot;, &#10;&#09;publish_date_format=&quot;${7:publish_date_format}&quot;, &#10;&#09;attribution_text=&quot;${8:attribution_text}&quot;, &#10;&#09;click_through_text=&quot;${9:click_through_text}&quot;, &#10;&#09;publish_date_text=&quot;${10:publish_date_text}&quot;, &#10;&#09;include_featured_image=&quot;${11:include_featured_image}&quot;, &#10;&#09;item_title_tag=&quot;${12:item_title_tag}&quot;, &#10;&#09;is_external=&quot;${13:is_external}&quot;, &#10;&#09;number_of_items=&quot;${14:number_of_items}&quot;, &#10;&#09;publish_date_language=&quot;${15:publish_date_language}&quot;, &#10;&#09;rss_url=&quot;${16:rss_url}&quot;, &#10;&#09;content_group_id=&quot;${17:content_group_id}&quot;, &#10;&#09;tag_id=&quot;${18:tag_id}&quot;, &#10;&#09;select_blog=&quot;${19:select_blog}&quot;, &#10;&#09;feed_source=&quot;${20:feed_source}&quot; %}&#10;">
+            value="{% rss_listing &quot;my_rss_listing&quot; &#10;&#09;show_title=&quot;$1show_title$&quot;, &#10;&#09;show_date=&quot;$2show_date$&quot;, &#10;&#09;show_author=&quot;$3show_author$&quot;, &#10;&#09;show_detail=&quot;$4show_detail$&quot;, &#10;&#09;title=&quot;$5title$&quot;, &#10;&#09;limit_to_chars=&quot;$6limit_to_chars$&quot;, &#10;&#09;publish_date_format=&quot;$7publish_date_format$&quot;, &#10;&#09;attribution_text=&quot;$8attribution_text$&quot;, &#10;&#09;click_through_text=&quot;$9click_through_text$&quot;, &#10;&#09;publish_date_text=&quot;$10publish_date_text$&quot;, &#10;&#09;include_featured_image=&quot;$11include_featured_image$&quot;, &#10;&#09;item_title_tag=&quot;$12item_title_tag$&quot;, &#10;&#09;is_external=&quot;$13is_external$&quot;, &#10;&#09;number_of_items=&quot;$14number_of_items$&quot;, &#10;&#09;publish_date_language=&quot;$15publish_date_language$&quot;, &#10;&#09;rss_url=&quot;$16rss_url$&quot;, &#10;&#09;content_group_id=&quot;$17content_group_id$&quot;, &#10;&#09;tag_id=&quot;$18tag_id$&quot;, &#10;&#09;select_blog=&quot;$19select_blog$&quot;, &#10;&#09;feed_source=&quot;$20feed_source$&quot; %}&#10;">
         <variable alwaysStopAt="true" defaultValue="" expression="" name="1show_title"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="2show_date"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="3show_author"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="4show_detail"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="5title"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="6limit_to_chars"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="7publish_date_format"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="8attribution_text"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="9click_through_text"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="10publish_date_text"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="11include_featured_image"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="12item_title_tag"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="13is_external"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="14number_of_items"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="15publish_date_language"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="16rss_url"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="17content_group_id"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="18tag_id"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="19select_blog"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="20feed_source"/>
         <context>
             <option name="HTML" value="true"/>
             <option name="CSS" value="true"/>
@@ -1517,8 +1741,9 @@
     <template
             description="An extra large, centered, header to denote an entire section&#10;Parameters:&#10;- header(String) Text to display in header&#10;- subheader(String) Text to display in subheader"
             name="~section_header" toReformat="false" toShortenFQNames="true"
-            value="{% section_header &quot;my_section_header&quot; &#10;&#09;header=&quot;$1header$&quot;, &#10;&#09;subheader=&quot;${2:subheader}&quot; %}&#10;">
+            value="{% section_header &quot;my_section_header&quot; &#10;&#09;header=&quot;$1header$&quot;, &#10;&#09;subheader=&quot;$2subheader$&quot; %}&#10;">
         <variable alwaysStopAt="true" defaultValue="" expression="" name="1header"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="2subheader"/>
         <context>
             <option name="HTML" value="true"/>
             <option name="CSS" value="true"/>
@@ -1538,8 +1763,9 @@
     <template
             description="Simple menu, uses static link structure&#10;Parameters:&#10;- orientation(enum horizontal|vertical) Defines classes of menu markup to allow to style the orientation of menu items on the page&#10;- menu_tree(json list) Menu structure including page link names and target URLs"
             name="~simple_menu" toReformat="false" toShortenFQNames="true"
-            value="{% simple_menu &quot;my_simple_menu&quot; &#10;&#09;orientation=&quot;$1orientation$&quot;, &#10;&#09;menu_tree=&quot;${2:menu_tree}&quot; %}&#10;">
+            value="{% simple_menu &quot;my_simple_menu&quot; &#10;&#09;orientation=&quot;$1orientation$&quot;, &#10;&#09;menu_tree=&quot;$2menu_tree$&quot; %}&#10;">
         <variable alwaysStopAt="true" defaultValue="" expression="" name="1orientation"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="2menu_tree"/>
         <context>
             <option name="HTML" value="true"/>
             <option name="CSS" value="true"/>
@@ -1549,8 +1775,14 @@
     <template
             description="Allow visitors to share your page on social networks&#10;Parameters:&#10;- use_page_url(boolean) If true, the module shares the URL of the page by default&#10;- link(String) Specifies a different URL to share&#10;- pinterest(JSON) Parameters for Pinterest link format and icon image source&#10;- twitter(JSON) Parameters for Twitter link format and icon image source&#10;- linked_in(JSON) Parameters for LinkedIn link format and icon image source&#10;- facebook(JSON) Parameters for Facebook link format and icon image source&#10;- email(JSON) Parameters for email sharing link format and icon image source "
             name="~social_sharing" toReformat="false" toShortenFQNames="true"
-            value="{% social_sharing &quot;my_social_sharing&quot; &#10;&#09;use_page_url=&quot;$1use_page_url$&quot;, &#10;&#09;link=&quot;${2:link}&quot;, &#10;&#09;pinterest=&quot;${3:pinterest}&quot;, &#10;&#09;twitter=&quot;${4:twitter}&quot;, &#10;&#09;linked_in=&quot;${5:linked_in}&quot;, &#10;&#09;facebook=&quot;${6:facebook}&quot;, &#10;&#09;email=&quot;${7:email}&quot; %}&#10;">
+            value="{% social_sharing &quot;my_social_sharing&quot; &#10;&#09;use_page_url=&quot;$1use_page_url$&quot;, &#10;&#09;link=&quot;$2link$&quot;, &#10;&#09;pinterest=&quot;$3pinterest$&quot;, &#10;&#09;twitter=&quot;$4twitter$&quot;, &#10;&#09;linked_in=&quot;$5linked_in$&quot;, &#10;&#09;facebook=&quot;$6facebook$&quot;, &#10;&#09;email=&quot;$7email$&quot; %}&#10;">
         <variable alwaysStopAt="true" defaultValue="" expression="" name="1use_page_url"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="2link"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="3pinterest"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="4twitter"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="5linked_in"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="6facebook"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="7email"/>
         <context>
             <option name="HTML" value="true"/>
             <option name="CSS" value="true"/>
@@ -1578,8 +1810,10 @@
     <template
             description="Defines a smart object parameter for a module. Only valid within a module_block tag definition.&#10;Parameters:&#10;- criterion_id(number) The smart rule ID number (set up in Template Builder and clone to file)&#10;- order(String) Zero indexed order of smart rules&#10;- target_type(String) Type of smart module"
             name="~targeted_module_attribute" toReformat="false" toShortenFQNames="true"
-            value="{% targeted_module_attribute &quot;my_targeted_module_attribute&quot; &#10;&#09;criterion_id=&quot;$1criterion_id$&quot;, &#10;&#09;order=&quot;${2:order}&quot;, &#10;&#09;target_type=&quot;${3:target_type}&quot; %}&#10;&#10;{% end_module_block %}&#10;">
+            value="{% targeted_module_attribute &quot;my_targeted_module_attribute&quot; &#10;&#09;criterion_id=&quot;$1criterion_id$&quot;, &#10;&#09;order=&quot;$2order$&quot;, &#10;&#09;target_type=&quot;$3target_type$&quot; %}&#10;&#10;{% end_module_block %}&#10;">
         <variable alwaysStopAt="true" defaultValue="" expression="" name="1criterion_id"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="2order"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="3target_type"/>
         <context>
             <option name="HTML" value="true"/>
             <option name="CSS" value="true"/>
@@ -1589,8 +1823,10 @@
     <template
             description="Defines a smart object parameter for a widget. Only valid within a widget_block tag definition.&#10;Parameters:&#10;- criterion_id(number) The smart rule ID number (set up in Template Builder and clone to file)&#10;- order(String) Zero indexed order of smart rules&#10;- target_type(String) Type of smart module"
             name="~targeted_widget_attribute" toReformat="false" toShortenFQNames="true"
-            value="{% targeted_widget_attribute &quot;my_targeted_widget_attribute&quot; &#10;&#09;criterion_id=&quot;$1criterion_id$&quot;, &#10;&#09;order=&quot;${2:order}&quot;, &#10;&#09;target_type=&quot;${3:target_type}&quot; %}&#10;&#10;{% end_widget_block %}&#10;">
+            value="{% targeted_widget_attribute &quot;my_targeted_widget_attribute&quot; &#10;&#09;criterion_id=&quot;$1criterion_id$&quot;, &#10;&#09;order=&quot;$2order$&quot;, &#10;&#09;target_type=&quot;$3target_type$&quot; %}&#10;&#10;{% end_widget_block %}&#10;">
         <variable alwaysStopAt="true" defaultValue="" expression="" name="1criterion_id"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="2order"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="3target_type"/>
         <context>
             <option name="HTML" value="true"/>
             <option name="CSS" value="true"/>
@@ -1633,8 +1869,24 @@
     <template
             description="A video player&#10;Parameters:&#10;- player_id(number) Id of the video player&#10;- type(String) Type of the player embed code. The value can be iframe, script, or scriptv4&#10;- width(number) Set the width attribute of the video player&#10;- height(number) Set the height attribute of the video player&#10;- hide_playlist(boolean) Hide the playlist if set to true&#10;- viral_sharing(boolean) Display the social networks sharing button on the player if set to true&#10;- embed_button(boolean) Display embed button on the player if set to true&#10;- color(String) Player color&#10;- playlist_color(String) Playlist color&#10;- play_button_color(String) Player play button color&#10;- style(String) Additional style for player&#10;- conversion_asset(String) Event setting for player&#10;- placeholder_alt_text(String) Alt text for video placeholder image&#10;- autoplay(boolean) Plays the video on page load if set to true&#10;- loop(boolean) Loops the video if set to true&#10;- muted(boolean) Mute the player on load if set to true&#10;- hidden_controls(boolean) Hide controls on the player if set to true"
             name="~video_player" toReformat="false" toShortenFQNames="true"
-            value="{% video_player &quot;my_video_player&quot; &#10;&#09;player_id=&quot;$1player_id$&quot;, &#10;&#09;type=&quot;${2:type}&quot;, &#10;&#09;width=&quot;${3:width}&quot;, &#10;&#09;height=&quot;${4:height}&quot;, &#10;&#09;hide_playlist=&quot;${5:hide_playlist}&quot;, &#10;&#09;viral_sharing=&quot;${6:viral_sharing}&quot;, &#10;&#09;embed_button=&quot;${7:embed_button}&quot;, &#10;&#09;color=&quot;${8:color}&quot;, &#10;&#09;playlist_color=&quot;${9:playlist_color}&quot;, &#10;&#09;play_button_color=&quot;${10:play_button_color}&quot;, &#10;&#09;style=&quot;${11:style}&quot;, &#10;&#09;conversion_asset=&quot;${12:conversion_asset}&quot;, &#10;&#09;placeholder_alt_text=&quot;${13:placeholder_alt_text}&quot;, &#10;&#09;autoplay=&quot;${14:autoplay}&quot;, &#10;&#09;loop=&quot;${15:loop}&quot;, &#10;&#09;muted=&quot;${16:muted}&quot;, &#10;&#09;hidden_controls=&quot;${17:hidden_controls}&quot; %}&#10;">
+            value="{% video_player &quot;my_video_player&quot; &#10;&#09;player_id=&quot;$1player_id$&quot;, &#10;&#09;type=&quot;$2type$&quot;, &#10;&#09;width=&quot;$3width$&quot;, &#10;&#09;height=&quot;$4height$&quot;, &#10;&#09;hide_playlist=&quot;$5hide_playlist$&quot;, &#10;&#09;viral_sharing=&quot;$6viral_sharing$&quot;, &#10;&#09;embed_button=&quot;$7embed_button$&quot;, &#10;&#09;color=&quot;$8color$&quot;, &#10;&#09;playlist_color=&quot;$9playlist_color$&quot;, &#10;&#09;play_button_color=&quot;$10play_button_color$&quot;, &#10;&#09;style=&quot;$11style$&quot;, &#10;&#09;conversion_asset=&quot;$12conversion_asset$&quot;, &#10;&#09;placeholder_alt_text=&quot;$13placeholder_alt_text$&quot;, &#10;&#09;autoplay=&quot;$14autoplay$&quot;, &#10;&#09;loop=&quot;$15loop$&quot;, &#10;&#09;muted=&quot;$16muted$&quot;, &#10;&#09;hidden_controls=&quot;$17hidden_controls$&quot; %}&#10;">
         <variable alwaysStopAt="true" defaultValue="" expression="" name="1player_id"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="2type"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="3width"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="4height"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="5hide_playlist"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="6viral_sharing"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="7embed_button"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="8color"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="9playlist_color"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="10play_button_color"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="11style"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="12conversion_asset"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="13placeholder_alt_text"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="14autoplay"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="15loop"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="16muted"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="17hidden_controls"/>
         <context>
             <option name="HTML" value="true"/>
             <option name="CSS" value="true"/>
@@ -1692,8 +1944,9 @@
     <template
             description="Returns a full URL to the specified author's listing page for the specified blog&#10;Parameters:&#10;- selected_blog(blog id or 'default') Specifies which blog to use&#10;- author_slug(author slug) Specifies which author to link to"
             name="~blog_author_url" toReformat="false" toShortenFQNames="true"
-            value="blog_author_url($1selected_blog$, ${2:author_slug})&#10;">
+            value="blog_author_url($1selected_blog$, $2author_slug$)&#10;">
         <variable alwaysStopAt="true" defaultValue="" expression="" name="1selected_blog"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="2author_slug"/>
         <context>
             <option name="HTML" value="true"/>
             <option name="CSS" value="true"/>
@@ -1703,8 +1956,9 @@
     <template
             description="Returns a sequence of blog author objects for the specified blog, sorted by slug ascending&#10;Parameters:&#10;- selected_blog(blog id or 'default') Specifies which blog to use&#10;- limit(numeric) Max authors to return"
             name="~blog_authors" toReformat="false" toShortenFQNames="true"
-            value="blog_authors($1selected_blog$, ${2:limit})&#10;">
+            value="blog_authors($1selected_blog$, $2limit$)&#10;">
         <variable alwaysStopAt="true" defaultValue="" expression="" name="1selected_blog"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="2limit"/>
         <context>
             <option name="HTML" value="true"/>
             <option name="CSS" value="true"/>
@@ -1733,8 +1987,11 @@
     <template
             description="Returns a sequence of blog post objects for the specified blog, sorted by most popular first&#10;Parameters:&#10;- selected_blog(blog id or 'default') Specifies which blog to use&#10;- limit(number) Specifies the number of posts to add to the sequence up to a limit of 200&#10;- tag_slug(tag slug) Optional tag to filter posts by&#10;- time_frame(choice) Optional timeframe to filter posts by (must be one of 'popular_all_time', 'popular_past_year', 'popular_past_six_months', 'popular_past_month')"
             name="~blog_popular_posts" toReformat="false" toShortenFQNames="true"
-            value="blog_popular_posts($1selected_blog$, ${2:limit}, ${3:tag_slug}, ${4:time_frame})&#10;">
+            value="blog_popular_posts($1selected_blog$, $2limit$, $3tag_slug$, $4time_frame$)&#10;">
         <variable alwaysStopAt="true" defaultValue="" expression="" name="1selected_blog"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="2limit"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="3tag_slug"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="4time_frame"/>
         <context>
             <option name="HTML" value="true"/>
             <option name="CSS" value="true"/>
@@ -1744,8 +2001,11 @@
     <template
             description="Returns a full URL to the archive listing page for the given date values on the specified blog&#10;Parameters:&#10;- selected_blog(blog id or 'default') Specifies which blog to use&#10;- year(number) The year&#10;- month(number) The optional month&#10;- day(number) The optional day"
             name="~blog_post_archive_url" toReformat="false" toShortenFQNames="true"
-            value="blog_post_archive_url($1selected_blog$, ${2:year}, ${3:month}, ${4:day})&#10;">
+            value="blog_post_archive_url($1selected_blog$, $2year$, $3month$, $4day$)&#10;">
         <variable alwaysStopAt="true" defaultValue="" expression="" name="1selected_blog"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="2year"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="3month"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="4day"/>
         <context>
             <option name="HTML" value="true"/>
             <option name="CSS" value="true"/>
@@ -1766,8 +2026,10 @@
     <template
             description="Returns a sequence of blog post objects for the specified blog, by the specified author, sorted by most recent first&#10;Parameters:&#10;- selected_blog(blog id or 'default') Specifies which blog to use&#10;- author_slug(author slug) Specifies which author to filter on&#10;- limit(number) Specifies the number of posts to add to the sequence up to a limit of 200"
             name="~blog_recent_author_posts" toReformat="false" toShortenFQNames="true"
-            value="blog_recent_author_posts($1selected_blog$, ${2:author_slug}, ${3:limit})&#10;">
+            value="blog_recent_author_posts($1selected_blog$, $2author_slug$, $3limit$)&#10;">
         <variable alwaysStopAt="true" defaultValue="" expression="" name="1selected_blog"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="2author_slug"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="3limit"/>
         <context>
             <option name="HTML" value="true"/>
             <option name="CSS" value="true"/>
@@ -1777,8 +2039,9 @@
     <template
             description="Returns a sequence of blog post objects for the specified blog, sorted by most recent first&#10;Parameters:&#10;- selected_blog(blog id or 'default') Specifies which blog to use&#10;- limit(number) Specifies the number of posts to add to the sequence, maximum 200."
             name="~blog_recent_posts" toReformat="false" toShortenFQNames="true"
-            value="blog_recent_posts($1selected_blog$, ${2:limit})&#10;">
+            value="blog_recent_posts($1selected_blog$, $2limit$)&#10;">
         <variable alwaysStopAt="true" defaultValue="" expression="" name="1selected_blog"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="2limit"/>
         <context>
             <option name="HTML" value="true"/>
             <option name="CSS" value="true"/>
@@ -1788,8 +2051,10 @@
     <template
             description="Returns a sequence of blog post objects for the specified blog, for the specified tag, sorted by most recent first&#10;Parameters:&#10;- selected_blog(blog id or 'default') Specifies which blog to use&#10;- tag_slug(tag slug) Specifies which tag to filter on&#10;- limit(number) Specifies the number of posts to add to the sequence"
             name="~blog_recent_tag_posts" toReformat="false" toShortenFQNames="true"
-            value="blog_recent_tag_posts($1selected_blog$, ${2:tag_slug}, ${3:limit})&#10;">
+            value="blog_recent_tag_posts($1selected_blog$, $2tag_slug$, $3limit$)&#10;">
         <variable alwaysStopAt="true" defaultValue="" expression="" name="1selected_blog"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="2tag_slug"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="3limit"/>
         <context>
             <option name="HTML" value="true"/>
             <option name="CSS" value="true"/>
@@ -1799,8 +2064,10 @@
     <template
             description="DEPRECATED -- see 'blog_recent_tag_posts'&#10;Returns a sequence of blog post objects for the specified blog, for the specified topic, sorted by most recent first&#10;Parameters:&#10;- selected_blog(blog id or 'default') Specifies which blog to use&#10;- topic_slug(topic slug) Specifies which topic to filter on&#10;- limit(number) Specifies the number of posts to add to the sequence"
             name="~blog_recent_topic_posts" toReformat="false" toShortenFQNames="true"
-            value="blog_recent_topic_posts($1selected_blog$, ${2:topic_slug}, ${3:limit})&#10;">
+            value="blog_recent_topic_posts($1selected_blog$, $2topic_slug$, $3limit$)&#10;">
         <variable alwaysStopAt="true" defaultValue="" expression="" name="1selected_blog"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="2topic_slug"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="3limit"/>
         <context>
             <option name="HTML" value="true"/>
             <option name="CSS" value="true"/>
@@ -1810,8 +2077,9 @@
     <template
             description="Returns a full URL to the specified tag's listing page for the specified blog&#10;Parameters:&#10;- selected_blog(blog id or 'default') Specifies which blog to use&#10;- tag_slug(tag slug) Specifies which tag to link to"
             name="~blog_tag_url" toReformat="false" toShortenFQNames="true"
-            value="blog_tag_url($1selected_blog$, ${2:tag_slug})&#10;">
+            value="blog_tag_url($1selected_blog$, $2tag_slug$)&#10;">
         <variable alwaysStopAt="true" defaultValue="" expression="" name="1selected_blog"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="2tag_slug"/>
         <context>
             <option name="HTML" value="true"/>
             <option name="CSS" value="true"/>
@@ -1821,8 +2089,9 @@
     <template
             description="Returns a sequence of the 250 most blogged-about tags (based on number of associated blog posts) for the specified blog, sorted by blog post count&#10;Parameters:&#10;- selected_blog(blog id or 'default') Specifies which blog to use&#10;- limit(numeric) Max tags to return"
             name="~blog_tags" toReformat="false" toShortenFQNames="true"
-            value="blog_tags($1selected_blog$, ${2:limit})&#10;">
+            value="blog_tags($1selected_blog$, $2limit$)&#10;">
         <variable alwaysStopAt="true" defaultValue="" expression="" name="1selected_blog"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="2limit"/>
         <context>
             <option name="HTML" value="true"/>
             <option name="CSS" value="true"/>
@@ -1832,8 +2101,9 @@
     <template
             description="DEPRECATED -- see 'blog_tags'&#10;Returns a sequence of the 250 most blogged-about topics (based on number of associated blog posts) for the specified blog, sorted by blog post count&#10;Parameters:&#10;- selected_blog(blog id or 'default') Specifies which blog to use&#10;- limit(numeric) Max topics to return"
             name="~blog_topics" toReformat="false" toShortenFQNames="true"
-            value="blog_topics($1selected_blog$, ${2:limit})&#10;">
+            value="blog_topics($1selected_blog$, $2limit$)&#10;">
         <variable alwaysStopAt="true" defaultValue="" expression="" name="1selected_blog"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="2limit"/>
         <context>
             <option name="HTML" value="true"/>
             <option name="CSS" value="true"/>
@@ -1854,8 +2124,9 @@
     <template
             description="Calculates a new hex color value based on a given input string var and multiplier&#10;Parameters:&#10;- base_color(hex color string (i.e. #fefefe)) The starting color to be altered&#10;- brightness_offset(number) A positive or negative number used to lighten or darken the base color"
             name="~color_variant" toReformat="false" toShortenFQNames="true"
-            value="color_variant($1base_color$, ${2:brightness_offset})&#10;">
+            value="color_variant($1base_color$, $2brightness_offset$)&#10;">
         <variable alwaysStopAt="true" defaultValue="" expression="" name="1base_color"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="2brightness_offset"/>
         <context>
             <option name="HTML" value="true"/>
             <option name="CSS" value="true"/>
@@ -1885,8 +2156,12 @@
     <template
             description="Gets a list of objects associated to the id passed in from the HubSpot CRM&#10;Parameters:&#10;- id(id) id of object to find associations from&#10;- association_type id(number) id of the association type to use&#10;- query(string) Optional. Query string delimited by '&amp;'. All expressions are ANDed together. Supported operators are eq (default), neq, lt, lte, gt, gte, is_null and not_null&#10;- properties(string) Optional. A comma-separated list of properties to return. By default, a small set of common properties are returned. The id property is always returned.&#10;- formatting(boolean) Optional. Format values such as dates and currency according to this portal's settings. Omit or pass 'false' for raw strings."
             name="~crm_associations" toReformat="false" toShortenFQNames="true"
-            value="crm_associations($1id$, ${2:association type id}, ${3:query}, ${4:properties}, ${5:formatting})&#10;">
+            value="crm_associations($1id$, $2association__type__id$, $3query$, $4properties$, $5formatting$)&#10;">
         <variable alwaysStopAt="true" defaultValue="" expression="" name="1id"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="2association__type__id"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="3query"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="4properties"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="5formatting"/>
         <context>
             <option name="HTML" value="true"/>
             <option name="CSS" value="true"/>
@@ -1896,8 +2171,11 @@
     <template
             description="Gets a single object from the HubSpot CRM by query. For security, only product objects can be retrieved on any public page. Any other object type must be hosted on a page which is either password protected or requires a CMS Membership login. Objects are returned as a dict of properties and values.&#10;Parameters:&#10;- object_type(string) Case-insensitive. contact, product, company, deal, ticket or quote&#10;- query_or object instance id(string) The id of the object OR a query string, delimited by '&amp;'. All expressions are ANDed together. Supported operators are eq (default), neq, lt, lte, gt, gte, is_null and not_null.&#10;- properties(string) Optional. A comma-separated list of properties to return. By default, a small set of common properties are returned. The id property is always returned.&#10;- formatting(boolean) Optional. Format values such as dates and currency according to this portal's settings. Omit or pass 'false' for raw strings."
             name="~crm_object" toReformat="false" toShortenFQNames="true"
-            value="crm_object($1object__type$, ${2:query or object instance id}, ${3:properties}, ${4:formatting})&#10;">
+            value="crm_object($1object__type$, $2query__or__object__instance__id$, $3properties$, $4formatting$)&#10;">
         <variable alwaysStopAt="true" defaultValue="" expression="" name="1object__type"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="2query__or__object__instance__id"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="3properties"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="4formatting"/>
         <context>
             <option name="HTML" value="true"/>
             <option name="CSS" value="true"/>
@@ -1907,8 +2185,11 @@
     <template
             description="Gets a list of object from the HubSpot CRM by query. For security, only product objects can be retrieved on any public page. Any other object type must be hosted on a page which is either password protected or requires a CMS Membership login. Objects are returned as a list of dicts of properties and values.To page through results, use limit and offset parameters on the query like limit=10&amp;offset=20&#10;Parameters:&#10;- object_type(string) Case-insensitive. contact, product, company, deal, ticket or quote&#10;- query(string) Optional. A query string, delimited by '&amp;'. All expressions are ANDed together. Supported operators are eq (default), neq, lt, lte, gt, gte, is_null and not_null. If the query is not provided, the function will run the default query `offset=0&amp;limit=10` to fetch the objects.&#10;- properties(string) A comma-separated list of properties to return. By default, a small set of common properties are returned. The id property is always returned.&#10;- formatting(boolean) Format values such as dates and currency according to this portal's settings. Omit or pass 'false' for raw strings."
             name="~crm_objects" toReformat="false" toShortenFQNames="true"
-            value="crm_objects($1object__type$, ${2:query}, ${3:properties}, ${4:formatting})&#10;">
+            value="crm_objects($1object__type$, $2query$, $3properties$, $4formatting$)&#10;">
         <variable alwaysStopAt="true" defaultValue="" expression="" name="1object__type"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="2query"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="3properties"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="4formatting"/>
         <context>
             <option name="HTML" value="true"/>
             <option name="CSS" value="true"/>
@@ -1917,9 +2198,9 @@
     </template>
     <template
             description="Renders a call to action embed tag&#10;Parameters:&#10;- guid(String) The ID of the CTA to render&#10;- align_opt(enum justifyleft|justifycenter|justifyright|justifyfull) Adjusts alignment of CTA"
-            name="~cta" toReformat="false" toShortenFQNames="true"
-            value="cta(&quot;$1guid$&quot;, ${2:align_opt})&#10;">
+            name="~cta" toReformat="false" toShortenFQNames="true" value="cta(&quot;$1guid$&quot;, $2align_opt$)&#10;">
         <variable alwaysStopAt="true" defaultValue="" expression="" name="1guid"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="2align_opt"/>
         <context>
             <option name="HTML" value="true"/>
             <option name="CSS" value="true"/>
@@ -1929,8 +2210,10 @@
     <template
             description="formats a date to a string&#10;Parameters:&#10;- var(date) &#10;- format(String) &#10;- timezone(String) Time zone of output date"
             name="~datetimeformat" toReformat="false" toShortenFQNames="true"
-            value="datetimeformat($1var$, &quot;${2:format}&quot;, &quot;${3:timezone}&quot;)&#10;">
+            value="datetimeformat($1var$, &quot;$2format$&quot;, &quot;$3timezone$&quot;)&#10;">
         <variable alwaysStopAt="true" defaultValue="" expression="" name="1var"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="2format"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="3timezone"/>
         <context>
             <option name="HTML" value="true"/>
             <option name="CSS" value="true"/>
@@ -1974,8 +2257,11 @@
     <template
             description="Calculates the ellipsoidal 2D distance between two points on Earth&#10;Parameters:&#10;- point1(location) location from a HubDB column&#10;- point2_lat(number) latitude of point2&#10;- point2_long(number) longitude of point2&#10;- units(string) Units for the return value. Options are FT for feet, MI for miles, M for meters or KM for kilometers"
             name="~geo_distance" toReformat="false" toShortenFQNames="true"
-            value="geo_distance($1point1$, ${2:point2_lat}, ${3:point2_long}, ${4:units})&#10;">
+            value="geo_distance($1point1$, $2point2_lat$, $3point2_long$, $4units$)&#10;">
         <variable alwaysStopAt="true" defaultValue="" expression="" name="1point1"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="2point2_lat"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="3point2_long"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="4units"/>
         <context>
             <option name="HTML" value="true"/>
             <option name="CSS" value="true"/>
@@ -2049,8 +2335,9 @@
     <template
             description="Returns column information for specific column in a table&#10;Parameters:&#10;- table_id(string) id or name of the table&#10;- column(String) id or name of the column"
             name="~hubdb_table_column" toReformat="false" toShortenFQNames="true"
-            value="hubdb_table_column($1table_id$, &quot;${2:column}&quot;)&#10;">
+            value="hubdb_table_column($1table_id$, &quot;$2column$&quot;)&#10;">
         <variable alwaysStopAt="true" defaultValue="" expression="" name="1table_id"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="2column"/>
         <context>
             <option name="HTML" value="true"/>
             <option name="CSS" value="true"/>
@@ -2060,8 +2347,9 @@
     <template
             description="Returns a row from a table by id&#10;Parameters:&#10;- table_id(string) id or name of the table&#10;- row_id(number) id of the row of the table"
             name="~hubdb_table_row" toReformat="false" toShortenFQNames="true"
-            value="hubdb_table_row($1table_id$, ${2:row_id})&#10;">
+            value="hubdb_table_row($1table_id$, $2row_id$)&#10;">
         <variable alwaysStopAt="true" defaultValue="" expression="" name="1table_id"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="2row_id"/>
         <context>
             <option name="HTML" value="true"/>
             <option name="CSS" value="true"/>
@@ -2071,8 +2359,9 @@
     <template
             description="Returns a list of HubDB rows based on the query&#10;Parameters:&#10;- table_id(string) id or name of the table to query&#10;- query(string) A query such in the same format as a URL query string. If not passed, returns all rows."
             name="~hubdb_table_rows" toReformat="false" toShortenFQNames="true"
-            value="hubdb_table_rows($1table_id$, ${2:query})&#10;">
+            value="hubdb_table_rows($1table_id$, $2query$)&#10;">
         <variable alwaysStopAt="true" defaultValue="" expression="" name="1table_id"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="2query"/>
         <context>
             <option name="HTML" value="true"/>
             <option name="CSS" value="true"/>
@@ -2090,8 +2379,9 @@
     <template
             description="Gets the translated message for the language of the rendered page. Currently works only within modules.&#10;Parameters:&#10;- message_name(String) The name of the message to look up&#10;- substitutions(sequence of strings) numbered substitution values used in placeholder 'content' attributes"
             name="~i18n_getmessage" toReformat="false" toShortenFQNames="true"
-            value="i18n_getmessage(&quot;$1message_name$&quot;, ${2:substitutions})&#10;">
+            value="i18n_getmessage(&quot;$1message_name$&quot;, $2substitutions$)&#10;">
         <variable alwaysStopAt="true" defaultValue="" expression="" name="1message_name"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="2substitutions"/>
         <context>
             <option name="HTML" value="true"/>
             <option name="CSS" value="true"/>
@@ -2122,8 +2412,9 @@
     <template
             description="Returns a human-readable string representation of a language code (optionally translated to a target language)&#10;Parameters:&#10;- language_code(string) The language code&#10;- target_language_code(string) The language that the output will be translated to"
             name="~locale_name" toReformat="false" toShortenFQNames="true"
-            value="locale_name($1language_code$, ${2:target_language_code})&#10;">
+            value="locale_name($1language_code$, $2target_language_code$)&#10;">
         <variable alwaysStopAt="true" defaultValue="" expression="" name="1language_code"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="2target_language_code"/>
         <context>
             <option name="HTML" value="true"/>
             <option name="CSS" value="true"/>
@@ -2133,8 +2424,10 @@
     <template
             description="Returns the the nested link structure of an advanced menu.&#10;Parameters:&#10;- menu_id_or menu_name(number or string) The id or name of the menu passed as a number or string.&#10;- root_type(enum) root type of the menu (&quot;site_root&quot;, &quot;top_parent&quot;, &quot;parent&quot;, &quot;page_name&quot;, &quot;page_id&quot;, &quot;breadcrumb&quot;).&quot;site_root&quot; denotes static - Always show top-level pages in menu.&quot;top_parent&quot; denotes dynamic by section - Show pages in menu that are related to section being viewed.&quot;parent&quot; denotes dynamic by page - Show pages in menu that are related to page being viewed.&quot;breadcrumb&quot; denotes breadcrumb style path menu (uses horizontal flow).&#10;- root_key(string) root key (id or name) when using &quot;page_name&quot; or &quot;page_id&quot;"
             name="~menu" toReformat="false" toShortenFQNames="true"
-            value="menu($1menu_id__or__menu_name$, ${2:root_type}, ${3:root_key})&#10;">
+            value="menu($1menu_id__or__menu_name$, $2root_type$, $3root_key$)&#10;">
         <variable alwaysStopAt="true" defaultValue="" expression="" name="1menu_id__or__menu_name"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="2root_type"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="3root_key"/>
         <context>
             <option name="HTML" value="true"/>
             <option name="CSS" value="true"/>
@@ -2175,8 +2468,9 @@
     <template
             description="Returns the value of a contact or contact related property, or a default.&#10;Parameters:&#10;- expression(string) An expression for the object and property to render&#10;- default(string) (Optional) A default value to use if the expression has no value"
             name="~personalization_token" toReformat="false" toShortenFQNames="true"
-            value="personalization_token($1expression$, ${2:default})&#10;">
+            value="personalization_token($1expression$, $2default$)&#10;">
         <variable alwaysStopAt="true" defaultValue="" expression="" name="1expression"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="2default"/>
         <context>
             <option name="HTML" value="true"/>
             <option name="CSS" value="true"/>
@@ -2186,8 +2480,9 @@
     <template
             description="Returns the lat/lon location of a postal code&#10;Parameters:&#10;- postal_code(string) postal code of the location&#10;- country_code(string) Country code for the postal code"
             name="~postal_location" toReformat="false" toShortenFQNames="true"
-            value="postal_location($1postal_code$, ${2:country_code})&#10;">
+            value="postal_location($1postal_code$, $2country_code$)&#10;">
         <variable alwaysStopAt="true" defaultValue="" expression="" name="1postal_code"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="2country_code"/>
         <context>
             <option name="HTML" value="true"/>
             <option name="CSS" value="true"/>
@@ -2196,8 +2491,10 @@
     </template>
     <template
             description="&lt;p&gt;Return a list containing an arithmetic progression of integers.&lt;/p&gt;&lt;p&gt;With one parameter, range will return a list from 0 up to (but not including) the value.  With two parameters, the range will start at the first value and increment by 1 up to (but not including) the second value.  The third parameter specifies the step increment.&lt;/p&gt; &lt;p&gt;All values can be negative. Impossible ranges will return an empty list.&lt;/p&gt;&lt;p&gt;Ranges can generate a maximum of 1000 values.&lt;/p&gt;&#10;Parameters:&#10;- start(number) &#10;- end(number) &#10;- step(number) "
-            name="~range" toReformat="false" toShortenFQNames="true" value="range($1start$, ${2:end}, ${3:step})&#10;">
+            name="~range" toReformat="false" toShortenFQNames="true" value="range($1start$, $2end$, $3step$)&#10;">
         <variable alwaysStopAt="true" defaultValue="" expression="" name="1start"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="2end"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="3step"/>
         <context>
             <option name="HTML" value="true"/>
             <option name="CSS" value="true"/>
@@ -2217,8 +2514,9 @@
     <template
             description="Enqueues a js file to be output in the head or footer&#10;Parameters:&#10;- url(String) &#10;- position(String) "
             name="~require_js" toReformat="false" toShortenFQNames="true"
-            value="require_js(&quot;$1url$&quot;, &quot;${2:position}&quot;)&#10;">
+            value="require_js(&quot;$1url$&quot;, &quot;$2position$&quot;)&#10;">
         <variable alwaysStopAt="true" defaultValue="" expression="" name="1url"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="2position"/>
         <context>
             <option name="HTML" value="true"/>
             <option name="CSS" value="true"/>
@@ -2228,8 +2526,13 @@
     <template
             description="Rewrites the URL of an image in File Manager to a URL that will resize the image on request&#10;Parameters:&#10;- url(string) URL of a HubSpot-hosted image&#10;- width(number) the new image width, in pixels&#10;- height(number) the new image height, in pixels&#10;- length(number) the new length of the largest side, in pixels&#10;- upscale(boolean) use the resized image dimensions even if they would scale up the original image (images may appear blurry)&#10;- upsize(boolean) return the resized image even if it is larger than the original in bytes"
             name="~resize_image_url" toReformat="false" toShortenFQNames="true"
-            value="resize_image_url($1url$, ${2:width}, ${3:height}, ${4:length}, ${5:upscale}, ${6:upsize})&#10;">
+            value="resize_image_url($1url$, $2width$, $3height$, $4length$, $5upscale$, $6upsize$)&#10;">
         <variable alwaysStopAt="true" defaultValue="" expression="" name="1url"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="2width"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="3height"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="4length"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="5upscale"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="6upsize"/>
         <context>
             <option name="HTML" value="true"/>
             <option name="CSS" value="true"/>
@@ -2239,8 +2542,12 @@
     <template
             description="Defines an embeddable object which renders differently in the editor vs a live page&#10;Parameters:&#10;- type(String) Type of embeddable object (wistia|embedly)&#10;- src(String) Object source&#10;- title(String) Object title&#10;- options(String) Options for particular type of embed&#10;- description(String) Description of embed for SEO purposes"
             name="~script_embed" toReformat="false" toShortenFQNames="true"
-            value="script_embed(&quot;$1type$&quot;, &quot;${2:src}&quot;, &quot;${3:title}&quot;, &quot;${4:options}&quot;, &quot;${5:description}&quot;)&#10;">
+            value="script_embed(&quot;$1type$&quot;, &quot;$2src$&quot;, &quot;$3title$&quot;, &quot;$4options$&quot;, &quot;$5description$&quot;)&#10;">
         <variable alwaysStopAt="true" defaultValue="" expression="" name="1type"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="2src"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="3title"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="4options"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="5description"/>
         <context>
             <option name="HTML" value="true"/>
             <option name="CSS" value="true"/>
@@ -2260,8 +2567,9 @@
     </template>
     <template
             description="converts a string and datetime format into a datetime object&#10;Parameters:&#10;- var(datetimeString) datetime as string&#10;- var(datetimeFormat) format of the datetime string"
-            name="~strtotime" toReformat="false" toShortenFQNames="true" value="strtotime($1var$, ${2:var})&#10;">
+            name="~strtotime" toReformat="false" toShortenFQNames="true" value="strtotime($1var$, $2var$)&#10;">
         <variable alwaysStopAt="true" defaultValue="" expression="" name="1var"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="2var"/>
         <context>
             <option name="HTML" value="true"/>
             <option name="CSS" value="true"/>
@@ -2309,8 +2617,10 @@
     <template
             description="truncates a given string to a specified length&#10;Parameters:&#10;- s(String) &#10;- length(number) &#10;- end(String) "
             name="~truncate" toReformat="false" toShortenFQNames="true"
-            value="truncate(&quot;$1s$&quot;, ${2:length}, &quot;${3:end}&quot;)&#10;">
+            value="truncate(&quot;$1s$&quot;, $2length$, &quot;$3end$&quot;)&#10;">
         <variable alwaysStopAt="true" defaultValue="" expression="" name="1s"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="2length"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="3end"/>
         <context>
             <option name="HTML" value="true"/>
             <option name="CSS" value="true"/>
@@ -2851,8 +3161,9 @@
         </context>
     </template>
     <template description="" name="for" toReformat="false" toShortenFQNames="true"
-              value="{% for $1iterable$ in ${2:dict} %}&#10;   {{ $3iterable$ }}&#10;{% endfor %}&#10;">
+              value="{% for $1iterable$ in $2dict$ %}&#10;   {{ $3iterable$ }}&#10;{% endfor %}&#10;">
         <variable alwaysStopAt="true" defaultValue="" expression="" name="1iterable"/>
+        <variable alwaysStopAt="true" defaultValue="" expression="" name="2dict"/>
         <variable alwaysStopAt="true" defaultValue="" expression="" name="3iterable"/>
         <context>
             <option name="HTML" value="true"/>

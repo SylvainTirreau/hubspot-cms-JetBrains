@@ -79,17 +79,17 @@ if __name__ == "__main__":
 
                     value = ""
                     for b in data[d]["body"]:
-
-                        initial_variable = re.search("\$\{.+?\}", b)
-                        if initial_variable:
-                            new_variable = initial_variable.group(0).replace('${', '$').replace('}', '$').replace(" ", "__").replace(":", "")
-                            new_b = b.replace(initial_variable.group(0), new_variable)
-                            value += new_b + "\n"
-                            variable = ET.SubElement(template, 'variable')
-                            variable.set("name", new_variable.replace('$', ''))
-                            variable.set('expression', '')
-                            variable.set('defaultValue', '')
-                            variable.set('alwaysStopAt', 'true')
+                        search_variable = re.findall("\$\{.+?\}", b)
+                        if search_variable:
+                            for var in search_variable:
+                                new_variable = var.replace('${', '$').replace('}', '$').replace(" ", "__").replace(":", "")
+                                b = b.replace(var, new_variable)
+                                variable = ET.SubElement(template, 'variable')
+                                variable.set("name", new_variable.replace('$', ''))
+                                variable.set('expression', '')
+                                variable.set('defaultValue', '')
+                                variable.set('alwaysStopAt', 'true')
+                            value += b + "\n"
                         else:
                             value += b + "\n"
                     template.set('value', value)
