@@ -31,6 +31,8 @@ In your IDE (Webstorm, PHPStorm, Pycharm, etc.), go to **settings** or **Prefere
 ### Restart you IDE
 When you have restarted your IDE, you will be able to type first letters of the abbreviation you want and then press **Ctrl** + **Space** and you'll have Hubspot propositions.
 
+![Activate Hubspot Live Template screenshot](images/screenshot-3.png "Autocompletion")
+
 ## Abbreviations documentation
 
 [Full documentation](REFERENCES.md)
