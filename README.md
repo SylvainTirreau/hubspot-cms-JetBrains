@@ -32,18 +32,18 @@ When you have restarted the IDE, you will be able to type first letters of the a
 
 [Full documentation](REFERENCES.md)
 
-### Troubleshootings
+## Troubleshootings
 
-#### Emmet
+### Emmet
 When autocompletion is done, you can switch between variables of the inserted code by pressing `tab`. But if Emmet is activated, this press on `tab` will create a tag with the string you've just entered.
 
-##### If you're not using Emmet
+#### If you're not using Emmet
 Deactivate it: go to **settings** or **Preferences** section (**IDE name | Preferences** for macOS or **File | Settings** for Windows and Linux), and choose **Editor** > **Emmet** (or search `Emmet`), then unckeck `Enable Emmet` on each subsection (`HTML`, `CSS`, `JSX`).
 
-##### If you're using Emmet
+#### If you're using Emmet
 Just change what you expand abbreviation with: go to **settings** or **Preferences** section (**IDE name | Preferences** for macOS or **File | Settings** for Windows and Linux), and choose **Editor** > **Emmet** (or search `Emmet`), then choose something else than `tab` for the `Expand abbreviation with` option.
 
-#### File types
+### File types
 For simplicity reasons, all abbreviations are setting for HTML, CSS, and JSON files. If it's not efficient enough, we will change it. 
 
 ## Notes
