@@ -1,4 +1,4 @@
-# hubspot-cms-Intellij
+# hubspot-cms-JetBrains
 # MIT License
 # Copyright (c) 2020 Sylvain Tirreau (preferendum.fr)
 #

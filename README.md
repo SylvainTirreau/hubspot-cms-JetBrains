@@ -1,8 +1,8 @@
-# hubspot-cms-IntelliJ
+# hubspot-cms-JetBrains
 
-For fast HubSpot CMS Hub development with IntelliJ IDEs (Webstorm, PHPStorm, Pycharm, etc.).
+For fast HubSpot CMS Hub development with JetBrains IDEs (Webstorm, PHPStorm, Pycharm, etc.).
 
-Those files adapts the [HubSpot Visual Studio Code Extension](https://github.com/HubSpot/hubspot-cms-vscode) for IntelliJ IDEs (Webstorm, PHPStorm, Pycharm, etc.) and it currently supports:
+Those files adapts the [HubSpot Visual Studio Code Extension](https://github.com/HubSpot/hubspot-cms-vscode) for JetBrains IDEs (Webstorm, PHPStorm, Pycharm, etc.) and it currently supports:
 - ~~Syntax highlighting for the HubL templating language~~ ¹
 - Autocomlete for common HubL tags, filters, module fields, and functions
 - ~~Bracket wrapping, indentation, and other helpful editor features~~ ²
@@ -11,7 +11,7 @@ If you're new to CMS Hubspot, check out how to [get started with local developme
 
 ## About 
 
-Autocompletion use Live templating of IntelliJ IDEs (Webstorm, PHPStorm, Pycharm, etc.).
+Autocompletion use Live templating of JetBrains IDEs (Webstorm, PHPStorm, Pycharm, etc.).
 
 Go to `Get started` section to use it quickly.
 
