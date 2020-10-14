@@ -4,7 +4,7 @@ For fast HubSpot CMS Hub development with IntelliJ IDEs (Webstorm, PHPStorm, Pyc
 
 Those files adapts the [HubSpot Visual Studio Code Extension](https://github.com/HubSpot/hubspot-cms-vscode) for IntelliJ IDEs (Webstorm, PHPStorm, Pycharm, etc.) and it currently supports:
 - ~~Syntax highlighting for the HubL templating language~~ ¹
-- Autocomlete for common HubL tags, filters, and functions
+- Autocomlete for common HubL tags, filters, module fields, and functions
 - ~~Bracket wrapping, indentation, and other helpful editor features~~ ²
 
 If you're new to CMS Hubspot, check out how to [get started with local development.](https://designers.hubspot.com/docs/tools/local-development) and the [HubL templating language](https://designers.hubspot.com/docs/hubl/intro-to-hubl).
