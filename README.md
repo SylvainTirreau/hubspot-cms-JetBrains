@@ -22,12 +22,20 @@ Or see documentation of sharing live templates [here](https://www.jetbrains.com/
 ### Copy one file
 Copy the file `templates/hubspot.xml` in the `templates` directory of the IDE configuration directory (see [this page](https://www.jetbrains.com/help/idea/tuning-the-ide.html#config-directory) to know where is this folder on your OS).
 
+#### Linux
+
+On Debian systems, copy the file in `~/.config/[JetbrainsIDEName]/templates`.
+
+#### MAC
+
+Copy the file in `~/Library/Application Support/JetBrains/[JetbrainsIDEName]/jba_config/templates`.
+
 ### Activate the Hubspot live template
 In your IDE (Webstorm, PHPStorm, Pycharm, etc.), go to **settings** or **Preferences** section (**IDE name | Preferences** for macOS or **File | Settings** for Windows and Linux), and choose **Editor** > **Live templates** (or search `Live templates`) and check the **Hubspot** box.
 
 ![Activate Hubspot Live Template screenshot](images/screenshot-1.png "Activate Hubspot Live template")
 ![Activate Hubspot Live Template screenshot](images/screenshot-2.png "Activate Hubspot Live template")
- 
+
 ### Restart you IDE
 When you have restarted your IDE, you will be able to type first letters of the abbreviation you want and then press **Ctrl** + **Space** and you'll have Hubspot propositions.
 
