@@ -1,5 +1,30 @@
 # Abbreviations reference
 
+## !=
+
+
+## <
+
+
+## <=
+
+
+## ==
+
+
+## >
+
+
+## >=
+
+
+## area
+Creates container that supports drag-and-drop in content editors.
+Parameters:
+- name(string) Identifier when storing data for a drag-and-drop area in the editors. Must be unique for all drag-and-drop areas in a template.
+- label(string) Label used in the editor for the drag-and-drop area.
+- class(string) Class names to add to the wrapping div.
+
 ## background_color
 Email-template only alias for the background color defined in Content Settings > Colors and Fonts
 
@@ -14,6 +39,18 @@ Email-template only alias for `site_settings.body_border_color_choice` The varia
 
 ## body_color
 Email-template only alias for `site_settings.body_color` Body color setting from Content Settings > Colors and Fonts. Prints a HEX value.
+
+## boolean
+Return true if object is a boolean (in a strict sense, not in its ability to evaluate to a truthy expression)
+
+## column
+A column inside a drag-and-drop area. Columns can only be children of a section or a row tag.
+Parameters:
+- offset(integer) Number of rows to offset the module in the row (0-11).
+- width(integer) Number of rows wide the module should be.
+- margin(dict) Add top and bottom margin in pixels.
+- background_image(dict) Add a background image to the row.
+- background_color(dict) Specify a background color for the the row.
 
 ## containing
 Returns true if a list contains a value
@@ -124,6 +161,20 @@ Contents is a sequence of your blog posts that is iterated through using a for l
 ## current_page_num
 The integer index of the current page of blog posts in the view.
 
+## default_dnd_module
+Creates a wrapped module inside a drag-and-drop area.
+Parameters:
+- path(string) Path to the module.
+- offset(integer) Number of rows to offset the module in the row (0-11).
+- width(integer) Number of rows wide the module should be.
+- flexbox_positioning(string) Adjust position of the module inside the row. Possible values are TOP_LEFT, TOP_CENTER, or TOP_RIGHT.
+
+## default_module
+A module
+Parameters:
+- module_id(String) The id of the module to render
+- path(String) The path of the module to render. Include leading slash for absolute path, otherwise path is relative to template. Reference HubSpot default modules with paths corresponding to their HubL tags such as @hubspot/rich_text, @hubspot/linked_image, etc.
+
 ## defined
 Return true if the variable is defined
 
@@ -131,6 +182,14 @@ Return true if the variable is defined
 Returns true if a variable is divisible by a number
 Parameters:
 - divisor(number) The number to check whether a number is divisible by
+
+## dnd_module
+Creates a wrapped module inside a drag-and-drop area.
+Parameters:
+- path(string) Path to the module.
+- offset(integer) Number of rows to offset the module in the row (0-11).
+- width(integer) Number of rows wide the module should be.
+- flexbox_positioning(string) Adjust position of the module inside the row. Possible values are TOP_LEFT, TOP_CENTER, or TOP_RIGHT.
 
 ## elif
 Else if statement to be used within if statement
@@ -147,6 +206,9 @@ The email body padding setting. This setting is located in Content Settings > Em
 ## email_body_width
 The email body width setting. This setting is located in Content Settings > Email..
 
+## eq
+
+
 ## equalto
 Returns true if an object has the same value as another object
 Parameters:
@@ -155,11 +217,23 @@ Parameters:
 ## even
 Returns true if the value is even
 
+## false
+Return true if object is a boolean and false
+
+## field.alignment
+HubSpot Alignment Field
+
+## field.backgroundImage
+HubSpot Background Image Field
+
 ## field.blog
 HubSpot Blog Field
 
 ## field.boolean
 HubSpot Boolean Field
+
+## field.border
+HubSpot Border Field
 
 ## field.choice
 HubSpot Choice Field
@@ -191,6 +265,9 @@ HubSpot Font Field
 ## field.form
 HubSpot Form Field
 
+## field.gradient
+HubSpot Gradient Field
+
 ## field.hubdb
 HubSpot HubDB Table
 
@@ -221,16 +298,33 @@ HubSpot Rich Text Field
 ## field.simplemenu
 HubSpot Simple Menu
 
+## field.spacing
+HubSpot Spacing Field
+
 ## field.tag
 HubSpot Tag Field
 
 ## field.text
 HubSpot Text Field
 
+## field.textAlignment
+HubSpot Text Alignment Field
+
 ## field.url
 HubSpot Url Field
 
+## float
+Return true if object is a float
+
 ## for
+
+
+## ge
+Returns true if the first object's value is greater than or equal to the second object's value
+Parameters:
+- other(object) Another object to compare against
+
+## greaterthan
 
 
 ## group
@@ -242,6 +336,11 @@ HubSpot Field Group
 ## group.repeater
 HubSpot Repeater Group
 
+## gt
+Returns true if the first object's value is strictly greater than the second
+Parameters:
+- other(object) Another object to compare against
+
 ## hublblog
 Boilerplate blog markup
 
@@ -251,17 +350,43 @@ Boilerplate html/HubL document
 ## if
 Returns a basic if statement
 
+## in
+Returns true if value is contained in the iterable
+Parameters:
+- list(object) The iterable to check for the value
+
+## integer
+Return true if object is an integer or long
+
 ## iterable
 Return true if the object is iterable (sequence, dict, etc)
 
 ## last_page_num
 The integer index of the last page of blog posts in the view.
 
+## le
+Returns true if the first object's value is less than or equal to the second object's value
+Parameters:
+- other(object) Another object to compare against
+
+## lessthan
+
+
 ## lower
 Return true if the given string is all lowercase
 
+## lt
+Returns true if the first object's value is strictly less than the second
+Parameters:
+- other(object) Another object to compare against
+
 ## mapping
 Return true if the given object is a dict
+
+## ne
+Returns true if an object has the different value from another object
+Parameters:
+- other(object) Another object to check inequality against
 
 ## next_page_num
 The integer index of the next page of blog posts in the view.
@@ -332,6 +457,14 @@ The search engine used to find this page, if applicable. Ex: google, aol, live, 
 ## request.search_keyword
 The keyword phrase used to find this page, if applicable.
 
+## row
+A row inside a drag-and-drop area. Rows can only be children of columns.
+Parameters:
+- margin(dict) Add top and bottom margin in pixels.
+- padding(dict) Add top, bottom, left, and right padding in pixels.
+- background_image(dict) Add a background image to the row.
+- background_color(dict) Specify a background color for the the row.
+
 ## sameas
 Return true if variable is pointing at same object as other variable
 Parameters:
@@ -348,6 +481,15 @@ Email-template only alias for `site_settings.secondary_font_color ` Secondary ac
 
 ## secondary_font_size_num
 Prints the font size number from Content Settings > Colors and Fonts. Excludes 'px'.
+
+## section
+A top-level row inside a drag-and-drop area. Sections can only be children of a drag-and-drop area tag.
+Parameters:
+- max_width(number) Maximum width of the section.
+- margin(dict) Add top and bottom margin in pixels.
+- padding(dict) Add top, bottom, left, and right padding in pixels.
+- background_image(dict) Add a background image to the row.
+- background_color(dict) Specify a background color for the the row.
 
 ## sequence
 Return true if the variable is a sequence. Sequences are variables that are iterable.
@@ -437,11 +579,17 @@ Return true if object is a string which starts with a specified other string
 Parameters:
 - check(string) A second string to check is the start of the first string
 
+## styleTab.group
+Style Tab Field Group
+
 ## subscription_confirmation_url
 Prints the URL of the subscription preferences confirmation page. This URL is dynamically generated on send.
 
 ## subscription_name
 Prints the name of the Email Type specified for that email.
+
+## true
+Return true if object is a boolean and true
 
 ## truthy
 Return true if object is 'truthy'
@@ -471,9 +619,7 @@ Generates a link with help text that leads to a webpage version of an email.
 Generates a link that leads to a webpage version of an email.
 
 ## within
-Returns true if a value is within a list
-Parameters:
-- list(list) A list to check if the value is in.
+
 
 ## |abs
 Return the absolute value of the argument.
@@ -538,8 +684,8 @@ Parameters:
 ## |default
 If the value is undefined it will return the passed default value, otherwise the value of the variable
 Parameters:
-- default_value(String) Value to print when variable is not defined
-- boolean(boolean) Set to True to use with variables which evaluate to false
+- default_value(object) Value to print when variable is not defined
+- truthy(boolean) Set to True to use with variables which evaluate to false
 
 ## |dictsort
 Sort a dict and yield (key, value) pairs.
@@ -603,9 +749,13 @@ Formats a given number as a currency based on the locale and currency code passe
 Parameters:
 - locale(String) Locale in which to format the currency. Any Java locale language tag can be passed as a parameter. The default is the page's locale.Format : ISO639LanguageCodeInLowercase-ISO3166CountryCodeInUppercase
 - currency_code(String) The ISO 4217 code of the currency. The default is the portal's default currency
+- use_default decimal digits(String) A boolean input that determines if formatter needs to use default decimal digits of the currency code. The default is false.
 
 ## |fromjson
 Converts JSON string to Object
+
+## |fromyaml
+Converts a YAML string to an object
 
 ## |geo_distance
 Calculates the ellipsoidal 2D distance between two points on Earth
@@ -722,6 +872,9 @@ Parameters:
 - attribute(String) Attribute to test for and reject items that contain it
 - exp_test(name of expression test) Specify which expression test to run for making the rejection
 
+## |render
+Renders a template string early to be used by other filters and functions
+
 ## |replace
 Return a copy of the value with all occurrences of a substring replaced with a new one. The first argument is the substring that should be replaced, the second is the replacement string. If the optional third argument count is given, only the first count occurrences are replaced
 Parameters:
@@ -785,6 +938,11 @@ Returns string value of object
 ## |striptags
 Strip SGML/XML tags and replace adjacent whitespace by one space.
 
+## |strtodate
+Converts a date string and date format to a date object
+Parameters:
+- dateFormat(String) Format of the date string
+
 ## |strtotime
 Converts a datetime string and datetime format to a datetime object
 Parameters:
@@ -806,6 +964,9 @@ Return a titlecased version of the value. I.e. words will start with uppercase l
 
 ## |tojson
 Writes object as a JSON string
+
+## |toyaml
+Writes object as a YAML string
 
 ## |trim
 Strip leading and trailing whitespace.
@@ -1030,29 +1191,42 @@ Parameters:
 - ids(list) A list of page or blog post ids to look up. Up to 100 content objects can be passed.
 
 ## ~crm_associations
-Gets a list of objects associated to the id passed in from the HubSpot CRM
+Gets a list of associated objects from the HubSpot CRM based on the given object id, association category, and association definition id.Supported object types that can be retrieved are HubSpot built-in objects, portal specific objects, and integrator objects. For security, only portal specific objects and product can be retrieved on any public page. Any other built-in object types (except product) or integrator object types must be hosted on a page which is either password protected or requires a CMS Membership login. Objects are returned as a dict of properties and values.
 Parameters:
-- id(id) id of object to find associations from
-- association_type id(number) id of the association type to use
-- query(string) Optional. Query string delimited by '&'. All expressions are ANDed together. Supported operators are eq (default), neq, lt, lte, gt, gte, is_null and not_null
-- properties(string) Optional. A comma-separated list of properties to return. By default, a small set of common properties are returned. The id property is always returned.
-- formatting(boolean) Optional. Format values such as dates and currency according to this portal's settings. Omit or pass 'false' for raw strings.
+- id(id) The id of object instance to retrieve the associations from.
+- association_category(enumeration) The category of the association definition. Possible values are HUBSPOT_DEFINED, USER_DEFINED, and INTEGRATOR_DEFINED.
+- association_definition id(number) The id of the association definition to use. Hubspot-defined association definition ids for the built-in object types can be found here https://legacydocs.hubspot.com/docs/methods/crm-associations/crm-associations-overview or you can use the API endpoint `/crm/v3/associations/{fromObjectType}/{toObjectType}/types` documented at https://developers.hubspot.com/docs/api/crm/associations
+- query(string) Optional. Http Query Language(HQL) query to filter associated objects. The query can be formed with property expressions ANDed together using the & symbol. The supported expression operators are eq (default), neq, lt, lte, gt, gte, is_null, not_null, in, not_in, and contains(contains is only applicable for multi-valued properties). E.g. for an event "type=sports&date_gt=2020-06-01". If you want to filter by a property which has any of the given set of values, use `in` filter (e.g. type__in=sports,music). If you want to filter by a multi-select property which has all of the given values, use `contains` filter (e.g type__contains=sports,music). If a query is provided, the function will run the default query `offset=0&limit=10` to fetch the objects.
+- properties(string) Optional. The list of property names that should be retrieved. If list is not provided then the properties defined as required are returned and all the properties will be returned if required properties is not defined. The object instance id is always included in the returned object properties even if it is not explicitly added in the property list.
+- formatting(boolean) Optional. Format values such as dates and currency according to this portal's settings. Pass 'false' for raw strings.
 
 ## ~crm_object
-Gets a single object from the HubSpot CRM by query. For security, only product objects can be retrieved on any public page. Any other object type must be hosted on a page which is either password protected or requires a CMS Membership login. Objects are returned as a dict of properties and values.
+Gets a single object from the HubSpot CRM by query or by instance id.Supported object types are HubSpot built-in objects, portal specific objects, and integrator objects.For security, only portal specific objects and product can be retrieved on any public page. Any other built-in object types (except product) or integrator object types must be hosted on a page which is either password protected or requires a CMS Membership login. Objects are returned as a dict of properties and values.
 Parameters:
-- object_type(string) Case-insensitive. contact, product, company, deal, ticket or quote
-- query_or object instance id(string) The id of the object OR a query string, delimited by '&'. All expressions are ANDed together. Supported operators are eq (default), neq, lt, lte, gt, gte, is_null and not_null.
-- properties(string) Optional. A comma-separated list of properties to return. By default, a small set of common properties are returned. The id property is always returned.
-- formatting(boolean) Optional. Format values such as dates and currency according to this portal's settings. Omit or pass 'false' for raw strings.
+- object_type(string) The object type name e.g. 'contact', 'product', 'house_listing', 'publication', 'store_location'. For integrator object types the fully qualified name (FQN) should be used that is the type name prefixed by the app id, e.g. a34343_shipment. The only other case that the FQN should be used is when a portal specific custom object type has the same name as a HubSpot built-in object type, e.g. if a portal specific 'product' object type is needed then the FQN should be used instead of the simple type name like: p129292_contact (the number after the prefix 'p' is the portal id). Since the FQN of portal specific type carries the portal id, It is advised to avoid using the FQN for portal specific types to make the code portable across portals. Object type names are case sensitive except for built-in object types provided by HubSpot, e.g. 'CONTACT' and 'contact' refer to the same object type but 'House_Listing' is different than 'house_listing'
+- query_or object instance id(string) The id of object instance to retrieve. Alternatively a Http Query Language(HQL) query with object type property expressions ANDed together using the & symbol. The supported expression operators are eq (default), neq, lt, lte, gt, gte, is_null, not_null, in, not_in, and contains(contains is only applicable for multi-valued properties). E.g. for an event "type=sports&date_gt=2020-06-01". If you want to filter by a property which has any of the given set of values, use `in` filter (e.g. type__in=sports,music).  If you want to filter by a multi-select property which has all of the given values, use `contains` filter (e.g type__contains=sports,music).
+- properties(string) Optional. The list of property names that should be retrieved. If list is not provided then the properties defined as required are returned. if no required properties have been defined all the properties will be returned. The object instance id is always included in the returned object properties even if it is not explicitly added in the property list.
+- formatting(boolean) Optional. Format values such as dates and currency according to this portal's settings. Pass 'false' for raw strings.
 
 ## ~crm_objects
-Gets a list of object from the HubSpot CRM by query. For security, only product objects can be retrieved on any public page. Any other object type must be hosted on a page which is either password protected or requires a CMS Membership login. Objects are returned as a list of dicts of properties and values.To page through results, use limit and offset parameters on the query like limit=10&offset=20
+Gets a list of object from the HubSpot CRM by query or by list of ids. For security, only product objects can be retrieved on any public page. Supported object types are HubSpot built-in objects, portal specific objects, and integrator objects.For security, only portal specific objects and product can be retrieved on any public page. Any other built-in object types (except product) or integrator object types must be hosted on a page which is either password protected or requires a CMS Membership login. Objects are returned as a list of dict of properties and values.To page through results, use limit and offset parameters on the query like limit=10&offset=20
 Parameters:
-- object_type(string) Case-insensitive. contact, product, company, deal, ticket or quote
-- query(string) Optional. A query string, delimited by '&'. All expressions are ANDed together. Supported operators are eq (default), neq, lt, lte, gt, gte, is_null and not_null. If the query is not provided, the function will run the default query `offset=0&limit=10` to fetch the objects.
-- properties(string) A comma-separated list of properties to return. By default, a small set of common properties are returned. The id property is always returned.
-- formatting(boolean) Format values such as dates and currency according to this portal's settings. Omit or pass 'false' for raw strings.
+- object_type(string) The object type name e.g. 'contact', 'product', 'house_listing', 'publication', 'store_location'. For integrator object types the fully qualified name (FQN) should be used that is the type name prefixed by the app id, e.g. a34343_shipment. The only other case that the FQN should be used is when a portal specific custom object type has the same name as a HubSpot built-in object type, e.g. if a portal specific 'product' object type is needed then the FQN should be used instead of the simple type name like: p129292_contact (the number after the prefix 'p' is the portal id). Since the FQN of portal specific type carries the portal id, It is advised to avoid using the FQN for portal specific types to make the code portable across portals. Object type names are case sensitive except for built-in object types provided by HubSpot, e.g. 'CONTACT' and 'contact' refer to the same object type but 'House_Listing' is different than 'house_listing'
+- query_or list of object ids(string | list) Optional. The list of object instance ids to retrieve. Alternatively a Http Query Language(HQL) query with object type property expressions ANDed together using the & symbol. The supported expression operators are eq (default), neq, lt, lte, gt, gte, is_null, not_null, in, not_in, and contains(contains is only applicable for multi-valued properties). E.g. for an event "type=sports&date_gt=2020-06-01". If you want to filter by a property which has any of the given set of values, use `in` filter (e.g. type__in=sports,music). If you want to filter by a multi-select property which has all of the given values, use `contains` filter (e.g type__contains=sports,music). If neither a list of object instance ids nor a query is provided, the function will run the default query `offset=0&limit=10` to fetch the objects.
+- properties(string) Optional. The list of property names that should be retrieved. If list is not provided then the properties defined as required are returned and all the properties will be returned if required properties is not defined. The object instance id is always included in the returned object properties even if it is not explicitly added in the property list.
+- formatting(boolean) Optional. Format values such as dates and currency according to this portal's settings. Pass 'false' for raw strings.
+
+## ~crm_property_definition
+Gets the property definition for a given object type and property name. Supported object types are HubSpot built-in objects, portal specific objects, and integrator objects.For security, only portal specific objects and product can be retrieved on any public page. Any other built-in object types (except product) or integrator object types must be hosted on a page which is either password protected or requires a CMS Membership login. 
+Parameters:
+- object_type(string) The object type name e.g. 'contact', 'product', 'house_listing', 'publication', 'store_location'. For integrator object types the fully qualified name (FQN) should be used that is the type name prefixed by the app id, e.g. a34343_shipment. The only other case that the FQN should be used is when a portal specific custom object type has the same name as a HubSpot built-in object type, e.g. if a portal specific 'product' object type is needed then the FQN should be used instead of the simple type name like: p129292_contact (the number after the prefix 'p' is the portal id). Since the FQN of portal specific type carries the portal id, It is advised to avoid using the FQN for portal specific types to make the code portable across portals. Object type names are case sensitive except for built-in object types provided by HubSpot, e.g. 'CONTACT' and 'contact' refer to the same object type but 'House_Listing' is different than 'house_listing'
+- property_name(string) The case-insensitive property name to retrieve the definition for. 
+
+## ~crm_property_definitions
+Gets the property definitions for a given object type and set of property names. Supported object types are HubSpot built-in objects, portal specific objects, and integrator objects.For security, only portal specific objects and product can be retrieved on any public page. Any other built-in object types (except product) or integrator object types must be hosted on a page which is either password protected or requires a CMS Membership login. 
+Parameters:
+- object_type(string) The object type name e.g. 'contact', 'product', 'house_listing', 'publication', 'store_location'. For integrator object types the fully qualified name (FQN) should be used that is the type name prefixed by the app id, e.g. a34343_shipment. The only other case that the FQN should be used is when a portal specific custom object type has the same name as a HubSpot built-in object type, e.g. if a portal specific 'product' object type is needed then the FQN should be used instead of the simple type name like: p129292_contact (the number after the prefix 'p' is the portal id). Since the FQN of portal specific type carries the portal id, It is advised to avoid using the FQN for portal specific types to make the code portable across portals. Object type names are case sensitive except for built-in object types provided by HubSpot, e.g. 'CONTACT' and 'contact' refer to the same object type but 'House_Listing' is different than 'house_listing'
+- property_name(string) Optional. The case-insensitive property names to retrieve the definition for. If empty, the definitions for all the properties will be retrieved.
 
 ## ~cta
 Renders a call to action embed tag
@@ -1077,47 +1251,6 @@ Parameters:
 - var(date) 
 - format(String) 
 - timezone(String) Time zone of output date
-
-## ~dnd_area
-Creates container that supports drag-and-drop in content editors.
-Parameters:
-- name(string) Identifier when storing data for a drag-and-drop area in the editors. Must be unique for all drag-and-drop areas in a template.
-- label(string) Label used in the editor for the drag-and-drop area.
-- class(string) Class names to add to the wrapping div.
-
-## ~dnd_column
-A column inside a drag-and-drop area. Columns can only be children of a section or a row tag.
-Parameters:
-- offset(integer) Number of rows to offset the module in the row (0-11).
-- width(integer) Number of rows wide the module should be.
-- margin(dict) Add top and bottom margin in pixels.
-- background_image(dict) Add a background image to the row.
-- background_color(dict) Specify a background color for the the row.
-
-## ~dnd_module
-Creates a wrapped module inside a drag-and-drop area.
-Parameters:
-- path(string) Path to the module.
-- offset(integer) Number of rows to offset the module in the row (0-11).
-- width(integer) Number of rows wide the module should be.
-- flexbox_positioning(string) Adjust position of the module inside the row. Possible values are TOP_LEFT, TOP_CENTER, or TOP_RIGHT.
-
-## ~dnd_row
-A row inside a drag-and-drop area. Rows can only be children of columns.
-Parameters:
-- margin(dict) Add top and bottom margin in pixels.
-- padding(dict) Add top, bottom, left, and right padding in pixels.
-- background_image(dict) Add a background image to the row.
-- background_color(dict) Specify a background color for the the row.
-
-## ~dnd_section
-A top-level row inside a drag-and-drop area. Sections can only be children of a drag-and-drop area tag.
-Parameters:
-- max_width(number) Maximum width of the section.
-- margin(dict) Add top and bottom margin in pixels.
-- padding(dict) Add top, bottom, left, and right padding in pixels.
-- background_image(dict) Add a background image to the row.
-- background_color(dict) Specify a background color for the the row.
 
 ## ~do
 Evaluates expression without printing out result.
@@ -1332,7 +1465,7 @@ Parameters:
 Render an icon from the HubSpot icon library
 Parameters:
 - name(String) The icon name
-- set(String) The icon set name. Currently defined sets: fontawesome-5 (see https://fontawesome.com/icons
+- icon_set(String) The icon set name. Currently defined sets: fontawesome-5 (see https://fontawesome.com/icons
 - style(String) The icon style. Regular, solid, or light
 - format(String) The output format. svg or unicode
 - width(String) The output image width. For svg format only
@@ -1342,6 +1475,8 @@ Parameters:
 
 ## ~if
 Outputs inner content if expression evaluates to true, otherwise evaluates any elif blocks, finally outputting content of any else block present
+Parameters:
+- condition(conditional expression) An expression that evaluates to either true or false
 
 ## ~image
 Renders an image tag
@@ -1353,6 +1488,7 @@ Parameters:
 - hspace(number) Sets the hspace attribute of the img tag
 - style(String) Adds inline CSS declarations to the img tag
 - src(String) Populates the src attribute of the img tag
+- loading(String) Sets the loading attribute of the img tag
 
 ## ~image_slider
 Image slider
@@ -1393,6 +1529,9 @@ Generates stylesheet link tag for specified template path
 Parameters:
 - path(String) The Design Manager file path to the template or file
 
+## ~include_dnd_partial
+
+
 ## ~include_javascript
 Generates script include tag for specified template path
 Parameters:
@@ -1428,6 +1567,7 @@ Parameters:
 - hspace(number) Sets the hspace attribute of the img tag
 - style(String) Adds inline CSS declarations to the img tag
 - src(String) Populates the src attribute of the img tag
+- loading(String) Sets the loading attribute of the img tag
 
 ## ~locale_name
 Returns a human-readable string representation of a language code (optionally translated to a target language)
@@ -1476,6 +1616,7 @@ Parameters:
 - password_confirm_label(String) Label for password confirm input field
 - submit_button_text(String) Label for form submit button
 - show_password(String) Label for Show password buttons
+- password_requirements(String) Label describing Password Requirements
 
 ## ~menu
 Returns the the nested link structure of an advanced menu.
@@ -1525,12 +1666,14 @@ Parameters:
 - password_confirm_label(String) Label from password confirm field
 - submit_button_text(String) Label for form submit button
 - show_password(String) Label for Show password buttons
+- password_requirements(String) Label describing Password Requirements
 
 ## ~password_reset_request
 Render a password reset request form.
 Parameters:
 - email_label(String) Label for email input field
 - submit_button_text(String) Label for form submit button
+- password_reset_message(String) Message displayed after requesting a password reset email
 
 ## ~personalization_token
 Returns the value of a contact or contact related property, or a default.
@@ -1559,7 +1702,7 @@ Parameters:
 - list_tag(String) Sets the tag used for the list
 - list_title(String) List title to display
 - include_featured_image(boolean) Display featured image along with post link
-- listing_type(enum recent|popular_all_time|popular_past_year|popular_past_six_months|popular_past_month|recommended) Selects the type of listing to render
+- listing_type(enum recent|popular_all_time|popular_past_year|popular_past_six_months|popular_past_month) Selects the type of listing to render
 - max_links(number) Sets maximum number of links
 
 ## ~postal_location
@@ -1574,7 +1717,7 @@ Parameters:
 - expr(expression) Expression to print
 
 ## ~range
-<p>Return a list containing an arithmetic progression of integers.</p><p>With one parameter, range will return a list from 0 up to (but not including) the value.  With two parameters, the range will start at the first value and increment by 1 up to (but not including) the second value.  The third parameter specifies the step increment.</p> <p>All values can be negative. Impossible ranges will return an empty list.</p><p>Ranges can generate a maximum of 1000 values.</p>
+Return a list containing an arithmetic progression of integers. With one parameter, range will return a list from 0 up to (but not including) the value. With two parameters, the range will start at the first value and increment by 1 up to (but not including) the second value. The third parameter specifies the step increment. All values can be negative. Impossible ranges will return an empty list. Ranges can generate a maximum of 1000 values.
 Parameters:
 - start(number) 
 - end(number) 
@@ -1605,7 +1748,8 @@ Parameters:
 ## ~require_css
 Loads a css file to be output in the head
 Parameters:
-- url(String) 
+- url(String) URL of the CSS resource to be loaded on the page
+- render_options(dict) Dictionary of options to modify generated tag. Supports 'async'(true/false).
 
 ## ~require_head
 Enqueue a head element
@@ -1613,8 +1757,8 @@ Enqueue a head element
 ## ~require_js
 Enqueues a js file to be output in the head or footer
 Parameters:
-- url(String) 
-- position(String) 
+- url(String) URL of the JavaScript resource to be loaded on the page
+- render_options(dict) Dictionary of options to modify generated tag. Supports 'position'('head'/'footer'), 'defer'(true/false), and 'async'(true/false).
 
 ## ~resize_image_url
 Rewrites the URL of an image in File Manager to a URL that will resize the image on request
@@ -1701,6 +1845,12 @@ Parameters:
 ## ~space
 Used to add an empty module for spacing to the left or right of another module in a row
 
+## ~strtodate
+converts a string and date format into a date object
+Parameters:
+- dateString(string) date as string
+- dateFormat(string) format of the date string
+
 ## ~strtotime
 converts a string and datetime format into a datetime object
 Parameters:
@@ -1755,9 +1905,10 @@ Parameters:
 ## ~truncate
 truncates a given string to a specified length
 Parameters:
-- s(String) 
-- length(number) 
-- end(String) 
+- string(string) String to be truncated
+- length(number) Specifies the length at which to truncate the text (includes HTML characters)
+- killwords(boolean) If true, the string will cut text at length
+- end(String) The characters that will be added to indicate where the text was truncated
 
 ## ~type
 
@@ -1771,6 +1922,11 @@ Parameters:
 Unless is a conditional just like 'if' but works on the inverse logic.
 Parameters:
 - expr(expression) Condition to evaluate
+
+## ~video_metadata_by_player_id
+Returns the metadata of a video by player id. Only works for videos files that allow embedding, sharing, and tracking.
+Parameters:
+- request(id) Request object, {id: long, domain: string}. Id is required. Domain is optional and will override the default domain of the video share url.
 
 ## ~video_player
 A video player
@@ -1792,6 +1948,12 @@ Parameters:
 - loop(boolean) Loops the video if set to true
 - muted(boolean) Mute the player on load if set to true
 - hidden_controls(boolean) Hide controls on the player if set to true
+- full_width(boolean) Make player fit it's container by width
+
+## ~video_thumbnail
+Rewrites the URL of an image in File Manager to a URL that will overlay a play button on request.
+Parameters:
+- request(String) Request object, {url: string, width: integer, height: integer, color: string scale: double} Url has to be the url of a HubSpot-hosted image. One of height or width is required. Color (optional) is a hex color string. Scale (optional) is a number between 0.1 an 1, default scale is 0.5.
 
 ## ~widget_attribute
 Defines a rich attribute for a widget. Only valid within a widget_block tag
