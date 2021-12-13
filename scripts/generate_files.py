@@ -1,6 +1,6 @@
 # hubspot-cms-JetBrains
 # MIT License
-# Copyright (c) 2020 Sylvain Tirreau (preferendum.fr)
+# Copyright (c) 2021 Sylvain Tirreau (preferendum.fr)
 #
 # Write the Live Template xml file and the abbreviations documentation file.
 
