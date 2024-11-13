@@ -17,7 +17,7 @@ root_folder = getcwd()
 temp_folder = path.join(root_folder, "tmp")
 snippets_folder = "snippets"
 # File name is also the name of live template
-file_name = "hubspot"
+file_name = "Hubspot"
 abb_references = {}
 
 
