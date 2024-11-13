@@ -18,6 +18,9 @@
 ## >=
 
 
+## archive_list_page
+Returns true if page is a blog archive page. Ex: https://www.example.com/blog/archive/2020/02 would return true.
+
 ## area
 Creates container that supports drag-and-drop in content editors.
 Parameters:
@@ -26,19 +29,22 @@ Parameters:
 - class(string) Class names to add to the wrapping div.
 
 ## background_color
-Email-template only alias for the background color defined in Content Settings > Colors and Fonts
+Email-template only alias for the background color defined in Settings > Marketing > Email > Configuration > Color
+
+## blog
+An alias for group.
 
 ## blog_author
-Data about blog authors. To be used for blog author listing pages ({% if blog_author %}).
+This variable contains blog author information for blog author listing pages. It can be used to create conditional logic to render markup for blog author listings ({% if blog_author %}).
 
 ## body_border_color
-Email-template only alias for the border color defined in Content Settings > Colors and Fonts
+Email-template only alias for the border color defined in Settings > Marketing > Email > Configuration > Color
 
 ## body_border_color_choice
 Email-template only alias for `site_settings.body_border_color_choice` The variable is used in HubSpot's default email templates to determine whether or not a border should be added. The setting is controlled in Content Settings > Colors and Fonts. It prints values: BORDER_AUTOMATIC, BORDER_MANUAL, BORDER_NONE
 
 ## body_color
-Email-template only alias for `site_settings.body_color` Body color setting from Content Settings > Colors and Fonts. Prints a HEX value.
+Email-template only alias for `site_settings.body_color` setting from Settings > Marketing > Email > Configuration > Color.
 
 ## boolean
 Return true if object is a boolean (in a strict sense, not in its ability to evaluate to a truthy expression)
@@ -51,6 +57,9 @@ Parameters:
 - margin(dict) Add top and bottom margin in pixels.
 - background_image(dict) Add a background image to the row.
 - background_color(dict) Specify a background color for the the row.
+
+## company_domain
+Prints the company domain from Website > Pages > Branding > Logo Link.
 
 ## containing
 Returns true if a list contains a value
@@ -77,17 +86,17 @@ The first and last name of the content creator.
 ## content.author_username
 The HubSpot username of the content creator.
 
-## content.blog
-An alias for group.
-
 ## content.blog_post_author
-Data about a blog posts author. To be used on blog post/listing templates.
+This variable contains individual blog post author information for a given post.
 
 ## content.campaign
 The GUID for the marketing campaign that this page or email is associated with. This unique ID can be found in the URL of a particular campaign in the Campaign's tool.
 
 ## content.campaign_name
-The GUID for the marketing campaign that this page or email is associated with. This unique ID can be found in the URL of a particular campaign in the Campaign's tool.
+The name of the marketing campaign that this page, this post, or this email is associated with.
+
+## content.comment_count
+The number of comments for the current blog post.
 
 ## content.comment_list
 A list of the comments for the current blog post.
@@ -114,7 +123,7 @@ The alt text of the featured image.
 The from name of the email sender.
 
 ## content.meta_description
-Prints the meta description of a page.
+Prints the meta description of a page. When pulling the meta description of a page, it is better to use the variable page_meta.meta_description.
 
 ## content.name
 The name of a post, email, or page. For pages and emails this will print the internal content name, while for posts this will print the post title. For blog posts, this is the post title that displays. For other types of content, this is generally an internal name. This variable includes a wrapper so that it is editable via the UI, when included in blog posts. If you want to print the content name without a wrapper, use page_meta.name.
@@ -126,10 +135,10 @@ Information about the next post, if one exists.
 The body of the blog post.
 
 ## content.post_list_content
-The body blog post content, modified for the listing page. The final output is affected by summary settings in Content Settings > Blog. If featured images are enabled in settings, this varible will remove any images above the read more separator automatically.
+The body blog post content, modified for the listing page. The final output is affected by summary settings in Settings > Website > Blog. If featured images are enabled in settings, this variable will remove any images above the read more separator automatically.
 
 ## content.post_list_summary_featured_image
-The featured image for listing layouts. This variable is affected by the settings in Content Settings > Blog.
+The featured image of post summaries to be used in listing templates. This variable is affected by the settings in Settings > Website > Blog.
 
 ## content.post_summary
 The blog post summary. This content is determined by the read more separator in the blog editor.
@@ -141,7 +150,7 @@ Information about the previous post, if one exists.
 A datetime object representing when the content was published, in UTC time. This variable can be formatted with the datetime filter.
 
 ## content.publish_date_localized
-A string representing the date/time when the blog post was published, formatted according to the blog's language and date formatting settings.
+A string representing the datetime when the content was published using the time zone defined in the account's default settings. This variable is also subject to the language and  date format settings in Settings > Website > Blog > Date Formats.
 
 ## content.reply_to
 The reply to address for the email.
@@ -152,8 +161,14 @@ The subject of the email.
 ## content.template_path
 The Design Manager file path to your template (ie custom/page/web_page_basic/my_template.html).
 
+## content.topic_list
+Can be used to render markup for a topic listing by looping through it. {% for topic in content.topic_list %} The items within contain the properties: name and slug.
+
 ## content.updated
 A datetime object for when the user last updated the content, in UTC time. This variable can be formatted with the datetime filter.
+
+## content_id
+Prints the unique ID for a page, post, or email. This ID can be found in the URL of the editor. You can use this variable as an alias for content.id.
 
 ## contents
 Contents is a sequence of your blog posts that is iterated through using a for loop.
@@ -191,6 +206,21 @@ Parameters:
 - width(integer) Number of rows wide the module should be.
 - flexbox_positioning(string) Adjust position of the module inside the row. Possible values are TOP_LEFT, TOP_CENTER, or TOP_RIGHT.
 
+## dynamic_page_crm_object
+The CRM object of the dynamic page that matches with the page request path. If the request is to the listing page, this value will be null.
+
+## dynamic_page_crm_object_type_fqn
+The fully qualified name (FQN) of the crm object. The FQN is an assigned unique ID for the object, including portal ID and object name. The fqn can be used in the crm_objects function.
+
+## dynamic_page_hubdb_row
+The HubDB row of the dynamic page that matches with the page request path. If the request is to the listing page, this value will be null.
+
+## dynamic_page_hubdb_table_id
+The ID of the table selected in the 'Advanced Settings` tab of the page editor.
+
+## dynamic_page_route_level
+Current depth of a page in a multi-level dynamic template. The value starts at 0 and increments with each additional table layer.
+
 ## elif
 Else if statement to be used within if statement
 
@@ -198,13 +228,13 @@ Else if statement to be used within if statement
 Else statement to be used within if statement
 
 ## email_body_border_css
-Email-template only alias which generates the css styles for the email border based on content settings email settings.
+Email-template only alias which generates the css styles for the email border.
 
 ## email_body_padding
-The email body padding setting. This setting is located in Content Settings > Email.
+The email body padding setting. This setting is located in Settings > Marketing > Email > Configuration > Size.
 
 ## email_body_width
-The email body width setting. This setting is located in Content Settings > Email..
+The email body width setting. This setting is located in Settings > Marketing > Email > Configuration > Size.
 
 ## eq
 
@@ -219,6 +249,9 @@ Returns true if the value is even
 
 ## false
 Return true if object is a boolean and false
+
+## favicon_link
+Prints the source URL of the favicon. This image is set in Settings > Website > Pages > Branding.
 
 ## field.alignment
 HubSpot Alignment Field
@@ -341,11 +374,17 @@ Returns true if the first object's value is strictly greater than the second
 Parameters:
 - other(object) Another object to compare against
 
+## hub_id
+The portal ID of your HubSpot account.
+
 ## hublblog
 Boilerplate blog markup
 
 ## hubldoc
 Boilerplate html/HubL document
+
+## hubspot_analytics_tracking_code
+Includes the analytics tracking code. This tag is not necessary, because standard_footer_includes, already renders the tracking code.
 
 ## if
 Returns a basic if statement
@@ -357,6 +396,48 @@ Parameters:
 
 ## integer
 Return true if object is an integer or long
+
+## is_in_blog_post_editor
+Returns true if content is being rendered within the blog post editor.
+
+## is_in_blog_post_previewer
+Returns true if content is being rendered within the blog post previewer.
+
+## is_in_editor
+Returns true if content is being rendered within any content editor.
+
+## is_in_email_editor
+Returns true if content is being rendered within the email editor.
+
+## is_in_email_previewer
+Returns true if content is being rendered within the email previewer.
+
+## is_in_global_content_editor
+Returns true if content is being rendered within the global content editor.
+
+## is_in_hs_app
+Returns true if content is being rendered within the HubSpot app.
+
+## is_in_module_previewer
+Returns true if content is being rendered within the module previewer.
+
+## is_in_page_editor
+Returns true if content is being rendered within the page editor.
+
+## is_in_page_previewer
+Returns true if content is being rendered within the page previewer.
+
+## is_in_previewer
+Returns true if content is being rendered within any preview context.
+
+## is_in_template_previewer
+Returns true if content is being rendered within the template previewer.
+
+## is_in_theme_editor
+Returns true if content is being rendered within the theme editor.
+
+## is_in_theme_previewer
+Returns true if content is being rendered within the theme previewer.
 
 ## iterable
 Return true if the object is iterable (sequence, dict, etc)
@@ -372,6 +453,12 @@ Parameters:
 ## lessthan
 
 
+## local_dt
+A datetime object of the current time in the time zone defined in your Report Settings. Usage of this variable will disable page caching in order to return the current time. May hurt page performance. Use JavaScript instead to get current date and time in a cacheable way.
+
+## local_time_zone
+The time zone, as configured in your HubSpot Report Settings.
+
 ## lower
 Return true if the given string is all lowercase
 
@@ -383,6 +470,24 @@ Parameters:
 ## mapping
 Return true if the given object is a dict
 
+## membership_company_name
+This is the company name listed in Private Content > General Settings.
+
+## membership_domain
+This is the domain of the private content website.
+
+## membership_password_reset_link
+Link to the reset password page for the private content website.
+
+## membership_password_saved_link
+Link to the password saved page. The link will redirect the visitor to a random restricted page that they have access to.
+
+## membership_registration_link
+Link to the registration page for the private content website.
+
+## membership_website_admin
+This is the website admin listed in Private Content > General Settings.
+
 ## ne
 Returns true if an object has the different value from another object
 Parameters:
@@ -390,6 +495,42 @@ Parameters:
 
 ## next_page_num
 The integer index of the next page of blog posts in the view.
+
+## node.activeBranch
+True if the node is in the top-level branch that the current page is in.
+
+## node.activeNode
+True if the node is the current page.
+
+## node.children
+The list of child nodes for the current node.
+
+## node.contentGroupId
+Blog ID of the page if it is a HubSpot blog post.
+
+## node.label
+The menu label of the page.
+
+## node.level
+The number of levels deep the current node is from the top-level nodes.
+
+## node.linkTarget
+Link target of the page.
+
+## node.pageId
+ID of the page if within HubSpot.
+
+## node.pageTitle
+Name of the content page if within HubSpot.
+
+## node.parentNode
+The parent node of the current node. The parent node will have the current node in its children property.
+
+## node.slug
+Path slug of the page.
+
+## node.url
+URL of the page.
 
 ## none
 Return true if the given object is null / none
@@ -406,17 +547,35 @@ Generates overrideable=False for HubL tags
 ## otrue
 Generates overrideable=True for HubL tags
 
+## page_meta.canonical_url
+The official URL that this page should be accessed at. Usually does not include any query string parameters. Use this for the rel="canonical" tag. HubSpot automatically canonicalizes URLs.
+
+## page_meta.html_title
+The title of the page. This variable should be used in the <title> tag of HTML templates.
+
+## page_meta.meta_description
+The meta description of a page. This variable should be used in the "description" <meta> tag of HTML templates.
+
+## page_meta.name
+An alias for content.name
+
+## portal_id
+An alias for hub_id
+
 ## primary_accent_color
-Email-template only alias for `site_settings.primary_accent_color` Primary accent color setting from Content Settings > Colors and Fonts. Prints a HEX value.
+Email-template only alias for `site_settings.primary_accent_color`.
 
 ## primary_font
-Email-template only alias for `site_settings.primary_font`. Primary font setting from Content Settings > Colors and Fonts.
+Email-template only alias for `site_settings.primary_font`.
+
+## primary_font_color
+Email-template only alias for `site_settings.primary_font_color`.
 
 ## primary_font_size
-Email-template only alias for `site_settings.primary_font_size`. Primary font size setting from Content Settings > Colors and Fonts. Includes 'px'.
+Email-template only alias for `site_settings.primary_font_size`.
 
 ## primary_font_size_num
-Prints the font size number from Content Settings > Colors and Fonts. Excludes 'px'.
+Prints the font size number from Settings > Marketing > Email > Configuration > Font. Excludes 'px'.
 
 ## request.cookies
 A dictionary of cookie names mapped to cookie values.
@@ -425,7 +584,7 @@ A dictionary of cookie names mapped to cookie values.
 The domain used to access this page.
 
 ## request.full_url
-The URL used to access this page, with the query string.
+The URL used to access this page.
 
 ## request.headers
 A dictionary of available request headers.
@@ -440,7 +599,7 @@ The path and query component of the URL.
 The query string component of the URL.
 
 ## request.query_dict
-The query string coverted into a name->value dictionary.
+The query string converted into a name -> value dictionary.
 
 ## request.referrer
 The HTTP referrer, the url of the page that linked to the current page.
@@ -457,6 +616,9 @@ The search engine used to find this page, if applicable. Ex: google, aol, live, 
 ## request.search_keyword
 The keyword phrase used to find this page, if applicable.
 
+## request_contact
+A dictionary containing data about the requested contact.
+
 ## row
 A row inside a drag-and-drop area. Rows can only be children of columns.
 Parameters:
@@ -465,22 +627,37 @@ Parameters:
 - background_image(dict) Add a background image to the row.
 - background_color(dict) Specify a background color for the the row.
 
+## row.hs_child_table_id
+The child table ID of the HubDB row. Can be used to build nested templates.
+
+## row.hs_id
+The internal ID of a HubDB row.
+
+## row.hs_name
+The name of the HubDB row.
+
+## row.hs_parent_row
+The parent row of the HubDB row. Can only be used when using child tables for nested templates.
+
+## row.hs_path
+The path of the HubDB row. Used to resolve a request to one row in the table specified by dynamic_page_hubdb_table_id.
+
 ## sameas
 Return true if variable is pointing at same object as other variable
 Parameters:
 - other(object) A second object to check the variables value against
 
 ## secondary_accent_color
-Email-template only alias for `site_settings.secondary_accent_color ` Secondary accent color setting from Content Settings > Colors and Fonts. Prints a HEX value.
+Email-template only alias for `site_settings.secondary_accent_color`
 
 ## secondary_font
-Email-template only alias for `site_settings.secondary_font ` Secondary font setting from Content Settings > Colors and Fonts.
+Email-template only alias for `site_settings.secondary_font`
 
 ## secondary_font_color
-Email-template only alias for `site_settings.secondary_font_color ` Secondary accent color setting from Content Settings > Colors and Fonts. Prints a HEX value.
+Email-template only alias for `site_settings.secondary_font_color`
 
 ## secondary_font_size_num
-Prints the font size number from Content Settings > Colors and Fonts. Excludes 'px'.
+Prints the font size number from Settings > Marketing > Email > Configuration > Font. Excludes 'px'.
 
 ## section
 A top-level row inside a drag-and-drop area. Sections can only be children of a drag-and-drop area tag.
@@ -494,77 +671,86 @@ Parameters:
 ## sequence
 Return true if the variable is a sequence. Sequences are variables that are iterable.
 
+## simple_list_page
+A boolean to indicate whether the requested page is the 'all posts' page containing links to all blog posts.
+
+## site_settings.background_color
+Background color setting from Settings > Marketing > Email > Configuration > Color. Prints a HEX value.
+
+## site_settings.body_border_color
+Body border color setting from Settings > Marketing > Email > Configuration > Color. This option becomes available when you select 'Manually set email border color' under the 'Border Color Options' dropdown. Prints a HEX value.
+
 ## site_settings.body_border_color_choice
-The variable is used in HubSpot's default email templates to determine whether or not a border should be added. The setting is controlled in Content Settings > Colors and Fonts. It prints values: BORDER_AUTOMATIC, BORDER_MANUAL, BORDER_NONE.
+The variable is used in HubSpot's default email templates to determine whether or not a border should be added. The setting is controlled in Content Settings > Colors and Fonts. It prints values: BORDER_AUTOMATIC, BORDER_MANUAL, BORDER_NONE
 
 ## site_settings.body_color
-Body color setting from Content Settings > Colors and Fonts. Prints a HEX value.
+Body color setting from Settings > Marketing > Email > Configuration > Color. Prints a HEX value.
 
 ## site_settings.color_picker_favorite_1
-Favorite color 1 setting from Content Settings > Colors and Fonts. Prints a HEX value. Replace 1 with 2-6 to modify the tag for other favorite color settings..
+Favorite color 1 setting from Settings > Marketing > Email > Configuration > Color. Prints a HEX value. Replace 1 with 2-6 to modify the tag for other favorite color settings.
 
 ## site_settings.color_picker_favorite_2
-Favorite color 2 setting from Content Settings > Colors and Fonts. Prints a HEX value. Replace 2 with 2-6 to modify the tag for other favorite color settings..
+Favorite color 2 setting from Settings > Marketing > Email > Configuration > Color. Prints a HEX value. Replace 2 with 2-6 to modify the tag for other favorite color settings.
 
 ## site_settings.color_picker_favorite_3
-Favorite color 3 setting from Content Settings > Colors and Fonts. Prints a HEX value. Replace 3 with 2-6 to modify the tag for other favorite color settings..
+Favorite color 3 setting from Settings > Marketing > Email > Configuration > Color. Prints a HEX value. Replace 3 with 2-6 to modify the tag for other favorite color settings.
 
 ## site_settings.color_picker_favorite_4
-Favorite color 4 setting from Content Settings > Colors and Fonts. Prints a HEX value. Replace 4 with 2-6 to modify the tag for other favorite color settings..
+Favorite color 4 setting from Settings > Marketing > Email > Configuration > Color. Prints a HEX value. Replace 4 with 2-6 to modify the tag for other favorite color settings.
 
 ## site_settings.color_picker_favorite_5
-Favorite color 5 setting from Content Settings > Colors and Fonts. Prints a HEX value. Replace 5 with 2-6 to modify the tag for other favorite color settings..
+Favorite color 5 setting from Settings > Marketing > Email > Configuration > Color. Prints a HEX value. Replace 5 with 2-6 to modify the tag for other favorite color settings.
 
 ## site_settings.color_picker_favorite_6
-Favorite color 6 setting from Content Settings > Colors and Fonts. Prints a HEX value. Replace 6 with 2-6 to modify the tag for other favorite color settings..
+Favorite color 6 setting from Settings > Marketing > Email > Configuration > Color. Prints a HEX value. Replace 6 with 2-6 to modify the tag for other favorite color settings.
 
 ## site_settings.company_city
-Prints the company city (set in Content Settings > Email > Footer Information).
+Prints the company city (set in Settings > Marketing > Email > Configuration > Footer).
 
 ## site_settings.company_name
-Prints the company name (set in Content Settings > Email > Footer Information).
+Prints the company name (set in Settings > Marketing > Email > Configuration > Footer).
 
 ## site_settings.company_state
-Prints the company state (set in Content Settings > Email > Footer Information).
+Prints the company state (set in Settings > Marketing > Email > Configuration > Footer).
 
 ## site_settings.company_street_address_1
-Prints the company address (set in Content Settings > Email > Footer Information).
+Prints the company address (set in Settings > Marketing > Email > Configuration > Footer).
 
 ## site_settings.company_street_address_2
-Prints the address line 2 from Content Settings > Email > Footer Information.
+Prints the address line 2 from Settings > Marketing > Email > Configuration > Footer.
 
 ## site_settings.office_location_name
-Prints the office location name from Content Settings > Email > Footer Information.
+Prints the office location name from Settings > Marketing > Email > Configuration > Footer.
 
 ## site_settings.primary_accent_color
-Primary accent color setting from Content Settings > Colors and Fonts. Prints a HEX value.
+Primary accent color setting from Settings > Marketing > Email > Configuration > Color. Prints a HEX value.
 
 ## site_settings.primary_font
-Primary font setting from Content Settings > Colors and Fonts. 
+Primary font setting from Settings > Marketing > Email > Configuration > Font. Prints value from dropdown.
 
 ## site_settings.primary_font_color
-Primary font color setting from Content Settings > Colors and Fonts. Prints a HEX value.
+Primary font color setting from Settings > Marketing > Email > Configuration > Font. Prints a HEX value.
 
 ## site_settings.primary_font_size
-Primary font size setting from Content Settings > Colors and Fonts. Includes 'px'.
+Primary font size setting from Settings > Marketing > Email > Configuration > Font. Includes 'px'.
 
 ## site_settings.secondary_accent_color
-Secondary font color setting from Content Settings > Colors and Fonts. Prints a HEX value.
+Secondary font color setting from Settings > Marketing > Email > Configuration > Color Prints a HEX value.
 
 ## site_settings.secondary_font
-Secondary font setting from Content Settings > Colors and Fonts. 
+Secondary font setting from Settings > Marketing > Email > Configuration > Font. Prints value from dropdown.
 
 ## site_settings.secondary_font_color
-Secondary font color setting from Content Settings > Colors and Fonts. Prints a HEX value.
+Secondary font color setting from Settings > Marketing > Email > Configuration > Font Prints a HEX value.
 
 ## site_settings.secondary_font_size
-Primary font size setting from Content Settings > Colors and Fonts. Includes 'px'.
+Primary font size setting from Settings > Marketing > Email > Configuration > Font. Includes 'px'.
 
 ## standard_footer_includes
-Renders the HubSpot tracking code, public_common.js, and any other code included in your Footer HTML in Content Settings or the options of a particular page. This tag should be inserted directly before the closing body tag.
+Renders the HubSpot tracking code and any other code included in your Footer HTML in Content Settings or the options of a particular page. This tag should be inserted directly before the closing body tag.
 
 ## standard_header_includes
-Adds jQuery, public_common.css, layout.css, any attached stylesheets, a meta viewport tag, Google analytics tracking code, other page meta information, and code added to the head tag at the domain/template/page level. This variable should be added to the <head> of HTML templates.
+Adds jQuery, layout.css, any attached stylesheets, a meta viewport tag, Google Analytics tracking code, other page meta information, and code added to the head tag at the domain/template/page level. This variable should be added to the <head> of HTML templates.
 
 ## string
 Return true if object is a string
@@ -621,6 +807,9 @@ Generates a link that leads to a webpage version of an email.
 ## within
 
 
+## year
+Prints the current year.
+
 ## |abs
 Return the absolute value of the argument.
 
@@ -629,10 +818,23 @@ adds a number to the existing value
 Parameters:
 - addend(number) The number added to the base number
 
+## |allow_snake_case
+Allow keys on the provided camelCase map to be accessed using snake_case
+
 ## |attr
 Renders the attribute of a dictionary
 Parameters:
 - name(String) The dictionary attribute name to access
+
+## |b64decode
+Decode a base 64 input into a string.
+Parameters:
+- encoding(string) The string encoding charset to use.
+
+## |b64encode
+Encode the string input into base 64.
+Parameters:
+- encoding(string) The string encoding charset to use.
 
 ## |batch
 A filter that groups up items within a sequence
@@ -714,8 +916,22 @@ Parameters:
 ## |escape
 Converts the characters &, <, >, ‘, and ” in string s to HTML-safe sequences. Use this filter if you need to display text that might contain such characters in HTML. Marks return value as markup string.
 
+## |escape_attr
+Escapes the content of an HTML attribute input
+
+## |escape_html
+Escapes the content of an HTML input
+
 ## |escape_jinjava
 Converts the characters { and } in string s to Jinjava-safe sequences. Use this filter if you need to display text that might contain such characters in Jinjava. Marks return value as markup string.
+Parameters:
+- all_braces(boolean) Whether to only escape all curly braces or just when there are default expression, tag, or comment marks
+
+## |escape_js
+Escapes the content of an string input so it can be safely inserted into JavaScript
+
+## |escape_url
+Escapes the content of a URL input
 
 ## |escapejs
 Escapes strings so that they can be safely inserted into a JavaScript variable declaration
@@ -730,6 +946,12 @@ Parameters:
 
 ## |first
 Return the first item of a sequence.
+
+## |flatten
+Create a new list with all sub-lists recursively added to it up to the specified depth.
+Parameters:
+- list(list) The original list.
+- depth(number) The depth level specifying how deep a nested list structure should be flattened. Defaults to 1. Max is 10.
 
 ## |float
 Convert the value into a floating point number.
@@ -750,6 +972,49 @@ Parameters:
 - locale(String) Locale in which to format the currency. Any Java locale language tag can be passed as a parameter. The default is the page's locale.Format : ISO639LanguageCodeInLowercase-ISO3166CountryCodeInUppercase
 - currency_code(String) The ISO 4217 code of the currency. The default is the portal's default currency
 - use_default decimal digits(String) A boolean input that determines if formatter needs to use default decimal digits of the currency code. The default is false.
+- extend_Decimal Digits To Value Precision(String) A boolean input that determines if formatter needs to use the number of decimal digits from the given value. If the number of decimal digits from the input value is greater than the default number of decimal digits of the currency, use the number of decimal digits from the input value. Otherwise use the currency's default. The default is false.
+
+## |format_currency_value
+Formats a given number as a currency.
+Parameters:
+- locale(String) The language tag for the locale to use. Defaults to the page's locale.
+Format: ISO639LanguageCodeInLowercase-ISO3166CountryCodeInUppercase
+- currency(String) The ISO 4217 code of the currency to use. Defaults to the portal's default currency.
+- minDecimalDigits(integer) The minimum number of decimal digits to use. Defaults to the currency's default number of decimal digits.
+- maxDecimalDigits(integer) The maximum number of decimal digits to use. Defaults to the currency's default number of decimal digits.
+
+## |format_date
+Formats the date component of a date object
+Parameters:
+- format(String) The format to use. One of 'short', 'medium', 'long', 'full', or a custom pattern following Unicode LDML
+https://unicode.org/reports/tr35/tr35-dates.html#Date_Format_Patterns
+- timeZone(String) Time zone of the output date in IANA TZDB format
+https://data.iana.org/time-zones/tzdb/
+- locale(String) The locale to use for locale-aware formats
+
+## |format_datetime
+Formats both the date and time components of a date object
+Parameters:
+- format(String) The format to use. One of 'short', 'medium', 'long', 'full', or a custom pattern following Unicode LDML
+https://unicode.org/reports/tr35/tr35-dates.html#Date_Format_Patterns
+- timeZone(String) Time zone of the output date in IANA TZDB format
+https://data.iana.org/time-zones/tzdb/
+- locale(String) The locale to use for locale-aware formats
+
+## |format_number
+Formats a given number based on the locale passed in as a parameter.
+Parameters:
+- locale(String) Locale in which to format the number. The default is the page's locale.
+- max_decimal precision(number) A number input that determines the decimal precision of the formatted value. If the number of decimal digits from the input value is less than the decimal precision number, use the number of decimal digits from the input value. Otherwise, use the decimal precision number. The default is the number of decimal digits from the input value.
+
+## |format_time
+Formats the time component of a date object
+Parameters:
+- format(String) The format to use. One of 'short', 'medium', 'long', 'full', or a custom pattern following Unicode LDML
+https://unicode.org/reports/tr35/tr35-dates.html#Date_Format_Patterns
+- timeZone(String) Time zone of the output date in IANA TZDB format
+https://data.iana.org/time-zones/tzdb/
+- locale(String) The locale to use for locale-aware formats
 
 ## |fromjson
 Converts JSON string to Object
@@ -853,7 +1118,7 @@ Parameters:
 Pretty print a variable. Useful for debugging.
 
 ## |random
-Return a random item from the sequence.
+
 
 ## |regex_replace
 Return a copy of the value with all occurrences of a matched regular expression (Java RE2 syntax) replaced with a new one. The first argument is the regular expression to be matched, the second is the replacement string
@@ -899,6 +1164,9 @@ Parameters:
 ## |safe
 Mark the value as safe, which means that in an environment with automatic escaping enabled this variable will not be escaped.
 
+## |sanitize_html
+Sanitizes the content of an HTML input
+
 ## |select
 Filters a sequence of objects by applying a test to the object and only selecting the ones with the test succeeding.
 Parameters:
@@ -911,12 +1179,12 @@ Parameters:
 - exp_test(name of expression test) Specify which expression test to run for making the selection
 
 ## |shuffle
-Randomly shuffle a given list, returning a new list with all of the items of the original list in a random order
+
 
 ## |slice
 Slice an iterator and return a list of lists containing those items.
 Parameters:
-- slices(number) Specifies how many items will be sliced
+- slices(number) Specifies how many items will be sliced. Maximum value is 1000. 
 - fillWith(object) Specifies which object to use to fill missing values on final iteration
 
 ## |sort
@@ -985,6 +1253,9 @@ Parameters:
 - end(String) The characters that will be added to indicate where the text was truncated
 - breakword(boolean) If set to true, text will be truncated in the middle of words
 
+## |unescape_html
+Converts HTML entities in string s to Unicode characters.
+
 ## |union
 Returns a list containing elements present in either list
 Parameters:
@@ -996,10 +1267,13 @@ Parameters:
 - attr(Optional attribute on object to use as unique identifier) 
 
 ## |unixtimestamp
-Gets the UNIX timestamp value (in milliseconds) of a date object
+
 
 ## |upper
 Convert a value to uppercase
+
+## |urldecode
+Decodes encoded URL strings back to the original URL. It accepts both dictionaries and regular strings as well as pairwise iterables.
 
 ## |urlencode
 Escape strings for use in URLs (uses UTF-8 encoding). It accepts both dictionaries and regular strings as well as pairwise iterables.
@@ -1048,9 +1322,9 @@ Parameters:
 - limit(numeric) Max authors to return
 
 ## ~blog_by_id
-Returns a Blog by id
+Returns a Blog by id or the default Blog
 Parameters:
-- id(id) The id of the blog to look up
+- id(id or 'default') The id of the blog to look up or 'default'
 
 ## ~blog_comments
 Renders the blog comments embed tag
@@ -1058,6 +1332,7 @@ Parameters:
 - select_blog('default' or blog id) Species which blog is connected to the comments embed
 - limit(number) Sets maximum number of comments
 - skip_css(bool) 
+- message(string) This message is displayed when there are no comments. By default, it appears as empty.
 
 ## ~blog_page_link
 Returns the absolute url of the specified paginated listing page for the current blog
@@ -1069,8 +1344,9 @@ Returns a sequence of blog post objects for the specified blog, sorted by most p
 Parameters:
 - selected_blog(blog id or 'default') Specifies which blog to use
 - limit(number) Specifies the number of posts to add to the sequence up to a limit of 200
-- tag_slug(tag slug) Optional tag to filter posts by
+- tag_slug(list) Optional list of tags to filter posts by
 - time_frame(choice) Optional timeframe to filter posts by (must be one of 'popular_all_time', 'popular_past_year', 'popular_past_six_months', 'popular_past_month')
+- logical_operator(string) Logical operator which, when tag_slug is a list, specifies how to logically filter on the slugs. Must be one of 'AND', 'OR'
 
 ## ~blog_post_archive_url
 Returns a full URL to the archive listing page for the given date values on the specified blog
@@ -1084,6 +1360,9 @@ Parameters:
 Returns a blog post by id
 Parameters:
 - blog_post_id(id) The id of the blog post to look up
+
+## ~blog_post_summary_wrapper
+
 
 ## ~blog_recent_author_posts
 Returns a sequence of blog post objects for the specified blog, by the specified author, sorted by most recent first
@@ -1104,6 +1383,7 @@ Parameters:
 - selected_blog(blog id or 'default') Specifies which blog to use
 - tag_slug(tag slug) Specifies which tag to filter on
 - limit(number) Specifies the number of posts to add to the sequence
+- logical_operator(string) Logical operator which, when tag_slug is a list, specifies how to logically filter on the slugs. Must be one of 'AND', 'OR'
 
 ## ~blog_recent_topic_posts
 DEPRECATED -- see 'blog_recent_tag_posts'
@@ -1123,9 +1403,10 @@ Parameters:
 Blog subscription module
 Parameters:
 - select_blog('default' or blog id) Selects which blog subscription form to render
-- title(String) Defines text in an h3 tag title above the subscribe form
-- no_title(boolean)  If True, the h3 tag above the title is removed
+- title(String) Defines text in a <heading_level> tag title above the subscribe form
+- no_title(boolean)  If True, the <heading_level> tag above the title is removed
 - response_message(String) Defines the inline thank-you message that is rendered when a user submits a form
+- heading_level(String) Defines the heading level of the title
 - edit_form_link(String) Generates a link that allows users to click through to the corresponding Form editor screen
 
 ## ~blog_tag_url
@@ -1170,6 +1451,13 @@ Parameters:
 A color picker module
 Parameters:
 - color(String) A default HEX color value for the color picker module
+
+## ~color_contrast
+Returns true or false based on wheater or not given color combination passes the WCAG standard provided
+Parameters:
+- string(string) color code in a hex or rgb format
+- string(string) color code in a hex or rgb format
+- string(string) WCAG rating ('AA' or 'AAA') for A11y
 
 ## ~color_variant
 Calculates a new hex color value based on a given input string var and multiplier
@@ -1229,10 +1517,16 @@ Parameters:
 - property_name(string) Optional. The case-insensitive property names to retrieve the definition for. If empty, the definitions for all the properties will be retrieved.
 
 ## ~cta
-Renders a call to action embed tag
+Renders a CTA module
 Parameters:
-- guid(String) The ID of the CTA to render
-- align_opt(enum justifyleft|justifycenter|justifyright|justifyfull) Adjusts alignment of CTA
+- embed_code(String) The embed code for the CTA
+- full_html(String) The embed code for the CTA. Same as embed_code
+- image_src(String) Image src url that defines the preview image in the content editor
+- image_editor(String) Markup for the image editor preview
+- guid(String) The unique ID number of the default CTA
+- cta_id(String) The id or guid of an embedded cta
+- image_html(String) CTA image HTML without the CTA script
+- image_email(String) Email-friendly version of the CTA code
 
 ## ~custom_widget
 A custom module
@@ -1245,12 +1539,24 @@ The cycle tag can be used within a for loop to cycle through a series of string 
 Parameters:
 - string_to_print(String) A comma separated list of strings to print with each interation. The list will repeat if there are more iterations than string parameter values.
 
+## ~data_token
+Returns the value of any data in the context.
+Parameters:
+- expression(string) An expression for the object and property to render
+- default(string) (Optional) A default value to use if the expression has no value
+- options(dict) (Optional) Options for rendering data token
+
 ## ~datetimeformat
 formats a date to a string
 Parameters:
 - var(date) 
 - format(String) 
 - timezone(String) Time zone of output date
+
+## ~display_call_to_action
+Returns the JS needed to display a call to action
+Parameters:
+- id(id) The id of the call to action to look up
 
 ## ~do
 Evaluates expression without printing out result.
@@ -1276,15 +1582,22 @@ Parameters:
 Simple email unsubscribe form
 Parameters:
 - header(String) Renders text in an h1 tag above the unsubscribe form
+- subheader(String) Renders text in an h2 tag above the unsubscribe form below the h1
+- header_heading_level(String) Defines the heading level of the header
+- subheader_heading_level(String) Defines the heading level of the subheader
 - input_help_text(String) Renders help text in an h3 tag above your email unsubscribe form field
 - button_text(String) Changes the text of the unsubscribe form submit button
 - input_placeholder(String) Adds placeholder text within the email address form field
+- error_info_text(String) Renders error text in an h3 tag
 
 ## ~email_subscriptions
 Email subscription preferences form
 Parameters:
 - header(String) Renders text in an h1 tag above the subscription preferences form
 - subheader_text(String) Populates text below the heading above the unsubscribe preferences
+- header_heading_level(String) Defines the heading level of the header
+- email_heading_level(String) Defines the heading level of the subheader
+- language_select_label_text(String) Provides the label for the language select label element
 - unsubscribe_single_text(String) Renders text in a <p class="header"> above the subscription options
 - unsubscribe_all_text(String) Renders text in a <p class="header"> above the unsubscribe from all emails checkbox input
 - unsubscribe_all_unsubbed_text(String) Populates text within a <p> that renders, if a contact is currently unsubscribed from all emails
@@ -1297,6 +1610,8 @@ Email unsubscribe form
 Parameters:
 - header(String) Renders text in an h1 tag above the unsubscribe form
 - subheader_text(String) Populates text above the confirmation message
+- header_heading_level(String) Defines the heading level of the header
+- email_heading_level(String) Defines the heading level of the subheader
 - unsubscribe_all_success(String) Sets the text that will display when someone unsubscribes from all email communications
 - subscription_update_success(String) Sets the text when a recipient updates his or her subscription preferences
 
@@ -1312,6 +1627,16 @@ Returns an m.me link for facebook messenger
 Returns the metadata of a file by ID
 Parameters:
 - file_id(id) The ID of the file to look up
+
+## ~files_by_ids
+Returns the metadata of a list of files by ID
+Parameters:
+- file_ids(list) The list of file ids to look up.
+
+## ~flag_content_for_access_check
+Marks content id for later access check and creates field hs-member-content-access
+Parameters:
+- id(id) The id of the content to check access for the logged in member
 
 ## ~flip
 Outputs the first and second block in specified or reverse order depending on the evaluation of the condition
@@ -1354,9 +1679,41 @@ Parameters:
 - notifications_are_overridden(boolean) If True, the form will send notifications to specified addresses selected in the notifications_override_email_addresses
 - notifications_override_guid_buffer(String) ID of override settings in auto-save version of page
 - notifications_override_guid(String) ID of override settings in live version of page
-- notifications_override_email_addresses(JSON list) These email addresses will override  the email notification settings set in the form
+- notifications_override_email_addresses(JSON list) (Deprecated) These email addresses will override  the email notification settings set in the form
+- notifications_override_user_ids(JSON list) The user IDs to override email addresses for the email notification settings set in the form
 - gotowebinar_webinar_key(String) Specifies the GoToWebinar webinar to enroll contacts who submit the form into
 - sfdc_campaign(String) Specifies the Salesforce campaign to enroll contacts who submit the form into
+- override_styles(json object) Override config for forms styles
+- title_heading_level(String) Defines the heading level of the title
+- is_survey(boolean) 
+
+## ~format_address
+Formats an address based on locale
+Parameters:
+- locale(String) 
+- fullAddress(String) fullAddress object, {address: string, address2: string, city: string, state: string country: string zip: string} Address, city, state, country and zip are required. Address2 is an optional field.
+
+## ~format_company_name
+Formats a company's name by adding Japanese honorifics where appropriate
+Parameters:
+- name(String) Name of the company
+- useHonorificIfApplicable(boolean) When this is set to true and the context's language is in Japanese, this will add a Japanese company honorific where appropriate
+
+## ~format_date
+
+
+## ~format_datetime
+
+
+## ~format_name
+Formats a person's name by putting the surname before the first name and adds Japanese honorifics where appropriate
+Parameters:
+- firstName(String) Person's first name
+- surname(String) Person's surname or last name
+- useHonorificIfApplicable(boolean) When this is set to true and the context's language is in Japanese, this will add a Japanese customer honorific where appropriate
+
+## ~format_time
+
 
 ## ~from
 Alternative to the import tag that lets you import and use specific macros from one template to another
@@ -1391,6 +1748,12 @@ Returns URL to specified asset by given path
 Parameters:
 - path(String) The Design Manager file path to the template or file
 
+## ~get_asset_version
+
+
+## ~get_module_breakpoint_styles
+Generates mapping between breakpoint names to an object with media query and breakpoint styles
+
 ## ~get_public_template_url
 Returns URL to specified template by given path
 
@@ -1398,6 +1761,14 @@ Returns URL to specified template by given path
 Returns URL to specified template by id
 Parameters:
 - template_id(number) The ID number of the template of file
+
+## ~get_rss_url
+Returns a URL for a specified RSS listing
+Parameters:
+- attributes(dict) Dictionary of parameters corresponding to most parameters of the rss listing tag. Supports 'show_date'(true/false), 'show_author'(true/false), 'show_detail'(true/false), 'limit_to_chars'(Number), 'publish_date_format'('short'/'medium'/'long' or a custom format such as "MMMM d, yyyy 'at' h:mm a"), 'click_through_text'(String), 'include_featured_image'(true/false), 'is_external'(true/false), 'number_of_items'(Number), 'publish_date_language'(String), 'rss_url'(String), 'content_group_id (Number)', 'select_blog'(String), and 'tag_id'(Number)
+
+## ~get_theme_breakpoint_styles
+Generates mapping between breakpoint names to an object with media query and breakpoint styles
 
 ## ~global_module
 
@@ -1465,13 +1836,14 @@ Parameters:
 Render an icon from the HubSpot icon library
 Parameters:
 - name(String) The icon name
-- icon_set(String) The icon set name. Currently defined sets: fontawesome-5 (see https://fontawesome.com/icons
+- icon_set(String) The icon set name. Currently defined sets: fontawesome-5 (see https://fontawesome.com/icons)
 - style(String) The icon style. Regular, solid, or light
 - format(String) The output format. svg or unicode
 - width(String) The output image width. For svg format only
 - height(String) The output image height. For svg format only
 - purpose(String) The role of the icon in its context. Either 'semantic' or 'decorative'
 - title(String) A descriptive title for the icon
+- fill(String) Sets the fill parameter on the SVG output
 
 ## ~if
 Outputs inner content if expression evaluates to true, otherwise evaluates any elif blocks, finally outputting content of any else block present
@@ -1529,6 +1901,9 @@ Generates stylesheet link tag for specified template path
 Parameters:
 - path(String) The Design Manager file path to the template or file
 
+## ~include_custom_fonts
+
+
 ## ~include_dnd_partial
 
 
@@ -1537,10 +1912,27 @@ Generates script include tag for specified template path
 Parameters:
 - path(String) 
 
+## ~inline_image_field
+Renders an image tag that can be edited inline inside modules
+Parameters:
+- alt(String) Sets the default alt text for the image
+- width(number) Sets the width attribute of the img tag
+- height(number) Sets a min-height in a style attribute of the img tag for email templates only
+- align(String) Sets the align attribute of the img tag (right, left, center)
+- hspace(number) Sets the hspace attribute of the img tag
+- style(String) Adds inline CSS declarations to the img tag
+- src(String) Populates the src attribute of the img tag
+- loading(String) Sets the loading attribute of the img tag
+
 ## ~inline_rich_text
 A rich text area that can be edited inline inside modules
 Parameters:
 - value(String) Sets the default content of the rich text module
+- field(String) Required name of the module field to which this text is associated
+
+## ~inline_richtext_field
+A single line of text that can be edited inline inside modules
+Parameters:
 - field(String) Required name of the module field to which this text is associated
 
 ## ~inline_text
@@ -1548,6 +1940,17 @@ A single line of text with no formatting that can be edited inline inside module
 Parameters:
 - value(String) The default text of the single line text field
 - field(String) Required name of the module field to which this text is associated
+
+## ~inline_text_field
+A single line of text with no formatting that can be edited inline inside modules
+Parameters:
+- field(String) Required name of the module field to which this text is associated
+
+## ~js_module
+
+
+## ~js_partial
+
 
 ## ~language_switcher
 Language switcher
@@ -1569,6 +1972,13 @@ Parameters:
 - src(String) Populates the src attribute of the img tag
 - loading(String) Sets the loading attribute of the img tag
 
+## ~load_translations
+Loads translations for a given path and returns a map of the values
+Parameters:
+- path(string) The Design Manager file path to the _locales directory of the translations
+- language_code(string) The language code
+- language_code_fallback(string) The language code fallback if original is not present
+
 ## ~locale_name
 Returns a human-readable string representation of a language code (optionally translated to a target language)
 Parameters:
@@ -1579,6 +1989,7 @@ Parameters:
 Logo image
 Parameters:
 - suppress_company_name(boolean) Hides company name if an image logo isn't set
+- use_account_default(boolean) User can opt in to fetch company name from Accounts default
 - override_inherited_src(boolean) If true, use src from logo widget rather than src inherited from settings or template.
 - src(String) Populates the src attribute of the img tag
 - alt(String) Sets the default alt text for the image
@@ -1589,7 +2000,7 @@ Parameters:
 - hspace(number) Sets the hspace attribute of the img tag
 - style(String) Adds inline CSS declarations to the img tag
 - open_in_new_tab(boolean) Selects whether or not to open the destination URL in another tab
-- heading_style(String) Sets the link heading style. Can be one of h1, h2, h3, or h4
+- heading_level(String) Sets the link heading level. Can be one of h1, h2, h3, h4, h5, or h6
 
 ## ~macro
 Macros allow you to print multiple statements with a dynamic value or values
@@ -1607,6 +2018,8 @@ Parameters:
 - reset_password_text(String) Label for password reset link
 - reset_password_link(String) Link to password reset request page
 - show_password(String) Label for Show password buttons
+- rate_limit_error(String) Error message shown when login rate limit is exceeded.
+- membership_passwordless_auth_text(String) Label for OTP form submit button
 
 ## ~member_register
 Render a registration form.
@@ -1619,11 +2032,15 @@ Parameters:
 - password_requirements(String) Label describing Password Requirements
 
 ## ~menu
-Returns the the nested link structure of an advanced menu.
+Advanced menu module
 Parameters:
-- menu_id_or menu_name(number or string) The id or name of the menu passed as a number or string.
-- root_type(enum) root type of the menu ("site_root", "top_parent", "parent", "page_name", "page_id", "breadcrumb")."site_root" denotes static - Always show top-level pages in menu."top_parent" denotes dynamic by section - Show pages in menu that are related to section being viewed."parent" denotes dynamic by page - Show pages in menu that are related to page being viewed."breadcrumb" denotes breadcrumb style path menu (uses horizontal flow).
-- root_key(string) root key (id or name) when using "page_name" or "page_id"
+- flow(enum horizontal|vertical)  This adds classes to the menu tree so that they can be styled accordingly
+- root_type(enum site_root|top_parent|parent|page_id|page_name|breadcrumb) Specifies the type of advanced menu
+- root_key(String) Used to find the menu root. When root_type is set to page_id or page_name, this param should be the page ID or the label of the page, respectively
+- max_levels(number) Determines how many levels of nested menus render in the markup
+- flyouts(boolean) When true, a class is added to the menu tree that can be styled to allow child menu items will appear when you hover over the parent
+- site_map_name(String) Name of menu tree from Advanced Menus
+- id(String) The menu id from Advanced Menus
 
 ## ~module
 A module
@@ -1638,6 +2055,12 @@ Parameters:
 
 ## ~module_attribute
 Defines a rich attribute for a module. Only valid within a module_block tag
+
+## ~namespace
+Create a namespace object that can hold arbitrary attributes.It may be initialized from a dictionary or with keyword arguments.
+Parameters:
+- dictionary(Map) The dictionary to initialize with
+- kwargs(NamedParameter...) Keyword arguments to put into the namespace dictionary
 
 ## ~oembed
 Returns OEmbed data dictionary for given request. Only works in emails.
@@ -1716,6 +2139,16 @@ Echos the result of the expression
 Parameters:
 - expr(expression) Expression to print
 
+## ~product_recommendations
+Returns a list of products of most popular products in a portal based on their appearance in deals 
+Parameters:
+- store_id(string) The ID of the ecommerce store or 'all' or 'HS'
+- limit(number) The max number of products to fetch
+- currency(string) The optional currency
+- min_price(number) The optional min price
+- max_price(number) The optional max price
+- enable_price_formatting(boolean) The optional flag to enable price formatting. Default to true.
+
 ## ~range
 Return a list containing an arithmetic progression of integers. With one parameter, range will return a list from 0 up to (but not including) the value. With two parameters, the range will start at the first value and increment by 1 up to (but not including) the second value. The third parameter specifies the step increment. All values can be negative. Impossible ranges will return an empty list. Ranges can generate a maximum of 1000 values.
 Parameters:
@@ -1744,21 +2177,20 @@ Parameters:
 - blog_authors(comma separated blog author names) Limit results to these author name(s)
 - path_prefixes(comma separated path prefixes) The path prefixes
 - post_formatter(string) Name of macro to render a blog post
+- featured_image_resize_options(object) options for resizing blog post featured image urls before passing them into the post_formatter. supports the same arguments as rewrite_image_url.
+- allow_any_language(boolean) Bypass filtering posts to be the same language as the current blog post. Defaults to false.
+- tag_boost(number) Boost for how much weight is given to relating posts with matching tags
 
 ## ~require_css
-Loads a css file to be output in the head
-Parameters:
-- url(String) URL of the CSS resource to be loaded on the page
-- render_options(dict) Dictionary of options to modify generated tag. Supports 'async'(true/false).
+Enqueue an inline stylesheet
 
 ## ~require_head
 Enqueue a head element
 
 ## ~require_js
-Enqueues a js file to be output in the head or footer
+Enqueue an inline script
 Parameters:
-- url(String) URL of the JavaScript resource to be loaded on the page
-- render_options(dict) Dictionary of options to modify generated tag. Supports 'position'('head'/'footer'), 'defer'(true/false), and 'async'(true/false).
+- position(String) 
 
 ## ~resize_image_url
 Rewrites the URL of an image in File Manager to a URL that will resize the image on request
@@ -1813,6 +2245,7 @@ An extra large, centered, header to denote an entire section
 Parameters:
 - header(String) Text to display in header
 - subheader(String) Text to display in subheader
+- heading_level(String) Sets the section heading level. Can be one of h1, h2, h3, h4, h5, or h6
 
 ## ~set
 Assigns the value or result of a statement to a variable
@@ -1824,6 +2257,14 @@ Parameters:
 Set the respond code as the specified code. 404 is the only supported code for now.
 Parameters:
 - code(integer) The http response code
+
+## ~sign_postlisting_url
+Returns a signed URL for the provided URL
+Parameters:
+- blog_id(number or default) The id of the blog or default blog for the postlisting.
+- list_type(string) The type of the postlisting.
+- max_links(number) The max links in the postlisting.
+- tag_name(string) The name of a tag on which to filter results
 
 ## ~simple_menu
 Simple menu, uses static link structure
@@ -1893,9 +2334,7 @@ Parameters:
 - date(datetime) UNIX timestamp to convert to local time
 
 ## ~today
-return datetime of beginning of the day
-Parameters:
-- timezone(string) timezone
+
 
 ## ~topic_cluster_by_content_id
 Returns topic cluster associated with a piece of content.
@@ -1913,10 +2352,13 @@ Parameters:
 ## ~type
 
 
-## ~unixtimestamp
-gets the unix timestamp milliseconds value of a datetime
+## ~unique_string
+Creates a distinctive string based on the input string
 Parameters:
-- var(date) 
+- string(string) value used to produce a unique string
+
+## ~unixtimestamp
+
 
 ## ~unless
 Unless is a conditional just like 'if' but works on the inverse logic.
