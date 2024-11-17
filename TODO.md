@@ -1,0 +1,1 @@
+* Add `.hsignore` file in plugin (see if it will be inserted in .ignore Jetbrains plugin).

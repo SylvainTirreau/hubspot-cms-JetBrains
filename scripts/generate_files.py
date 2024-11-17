@@ -1,6 +1,6 @@
 # hubspot-cms-JetBrains
 # MIT License
-# Copyright (c) 2021 Sylvain Tirreau (preferendum.fr)
+# Copyright (c) 2024 Sylvain Tirreau (hubspot-addict.com)
 #
 # Write the Live Template xml file and the abbreviations documentation file.
 
@@ -12,11 +12,15 @@ import sys
 import xml.etree.ElementTree as ET
 import re
 
+# Mode = dev | prod
+# In dev mode, the hubspot-cms-vscode repository is cloned only once and the tmp folder stay there. In prod mode,
+# the hubspot-cms-vscode repository is always cloned and the tmp folder always removed at the end of this script execution.
+mode = 'prod'
 repository = "https://github.com/HubSpot/hubspot-cms-vscode.git"
 root_folder = getcwd()
-temp_folder = path.join(root_folder, "tmp")
+temp_folder = path.join(root_folder, "tmp-hubspot-cms-vscode-repository")
 snippets_folder = "snippets"
-# File name is also the name of live template
+# File name is also the name of this live template
 file_name = "Hubspot"
 abb_references = {}
 
@@ -60,8 +64,9 @@ def get_json_content(file):
 
 
 if __name__ == "__main__":
-    create_tmp_folder()
-    get_remote_files()
+    if mode == 'dev' and not path.exists(path.join(temp_folder, snippets_folder)) or mode == 'prod':
+        create_tmp_folder()
+        get_remote_files()
 
     templateSet = ET.Element('templateSet')
     templateSet.set('group', file_name.capitalize())
@@ -82,7 +87,8 @@ if __name__ == "__main__":
                         search_variable = re.findall("\$\{.+?\}", b)
                         if search_variable:
                             for var in search_variable:
-                                new_variable = var.replace('${', '$').replace('}', '$').replace(" ", "__").replace(":", "")
+                                new_variable = var.replace('${', '$').replace('}', '$').replace(" ", "__").replace(":",
+                                                                                                                   "")
                                 b = b.replace(var, new_variable)
                                 variable = ET.SubElement(template, 'variable')
                                 variable.set("name", new_variable.replace('$', ''))
@@ -112,12 +118,13 @@ if __name__ == "__main__":
     for e in sorted(abb_keys):
         ref_content += f'## {e}\n{abb_references[e]}\n\n'
 
-    with open(f"../REFERENCES.md", "w") as ref_file:
+    with open(f"../live-template/REFERENCES.md", "w") as ref_file:
         ref_file.write(ref_content)
 
     # create a new XML file with the results
     xml_data = ET.tostring(templateSet)
-    with open(f"../templates/{file_name}.xml", "w") as xml_file:
+    with open(f"../live-template/templates/{file_name}.xml", "w") as xml_file:
         xml_file.write(xml_data.decode('utf-8'))
 
-    delete_tmp_folder()
+    if mode == 'prod':
+        delete_tmp_folder()
