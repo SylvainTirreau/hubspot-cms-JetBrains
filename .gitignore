@@ -3,3 +3,4 @@
 /jetbrains-plugins/hubl-language/.idea/
 /jetbrains-plugins/hubl-language/build/
 /jetbrains-plugins/hubl-language/*.jar
+/scripts/tmp-hubspot-cms-vscode-repository/

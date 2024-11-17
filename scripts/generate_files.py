@@ -15,7 +15,7 @@ import re
 # Mode = dev | prod
 # In dev mode, the hubspot-cms-vscode repository is cloned only once and the tmp folder stay there. In prod mode,
 # the hubspot-cms-vscode repository is always cloned and the tmp folder always removed at the end of this script execution.
-mode = 'prod'
+mode = 'dev'
 repository = "https://github.com/HubSpot/hubspot-cms-vscode.git"
 root_folder = getcwd()
 temp_folder = path.join(root_folder, "tmp-hubspot-cms-vscode-repository")
@@ -23,7 +23,8 @@ snippets_folder = "snippets"
 # File name is also the name of this live template
 file_name = "Hubspot"
 abb_references = {}
-
+html_body = ""
+html_table_of_contents = ""
 
 def create_tmp_folder():
     try:
@@ -74,9 +75,19 @@ if __name__ == "__main__":
     for root, dirs, files in walk(path.join(temp_folder, snippets_folder)):
         for name in files:
             if name.endswith('.json'):
+                text_h2 = name.replace('_', ' ').replace('.json', '').upper()
+                link_h2 = text_h2.replace(' ', '')
+                html_body += f"<br><br><br><div class='d-inline-flex'><h2 id='{link_h2}'>{text_h2}</h2>&nbsp;&nbsp;<a href='#tb{link_h2}'>Back to table</a></div><br><br>"
+                html_table_of_contents += f"<br><a id='#tb{link_h2}' href='#{link_h2}'>{text_h2}</a><br>"
                 data = get_json_content(path.join(root, name))
 
                 for d in data:
+                    text_h3 = data[d]['prefix'].replace('~', '')
+                    link_h3 = f"{link_h2}{text_h3.replace(' ', '')}"
+                    html_body += f"<div class='d-inline-flex'><h3 id='{link_h3}'>{text_h3}</h3>&nbsp;&nbsp;<a href='#tb{link_h3}'>Back to table</a></div><br>"
+                    html_table_of_contents += f"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a id='tb{link_h3}' href='#{link_h3}'>{text_h3}</a><br>"
+                    html_body += f"<p>{data[d]['description']}</p>"
+                    html_body += f"<p>{data[d]['body']}</p>"
                     template = ET.SubElement(templateSet, 'template')
                     template.set('name', data[d]["prefix"])
                     template.set('toReformat', 'false')
@@ -118,13 +129,45 @@ if __name__ == "__main__":
     for e in sorted(abb_keys):
         ref_content += f'## {e}\n{abb_references[e]}\n\n'
 
-    with open(f"../live-template/REFERENCES.md", "w") as ref_file:
+    with open("../live-template/REFERENCES.md", "w") as ref_file:
         ref_file.write(ref_content)
 
     # create a new XML file with the results
     xml_data = ET.tostring(templateSet)
     with open(f"../live-template/templates/{file_name}.xml", "w") as xml_file:
         xml_file.write(xml_data.decode('utf-8'))
+
+    # Create HTML structured file with references for Jetbrains plugin testing and dev.
+    body = html_body
+    html_content = f"""
+    <!DOCTYPE html>
+    <html lang="en">
+        <head>
+            <meta charset="UTF-8">
+            <title>Hubl language references</title>
+            <link rel="stylesheet" href="https://www.hubspot-addict.com/hs-fs/hub/25735474/hub_generated/template_assets/65268337127/1730988751779/assets/styles/css/main-site.min.css">
+        </head>
+        <body>
+            <div class="container">
+                <div class="row d-flex">
+                    <div class="col-12">
+                        <h1>Hubl language references</h1>
+                        <br>
+                        <big>Table of contents</big>
+                        <div style="font-size:0.8rem">
+                        {html_table_of_contents}
+                        </div>
+                        <div>
+                        {body}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </body>
+    </html>
+    """
+    with open("../jetbrains-plugins/hubl-language/src/test/testData/hubl-references.html", "w") as html_file:
+        html_file.write(html_content)
 
     if mode == 'prod':
         delete_tmp_folder()
