@@ -1,0 +1,31 @@
+// Copyright 2000-2022 JetBrains s.r.o. and other contributors. Use of this source code is governed by the Apache 2.0 license that can be found in the LICENSE file.
+{
+  parserClass="org.intellij.sdk.language.parser.HublParser"
+
+  extends="com.intellij.extapi.psi.ASTWrapperPsiElement"
+
+  psiClassPrefix="Hubl"
+  psiImplClassSuffix="Impl"
+  psiPackage="org.intellij.sdk.language.psi"
+  psiImplPackage="org.intellij.sdk.language.psi.impl"
+
+  elementTypeHolderClass="org.intellij.sdk.language.psi.HublTypes"
+  elementTypeClass="org.intellij.sdk.language.psi.HublElementType"
+  tokenTypeClass="org.intellij.sdk.language.psi.HublTokenType"
+
+  psiImplUtilClass="org.intellij.sdk.language.psi.impl.HublPsiImplUtil"
+}
+
+HublFile ::= item_*
+
+private item_ ::= (property|COMMENT|CRLF)
+
+property ::= (KEY? SEPARATOR VALUE?) | KEY {
+  pin=3
+  recoverWhile="recover_property"
+  mixin="org.intellij.sdk.language.psi.impl.HublNamedElementImpl"
+  implements="org.intellij.sdk.language.psi.HublNamedElement"
+  methods=[getKey getValue getName setName getNameIdentifier getPresentation]
+}
+
+private recover_property ::= !(KEY|SEPARATOR|COMMENT)

@@ -1,1 +1,5 @@
 /tmp/
+/jetbrains-plugins/hubl-language/.gradle/
+/jetbrains-plugins/hubl-language/.idea/
+/jetbrains-plugins/hubl-language/build/
+/jetbrains-plugins/hubl-language/*.jar

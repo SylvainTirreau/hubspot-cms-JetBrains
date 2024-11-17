@@ -1,0 +1,71 @@
+<!-- Copyright 2000-2023 JetBrains s.r.o. and contributors. Use of this source code is governed by the Apache 2.0 license. -->
+<!-- Plugin Configuration File. Read more: https://plugins.jetbrains.com/docs/intellij/plugin-configuration-file.html -->
+
+<idea-plugin>
+
+  <!-- Unique id for this plugin. Must stay constant for the life of the plugin. -->
+  <id>org.intellij.sdk.language</id>
+
+  <!-- Text to display as name on Settings | Plugin page -->
+  <name>Hubl Language</name>
+
+  <!-- Product and plugin compatibility requirements -->
+  <depends>com.intellij.modules.platform</depends>
+  <depends>com.intellij.java</depends>
+
+  <!-- Text to display as description on Settings | Plugin page -->
+  <description>
+    <![CDATA[
+      Demonstrates how to add custom language support to an IntelliJ Platform-based IDE. <br>Defines a new language,
+      <i>Hubl language</i> with support for syntax highlighting, annotations, code completion, and other features.
+      <br>
+      See the
+      <a href="https://plugins.jetbrains.com/docs/intellij/custom-language-support-tutorial.html">Custom
+      Language Tutorial</a> for more information.
+    ]]>
+  </description>
+  <change-notes>
+    <![CDATA[
+      <ul>
+        <li><b>2.0.0</b> Convert to Gradle-based plugin.</li>
+        <li><b>1.0.0</b> Release 2018.3 and earlier.</li>
+      </ul>
+    ]]>
+  </change-notes>
+
+  <!-- Text to display as company information on Settings | Plugin page -->
+  <vendor url="https://plugins.jetbrains.com">IntelliJ Platform SDK</vendor>
+
+  <extensions defaultExtensionNs="com.intellij">
+    <fileType name="Hubl File" implementationClass="org.intellij.sdk.language.HublFileType" fieldName="INSTANCE"
+              language="Hubl" extensions="Hubl"/>
+    <lang.parserDefinition language="Hubl" implementationClass="org.intellij.sdk.language.HublParserDefinition"/>
+    <lang.syntaxHighlighterFactory language="Hubl"
+                                   implementationClass="org.intellij.sdk.language.HublSyntaxHighlighterFactory"/>
+    <iconProvider implementation="org.intellij.sdk.language.HublPropertyIconProvider"/>
+    <colorSettingsPage implementation="org.intellij.sdk.language.HublColorSettingsPage"/>
+    <annotator language="JAVA" implementationClass="org.intellij.sdk.language.HublAnnotator"/>
+    <codeInsight.lineMarkerProvider language="JAVA"
+                                    implementationClass="org.intellij.sdk.language.HublLineMarkerProvider"/>
+    <completion.contributor language="Hubl"
+                            implementationClass="org.intellij.sdk.language.HublCompletionContributor"/>
+    <psi.referenceContributor language="JAVA"
+                              implementation="org.intellij.sdk.language.HublReferenceContributor"/>
+    <lang.refactoringSupport language="Hubl"
+                             implementationClass="org.intellij.sdk.language.HublRefactoringSupportProvider"/>
+    <lang.findUsagesProvider language="Hubl"
+                             implementationClass="org.intellij.sdk.language.HublFindUsagesProvider"/>
+    <lang.foldingBuilder language="JAVA" implementationClass="org.intellij.sdk.language.HublFoldingBuilder"/>
+    <gotoSymbolContributor implementation="org.intellij.sdk.language.HublChooseByNameContributor"/>
+    <lang.psiStructureViewFactory language="Hubl"
+                                  implementationClass="org.intellij.sdk.language.HublStructureViewFactory"/>
+    <navbar implementation="org.intellij.sdk.language.HublStructureAwareNavbar"/>
+    <lang.formatter language="Hubl" implementationClass="org.intellij.sdk.language.HublFormattingModelBuilder"/>
+    <codeStyleSettingsProvider implementation="org.intellij.sdk.language.HublCodeStyleSettingsProvider"/>
+    <langCodeStyleSettingsProvider implementation="org.intellij.sdk.language.HublLanguageCodeStyleSettingsProvider"/>
+    <lang.commenter language="Hubl" implementationClass="org.intellij.sdk.language.HublCommenter"/>
+    <lang.documentationProvider language="Hubl" implementationClass="org.intellij.sdk.language.HublDocumentationProvider"/>
+    <spellchecker.support language="Hubl" implementationClass="org.intellij.sdk.language.HublSpellcheckingStrategy"/>
+  </extensions>
+
+</idea-plugin>
