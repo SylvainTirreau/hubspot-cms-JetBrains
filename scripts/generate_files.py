@@ -122,6 +122,12 @@ if __name__ == "__main__":
                     option = ET.SubElement(context, 'option')
                     option.set('name', 'JSON')
                     option.set('value', 'true')
+                    option = ET.SubElement(context, 'option')
+                    option.set('name', 'JAVA_SCRIPT')
+                    option.set('value', 'true')
+                    option = ET.SubElement(context, 'option')
+                    option.set('name', 'TypeScript')
+                    option.set('value', 'true')
 
     # Write abbreviations reference file
     ref_content = "# Abbreviations reference\n\n"
